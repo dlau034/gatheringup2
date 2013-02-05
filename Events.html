@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="utf-8">
+	    <title>Events</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+
+    <!-- Le styles -->
+	    <link href="/css/bootstrap.css" rel="stylesheet">
+	    <style type="text/css">
+	      body {
+	        padding-top: 60px;
+	        padding-bottom: 0px;
+	      }
+    	</style>
+	    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/base/jquery-ui.css" />
+      <link rel="Stylesheet" type="text/css" href="/css/search.css"/>
+      <link href="/css/styles.css" rel="stylesheet">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Fav and touch icons -->
+      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+      <link rel="shortcut icon" href="ico/favicon.png">
+<!-- Google Fonts -->
+      <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500' rel='stylesheet' type='text/css'>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+<script type="text/javascript" src="/js/underscore-min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="/js/gatheringup-event.js"></script>
+<script type="text/javascript" src="/js/gatheringup-registration.js"></script>
+
+
+</head>
+
+<body>
+    <div class="wrapper"> <!-- Wrapper --><!-- Header + Navbar -->
+
+<script type="text/javascript">
+<!--
+
+//-->
+function invitedecline(idinvite)
+{
+	$.get("/invitation/decline?idinvite="+idinvite);
+	$("#"+idinvite+"invl").remove();
+	$("#"+idinvite+"inv").remove();
+	$("#"+idinvite+"invn").remove();
+	$invites=$("#note_on>b").html();
+	$invites=$invites-1;
+	if($invites<=0){
+		$("#note_on").attr('id',"note_off");
+	}
+	$invites=$("#note_on>b").html($invites);
+}
+
+</script>
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="top-stripe"></div>
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/">GatheringUP</a>
+              <div class="nav-collapse collapse">
+                <ul class="nav">
+                  <li><a href="/Dining">Dining</a></li>
+                  <li><a href="/Places">Places</a></li>
+                  <li><a href="/Events">Events</a></li>
+                                 <li><a href="/datebook">Datebook</a></li>
+                  <li>
+				<a id="note_off" class="dropdown-toggle" data-toggle="dropdown"  href="">&nbsp;</a>
+				                  </li>
+                              </ul>
+                              <div class="dropdown">
+               		              <form style="color:white;" class="navbar-form pull-right">Hello &nbsp
+                <a class="dropdown-toggle " type="button" data-toggle="dropdown" href="#">four one</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                      <!-- <li><a href="logOut.html">Settings</a></li> -->                    
+                      <li style="text-align: center"><a href="/user/logout">Log Out</a></li>          
+                  </ul>
+              </form>
+              </div>
+               		
+                             </div><!--/.nav-collapse -->
+          </div>
+        </div>
+      </div><script type="text/javascript">
+//var bookmarks={};
+var bookmarks = {"5097":1};
+		
+</script>
+
+<div class="container"> <!-- Container -->
+  <div class="row">
+    <div class="sideBar span3">
+        <h2>Search Events</h2> 
+          <div class="input-append">
+            <input class="squareCorners" id="appendedInputButton" placeholder="Find Events" type="text">
+            <button class="btn btn-blue" style="border-radius:0px; font-size:20px; font-weight:bold; padding:10px;" type="button">Go!</button>
+          </div>             
+        <h2>Calendar</h2>
+        <div id="datepicker"></div>
+          <h2>Search Filter</h2>
+              <div class="EventSearchFilter">
+                  <table class="table table-hover table-bordered">
+                    <tbody>
+                      <tr>
+                        <td><h4><a href="/events">Anytime</a></h4></td>
+                      </tr> 
+                      <tr>
+                        <td><h4><a href="/events/evenings">Evenings</a></h4></td>
+                      </tr>
+                      <tr>
+                        <td><h4><a href="/events/weekend">Weekends</a></h4></td>
+                      </tr>   
+                     </tbody>    
+                  </table>
+              </div>
+          <p>
+            <a style="width:230px; margin-top:20px;" class="btn btn-large btn-blue">Submit Your Events</a>
+          </p>
+    </div>
+
+    <div class="eventBody span8 offset1">
+
+
+
+      <div class="row">
+        <div class="span6"><h2>Tuesday February 5, 2013</h2> </div>
+        <div class="span2"><h2 class="searchFilter pull-right"></h2> </div>
+      </div>
+			<div class="eventmain">
+<div class="boxdate">February			<div class="boxday">5</div></div>
+<div class="eventtitle" name="5125">
+<b>Morning Fitness at Fort Tryon Park</b><br>
+	Tuesday February 5, 2013 07:30 AM - 08:30 PM<img src="/images/left_arrow.png" style="float: right" id="eventexpand" title="Expand">
+<br>Heather Garden (in Fort Tryon Park)<div class="padding"></div>
+</div>
+<div class="eventbody">
+<p> Come to Fort Tryon Park and try something new! Join us on Saturdays,  Tuesday and Thursday mornings for one hour of walking,  stretching,  and strengthening exercises. All of our fitness programs are free,  led by trained professionals,  and suitable for all levels. Wear comfortable clothing and bring water. Rain and weather / air advisory cancels. Fitness programs are cancelled if the weather is lower than 20 degrees . </p>
+<!-- 
+<a href="/event/recommend?event=5125"><img src="/images/bookmark.png" width="16" align="bottom"> Recommend</a> 
+-  -->
+<a href="javascript:void(0);" onclick="toggleevent('5125')">
+<span id="5125">
+<img src="/images/gtk-bookmark.png"></span>
+Bookmark</a>
+<a href="/datebook?events=5125"><img src="/images/gtk-save.png" align="bottom"> Save event</a>
+</div>
+</div>
+<div class="eventmain">
+<div class="boxdate">February			<div class="boxday">5</div></div>
+<div class="eventtitle" name="5126">
+<b>Tropical Paradise at The New York Botanical Garden</b><br>
+	Tuesday February 5, 2013 10:00 AM - 02:00 PM<img src="/images/left_arrow.png" style="float: right" id="eventexpand" title="Expand">
+<br>The New York Botanical Garden<div class="padding"></div>
+</div>
+<div class="eventbody">
+<p> From January 19 through February 24,  visitors to The New York Botanical Garden this winter can escape to "Tropical Paradise," a showcase of the Enid A. Haupt Conservatory&rsquo;s permanent collection of tropical trees,  flowers,  and foliage,  including orange-yellow crotons,  fuschia bromeliads,  and rosy-red hibiscus. Through self-guided strolls,  use of a virtual smart phone tour,  or participation in docent-led tours of the Conservatory offered daily at 12:30 p.m.,  visitors can encounter many surprises in the largest Victorian-style glasshouse in the country. Visitors can also enjoy a display of tropical photos from the International Garden Photographer of the Year competition and partake in photography lessons on Sundays. Children can participate in a scavenger hunt that begins in the Conservatory and continues in the Everett Children&rsquo;s Adventure Garden. </p>
+<!-- 
+<a href="/event/recommend?event=5126"><img src="/images/bookmark.png" width="16" align="bottom"> Recommend</a> 
+-  -->
+<a href="javascript:void(0);" onclick="toggleevent('5126')">
+<span id="5126">
+<img src="/images/gtk-bookmark.png"></span>
+Bookmark</a>
+<a href="/datebook?events=5126"><img src="/images/gtk-save.png" align="bottom"> Save event</a>
+</div>
+</div>
+<div class="eventmain">
+<div class="boxdate">February			<div class="boxday">5</div></div>
+<div class="eventtitle" name="5127">
+<b>Castle and its Kingdom</b><br>
+	Tuesday February 5, 2013 12:30 PM - 01:30 PM<img src="/images/left_arrow.png" style="float: right" id="eventexpand" title="Expand">
+<br>Belvedere Castle (in Central Park)<div class="padding"></div>
+</div>
+<div class="eventbody">
+<p> Take a walk around the lands dominated by Belvedere Castle,  situated high on Vista Rock. Visit the 55 acre realm on an eclectic tour of history and nature. Groups of seven or more people should call (212) 360-2726 or email tours@centralparknyc.org to schedule a custom tour. Accessibility level : Moderate inclines and stairs,  paths clear and negotiable - only parts accessible to people with disabilities. </p>
+<!-- 
+<a href="/event/recommend?event=5127"><img src="/images/bookmark.png" width="16" align="bottom"> Recommend</a> 
+-  -->
+<a href="javascript:void(0);" onclick="toggleevent('5127')">
+<span id="5127">
+<img src="/images/gtk-bookmark.png"></span>
+Bookmark</a>
+<a href="/datebook?events=5127"><img src="/images/gtk-save.png" align="bottom"> Save event</a>
+</div>
+</div>
+      <div class="row">
+        <div class="span6"><h2>Wednesday February 6, 2013</h2> </div>
+        <div class="span2"><h2 class="searchFilter pull-right"></h2> </div>
+      </div>
+			<div class="eventmain">
+<div class="boxdate">February			<div class="boxday">6</div></div>
+<div class="eventtitle" name="5128">
+<b>Chinese New Year Celebration</b><br>
+	Wednesday February 6, 2013 09:30 AM - 02:30 PM<img src="/images/left_arrow.png" style="float: right" id="eventexpand" title="Expand">
+<br>Lost Battalion Hall Recreation Center<div class="padding"></div>
+</div>
+<div class="eventbody">
+<p>Come join us as we ring in the Chinese New Year with performances,  refreshments,  cultural folk dance,  a martial arts demonstration,  music,  social dancing and more!</p>
+<!-- 
+<a href="/event/recommend?event=5128"><img src="/images/bookmark.png" width="16" align="bottom"> Recommend</a> 
+-  -->
+<a href="javascript:void(0);" onclick="toggleevent('5128')">
+<span id="5128">
+<img src="/images/gtk-bookmark.png"></span>
+Bookmark</a>
+<a href="/datebook?events=5128"><img src="/images/gtk-save.png" align="bottom"> Save event</a>
+</div>
+</div>
+<div class="eventmain">
+<div class="boxdate">February			<div class="boxday">6</div></div>
+<div class="eventtitle" name="5129">
+<b>Greenbelt Tree Tots</b><br>
+	Wednesday February 6, 2013 09:45 AM - 10:30 AM<img src="/images/left_arrow.png" style="float: right" id="eventexpand" title="Expand">
+<br>Greenbelt Nature Center (in Blood Root Valley)<div class="padding"></div>
+</div>
+<div class="eventbody">
+<p> Join us for a dynamic exploration of the wonders of the forest. Throught hands-on activities,  observations,  finger plays,  games,  and stories,  children will become familiar with the sights and sounds of the forest. The program will take place indoors and ouddors [weather permitting] for 3 and 4 year olds and their caregiver.Registration required. Space is limited. </p>
+<!-- 
+<a href="/event/recommend?event=5129"><img src="/images/bookmark.png" width="16" align="bottom"> Recommend</a> 
+-  -->
+<a href="javascript:void(0);" onclick="toggleevent('5129')">
+<span id="5129">
+<img src="/images/gtk-bookmark.png"></span>
+Bookmark</a>
+<a href="/datebook?events=5129"><img src="/images/gtk-save.png" align="bottom"> Save event</a>
+</div>
+</div>
+<div class="eventmain">
+<div class="boxdate">February			<div class="boxday">6</div></div>
+<div class="eventtitle" name="5130">
+<b>The Wild Garden: Discovering Central Park Woodlands Exhibit</b><br>
+	Wednesday February 6, 2013 10:00 AM - 05:00 PM<img src="/images/left_arrow.png" style="float: right" id="eventexpand" title="Expand">
+<br>Charles A. Dana Discovery Center (in Central Park)<div class="padding"></div>
+</div>
+<div class="eventbody">
+<p> Use this hands-on exhibit to illuminate the history,  ecology,  and management of the woodlands and learn why these landscapes are so essential to the purpose of Central Park. The exhibit includes a digital interactive app highlighting historic photos and revealing hidden features. Exhibit introductions are available by appointment for groups of 10 or more; call 212-860-1370 for more information. </p>
+<!-- 
+<a href="/event/recommend?event=5130"><img src="/images/bookmark.png" width="16" align="bottom"> Recommend</a> 
+-  -->
+<a href="javascript:void(0);" onclick="toggleevent('5130')">
+<span id="5130">
+<img src="/images/gtk-bookmark.png"></span>
+Bookmark</a>
+<a href="/datebook?events=5130"><img src="/images/gtk-save.png" align="bottom"> Save event</a>
+</div>
+</div>
+<div class="eventmain">
+<div class="boxdate">February			<div class="boxday">6</div></div>
+<div class="eventtitle" name="5131">
+<b>Woodland Discovery Kit in Central Park</b><br>
+	Wednesday February 6, 2013 10:00 AM - 05:00 PM<img src="/images/left_arrow.png" style="float: right" id="eventexpand" title="Expand">
+<br>Charles A. Dana Discovery Center (in Central Park)<div class="padding"></div>
+</div>
+<div class="eventbody">
+<p> Visit The Wild Garden: Discovering Central Park Woodlands exhibit and start exploring the North Woods on your own by borrowing a North Woods Discovery Kit stocked with binoculars,  a hand lens,  and flora/fauna guides. Accompanying adult with valid ID required. Purchase an optional Discovery Journal for $2 for a one-of-a-kind woodland adventure. Recommended for ages 8 &ndash; 12. </p>
+<!-- 
+<a href="/event/recommend?event=5131"><img src="/images/bookmark.png" width="16" align="bottom"> Recommend</a> 
+-  -->
+<a href="javascript:void(0);" onclick="toggleevent('5131')">
+<span id="5131">
+<img src="/images/gtk-bookmark.png"></span>
+Bookmark</a>
+<a href="/datebook?events=5131"><img src="/images/gtk-save.png" align="bottom"> Save event</a>
+</div>
+</div>
+<div class="eventmain">
+<div class="boxdate">February			<div class="boxday">6</div></div>
+<div class="eventtitle" name="5132">
+<b>Tropical Paradise at The New York Botanical Garden</b><br>
+	Wednesday February 6, 2013 10:00 AM - 02:00 PM<img src="/images/left_arrow.png" style="float: right" id="eventexpand" title="Expand">
+<br>The New York Botanical Garden<div class="padding"></div>
+</div>
+<div class="eventbody">
+<p> From January 19 through February 24,  visitors to The New York Botanical Garden this winter can escape to "Tropical Paradise," a showcase of the Enid A. Haupt Conservatory&rsquo;s permanent collection of tropical trees,  flowers,  and foliage,  including orange-yellow crotons,  fuschia bromeliads,  and rosy-red hibiscus. Through self-guided strolls,  use of a virtual smart phone tour,  or participation in docent-led tours of the Conservatory offered daily at 12:30 p.m.,  visitors can encounter many surprises in the largest Victorian-style glasshouse in the country. Visitors can also enjoy a display of tropical photos from the International Garden Photographer of the Year competition and partake in photography lessons on Sundays. Children can participate in a scavenger hunt that begins in the Conservatory and continues in the Everett Children&rsquo;s Adventure Garden. </p>
+<!-- 
+<a href="/event/recommend?event=5132"><img src="/images/bookmark.png" width="16" align="bottom"> Recommend</a> 
+-  -->
+<a href="javascript:void(0);" onclick="toggleevent('5132')">
+<span id="5132">
+<img src="/images/gtk-bookmark.png"></span>
+Bookmark</a>
+<a href="/datebook?events=5132"><img src="/images/gtk-save.png" align="bottom"> Save event</a>
+</div>
+</div>
+<div class="eventmain">
+<div class="boxdate">February			<div class="boxday">6</div></div>
+<div class="eventtitle" name="5133">
+<b>Greenbelt Peepers</b><br>
+	Wednesday February 6, 2013 11:00 AM - 11:30 AM<img src="/images/left_arrow.png" style="float: right" id="eventexpand" title="Expand">
+<br>Greenbelt Nature Center (in Blood Root Valley)<div class="padding"></div>
+</div>
+<div class="eventbody">
+<p> Join us for a dynamic exploration of the wonders of the forest. Throught hands-on activities,  observations,  finger plays,  games,  and stories,  children will become familiar with the sights and sounds of the forest. The program will take place indoors and ouddors [weather permitting] for 3 and 4 year olds and their caregiver. </p>
+<!-- 
+<a href="/event/recommend?event=5133"><img src="/images/bookmark.png" width="16" align="bottom"> Recommend</a> 
+-  -->
+<a href="javascript:void(0);" onclick="toggleevent('5133')">
+<span id="5133">
+<img src="/images/gtk-bookmark.png"></span>
+Bookmark</a>
+<a href="/datebook?events=5133"><img src="/images/gtk-save.png" align="bottom"> Save event</a>
+</div>
+</div>
+<div class="eventmain">
+<div class="boxdate">February			<div class="boxday">6</div></div>
+<div class="eventtitle" name="5134">
+<b>Views From the Past</b><br>
+	Wednesday February 6, 2013 12:30 PM - 01:30 PM<img src="/images/left_arrow.png" style="float: right" id="eventexpand" title="Expand">
+<br>Outside the Dairy Gift Shop (in Central Park)<div class="padding"></div>
+</div>
+<div class="eventbody">
+<p> Imagine living as a 19th century New Yorker taking a journey through Central Park. Along the way,  you will learn about the Park's history and hear how its designers,  Frederick Law Olmsted and Calvert Vaux,  struggled to turn their visions into our reality. Groups of seven or more people should call (212) 360-2726 or email tours@centralparknyc.org to schedule a custom tour. Accessibility level: Easy to negotiate; paths and few stairs - mostly accessible to people with disabilities . </p>
+<!-- 
+<a href="/event/recommend?event=5134"><img src="/images/bookmark.png" width="16" align="bottom"> Recommend</a> 
+-  -->
+<a href="javascript:void(0);" onclick="toggleevent('5134')">
+<span id="5134">
+<img src="/images/gtk-bookmark.png"></span>
+Bookmark</a>
+<a href="/datebook?events=5134"><img src="/images/gtk-save.png" align="bottom"> Save event</a>
+</div>
+</div>
+
+<div class="pagination">
+<table>
+<tr>
+<td width="70">Previous</td><td width="20"><b>1</b></td><td width="20"><a href="/events?page=2">2</a></td> <td width="20"><a href="/events?page=3">3</a></td> <td width="20"><a href="/events?page=4">4</a></td> <td width="20"><a href="/events?page=5">5</a></td> <td width="20"><a href="/events?page=6">6</a></td> <td width="20"><b>...</b></td><td width="20"><a href="/events?page=20">20</a></td> <td width="70"><a href="/events?page=2">Next</a></td> </tr>
+</table>
+</div>
+</div>
+</div></div>
+
+<!-- Footer -->
+  <div class="footer">
+    <p>Copyright Gathering Up Ltd. All rights reserved. Proudly made in New York City!</p>  
+    <p>
+      <a href="http://twitter.com">Follow Us on Twitter</a> | 
+      <a href="http://Facebook.com">Follow Us on Facebook</a><br>
+    </p> 
+    <p>  
+      <a href="terms.html">Terms of Use</a>  |  
+      <a href="Privacy.html">Privacy Policy</a> | 
+      <a href="Contact.html">Contact Us</a>
+    </p>  
+  </div>  
+
+<!--Register Modal-->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header registerModal">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h2 id="myModalLabel">Register with GatheringUP!</h2>
+        
+              <div class="facebookbg">
+              <a href="" class="facebookurl" ><h3>
+        <img style="padding-right: 15px;"src="/images/facebook.png" alt="facebook">REGISTER WITH FACEBOOK</h3>
+        </a>
+        </div>
+        <div class="breakline"></div>
+      </div>
+      <div id="RegistrationErrors"></div>
+        <div class="modal-body">
+            <form  id="registerform" action="#" class="form-horizontal">
+              <div class="control-group">
+                <label class="control-label" for="inputFirstName">First Name</label>
+                <div class="controls">
+                  <input type="text" name="firstname" id="firstname" class="squareCorners" placeholder="First Name">
+                  <b id="errfirstname"></b>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputEmail">Last Name</label>
+                <div class="controls">
+                  <input type="text" name="lastname" id="lastname" class="squareCorners" placeholder="Last Name">
+                <b id="errlastname"></b>
+                </div>
+              </div>        
+                  <div class="control-group">
+                <label class="control-label" for="inputEmail">Email</label>
+                <div class="controls">
+                  <input type="text" name="email" id="regemail" class="squareCorners" placeholder="Email">
+                  <b id="erremail"></b>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputPassword">Create Password</label>
+                              <p class="helper">*At least one number & one capital letter</p> 
+                <div class="controls">
+                  <input type="password" name="password" id="regpassword" class="squareCorners" placeholder="Min 8 Characters">
+<b id="errpassword"></b>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputConfirmPassword">Confirm Password</label>
+                <div class="controls">
+                  <input type="password" name="passwordconf" id="regpasswordconf" class="squareCorners" placeholder="Confirm Password">
+<b id="errpasswordconf"></b>
+                </div>
+              </div>     
+              <div class="control-group">
+                <div class="controls">
+                  <div id="captcha"><img src="/captcha"></div>
+                </div>
+              </div>   
+              <div class="control-group">
+                <label class="control-label" for="inputConfirmPassword">Enter Above</label>
+                <div class="controls">
+                  <input type="password" name="norobotcode" id="robotdistorter" class="squareCorners" placeholder="Enter Above">
+                  <b id="errrobotdistorter"></b>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="controls">
+                  <button type="button" value="Sign me up" class="btn btn-blue btn-large" onclick="register()">Register</button>
+                </div>
+              </div>
+            </form>
+        </div>
+    </div>   
+
+    <!--Sign Up Modal-->
+    <div id="Signin_Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header registerModal">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h2 id="myModalLabel">Sign In!</h2>
+      </div>
+        <div class="breakline"></div>       
+        <div class="modal-body">
+          <p >Don't have an account? &nbsp<a href="javascript:void(0);" onclick="registerpopup('')">Register Here!</a></p>
+            <form  id="loginform" action="#" class="form-horizontal">
+            
+            		<input type="hidden" id="redirect" name="redirect" value="">
+					<input type="hidden" class="bbookmark" name="bbookmark" value="">
+					<input type="hidden" class="pbookmark" name="pbookmark" value="">
+					<input type="hidden" class="ebookmark" name="ebookmark" value="">
+              <div class="SignInField_m">
+              <div class="facebookbg">
+              <a href="" class="facebookurl" >
+                    <img style="height:30px;width:auto;padding-right:5px;" src="/images/facebook.png" alt="facebook">Sign In with Facebook
+                 </a>
+              </div>
+        <div style="margin-top:20px;" class="breakline"></div>                 
+              </div>
+            	<div id="LoginErrors"></div>
+                <div class="SignInField_m">
+                    <input id="poploginemail" name="email" style="width:256px;" type="text" class="squareCorners" placeholder="Email">
+                </div>
+                <div class="SignInField_m">
+                    <input id="poploginpasswd" name="password" style="width:256px;" type="password" class="squareCorners" placeholder="Password">
+                </div>
+                <div class="SignInField_m">
+                    <a style="cursor:pointer;" data-target="#forgotModal" data-toggle="modal">Forgot Your Password?</a>
+                    <label class="checkbox">
+                    <input type="checkbox">Remember me
+                    </label>
+                        <button type="button"  onclick="login()" class="btn btn-blue btn-large" style="font-weight:bold;width:100%;margin-top:10px;">Sign In!</button>
+                      </div>
+                  </form> 
+               </div>
+            </div> 
+
+<!--Forgot Password Modal-->
+    <div id="forgotModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>        
+        <h2 id="myModalLabel">Forgot Password</h2>
+      </div>
+      <div class="breakline"></div>
+      <div style="padding: 0px 35px 32px;" class="modal-body">
+        <h4>Enter you email address below to reset your password</h4>
+        <input style="padding-right:71px;" class="form-large" type="text" placeholder="Email Address">
+        <button style="padding:15px 33px 15px 33px;" type="submit" class="btn btn-blue btn-large">Reset Your Password!</button>
+      </div>
+    </div>    
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!--     <script src="js/jquery.js"></script> -->
+    <script src="/js/bootstrap.min.js"></script>
+<!--     <script src="/js/bootstrap-transition.js"></script>
+    <script src="/js/bootstrap-alert.js"></script>
+    <script src="/js/bootstrap-modal.js"></script>
+    <script src="/js/bootstrap-dropdown.js"></script>
+    <script src="/js/bootstrap-scrollspy.js"></script>
+    <script src="/js/bootstrap-tab.js"></script>
+    <script src="/js/bootstrap-tooltip.js"></script>
+    <script src="/js/bootstrap-popover.js"></script>
+    <script src="/js/bootstrap-button.js"></script>
+    <script src="/js/bootstrap-collapse.js"></script>
+    <script src="/js/bootstrap-carousel.js"></script>
+    <script src="/js/bootstrap-typeahead.js"></script>
+ -->
+<!--Carousel Javascript-->    
+    <script type="text/javascript"> 
+	$('.dropdown-toggle ul.dropdown-menu form.form-horizontal, div.SignInField').click(function(e) {
+		e.stopPropagation();
+	});
+    
+      $('.carousel').carousel({
+        interval: 5000
+      });
+    </script>
+  </body>
+</html>

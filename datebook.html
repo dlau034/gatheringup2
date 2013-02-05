@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title>Gathering UP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+<!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+        <style type="text/css">
+          body {
+            padding-top: 60px;
+          }
+
+        </style>        
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link rel="Stylesheet" type="text/css" href="/css/chosen.css" />
+<link rel="Stylesheet" type="text/css" href="/css/search.css" />
+<link rel="Stylesheet" type="text/css" href="/css/home.css" />
+    <link href="css/styles.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/base/jquery-ui.css" />
+
+<!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500' rel='stylesheet' type='text/css'>
+ 
+<!-- 
+<link type="text/css" href="/css/humanity/jquery-ui-1.8.21.custom.css" rel="Stylesheet" />	
+<link rel="Stylesheet" type="text/css" href="/css/header.css" />
+<link rel="Stylesheet" type="text/css" href="/css/home.css" />
+ --> 	
+<link rel="Stylesheet" type="text/css" href="/css/timepicker.css" />
+<link rel="Stylesheet" type="text/css" href="/css/fullcalendar.css" />
+
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-1.8.21.custom.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-timepicker-addon.js"></script>
+<script type='text/javascript' src='/js/fullcalendar.min.js'></script>
+
+<script type="text/javascript" src="/js/underscore-min.js"></script>
+<script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="/js/gatheringup-emaildialog.js">	</script>
+<script type="text/javascript" src="/js/gatheringup-home.js"></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper"> <!-- Wrapper -->   
+<!-- Header + Navbar -->
+
+<script type="text/javascript">
+<!--
+
+//-->
+function invitedecline(idinvite)
+{
+	$.get("/invitation/decline?idinvite="+idinvite);
+	$("#"+idinvite+"invl").remove();
+	$("#"+idinvite+"inv").remove();
+	$("#"+idinvite+"invn").remove();
+	$invites=$("#note_on>b").html();
+	$invites=$invites-1;
+	if($invites<=0){
+		$("#note_on").attr('id',"note_off");
+	}
+	$invites=$("#note_on>b").html($invites);
+}
+
+</script>
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="top-stripe"></div>
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/">GatheringUP</a>
+              <div class="nav-collapse collapse">
+                <ul class="nav">
+                  <li><a href="/Dining">Dining</a></li>
+                  <li><a href="/Places">Places</a></li>
+                  <li><a href="/Events">Events</a></li>
+                                 <li><a href="/datebook">Datebook</a></li>
+                  <li>
+				<a id="note_off" class="dropdown-toggle" data-toggle="dropdown"  href="">&nbsp;</a>
+				                  </li>
+                              </ul>
+                              <div class="dropdown">
+               		              <form style="color:white;" class="navbar-form pull-right">Hello &nbsp
+                <a class="dropdown-toggle " type="button" data-toggle="dropdown" href="#">four one</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                      <!-- <li><a href="logOut.html">Settings</a></li> -->                    
+                      <li style="text-align: center"><a href="/user/logout">Log Out</a></li>          
+                  </ul>
+              </form>
+              </div>
+               		
+                             </div><!--/.nav-collapse -->
+          </div>
+        </div>
+      </div><script type="text/javascript">
+
+window.friends = {"1":{"name":"five","email":"5@1.com"},"0":{"name":"one","email":"1@1.com"},"3":{"name":"six","email":"6@1.com"},"2":{"name":"six","email":"6@1.com"}};
+$(document).ready(function() {
+	
+	var date = new Date();
+	var d = date.getDate();
+	var m = date.getMonth();
+	var y = date.getFullYear();
+	
+	$('#calendar').fullCalendar({
+		eventClick: function(event){
+			loadeventdetail(event.hiddenactivity);
+		},
+		eventMouseover: function(event, jsEvent, view ) { 
+			if(event.start.getDay()>4){
+				$(this).popover({title: event.hiddentime, trigger: 'hover', placement:'left', content: event.hidden}); 
+				
+			}else{
+				$(this).popover({title: event.hiddentime, trigger: 'hover', content: event.hidden}); 
+				
+			}
+		},
+		header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,agendaWeek,agendaDay'
+		},
+		editable: false, 
+		selectable: true,
+		timeFormat: 'h:mm TT',
+		unselectAuto: true,
+		events: [{
+title: '',
+hidden: 'event 1',
+hiddenactivity: '274',
+hiddentime: '12:00 AM',
+start: new Date(2013, 1, 4, 0, 0),
+end: new Date(2013, 1, 4, 0, 0),
+color: '#00abdc',
+allDay: false
+},
+{
+title: '',
+hidden: 'event 2',
+hiddenactivity: '275',
+hiddentime: '12:00 AM',
+start: new Date(2013, 1, 4, 0, 0),
+end: new Date(2013, 1, 4, 0, 0),
+color: '#00abdc',
+allDay: false
+},
+{
+title: '',
+hidden: 'event 3',
+hiddenactivity: '276',
+hiddentime: '12:00 AM',
+start: new Date(2013, 1, 4, 0, 0),
+end: new Date(2013, 1, 4, 0, 0),
+color: '#00abdc',
+allDay: false
+},
+{
+title: '',
+hidden: 'EUFORIA LOUNGE',
+hiddenactivity: '277',
+hiddentime: '12:00 AM',
+start: new Date(2013, 1, 4, 0, 0),
+end: new Date(2013, 1, 4, 0, 0),
+color: '#00abdc',
+allDay: false
+},
+{
+title: '',
+hidden: 'DeSilva Hall',
+hiddenactivity: '278',
+hiddentime: '12:00 AM',
+start: new Date(2013, 1, 4, 0, 0),
+end: new Date(2013, 1, 4, 0, 0),
+color: '#00abdc',
+allDay: false
+},
+{
+title: '',
+hidden: 'Marcellus Hartley Dodge Physical Fitness Center',
+hiddenactivity: '279',
+hiddentime: '12:00 AM',
+start: new Date(2013, 1, 4, 0, 0),
+end: new Date(2013, 1, 4, 0, 0),
+color: '#00abdc',
+allDay: false
+},
+{
+title: '',
+hidden: 'Citi Pond Winter Film Festival: Peter Pan',
+hiddenactivity: '271',
+hiddentime: '07:00 AM',
+start: new Date(2013, 1, 4, 7, 0),
+end: new Date(2013, 1, 4, 11, 0),
+color: '#00abdc',
+allDay: false
+},
+{
+title: '',
+hidden: 'Morning Fitness at Fort Tryon Park',
+hiddenactivity: '272',
+hiddentime: '07:30 AM',
+start: new Date(2013, 1, 5, 7, 30),
+end: new Date(2013, 1, 5, 8, 30),
+color: '#00abdc',
+allDay: false
+},
+{
+title: '',
+hidden: 'Tropical Paradise at The New York Botanical Garden',
+hiddenactivity: '273',
+hiddentime: '10:00 AM',
+start: new Date(2013, 1, 5, 10, 0),
+end: new Date(2013, 1, 5, 2, 0),
+color: '#00abdc',
+allDay: false
+},
+{
+title: '',
+hidden: 'Greenbelt Tree Tots',
+hiddenactivity: '284',
+hiddentime: '09:45 AM',
+start: new Date(2013, 1, 6, 9, 45),
+end: new Date(2013, 1, 6, 10, 30),
+color: '#00abdc',
+allDay: false
+}
+		]
+	});
+	
+});
+</script>
+
+<!--
+Underscore is stripping out img's for select options for some reason.
+<img src="/images/gnome_stock_person.png" height="20"> 
+					<img src="http://graph.facebook.com/<%=one.id %>/picture" height="20">-->
+<style type="text/css">
+
+  .namespanel {
+  border-left: 1px solid white;
+  -moz-box-shadow: -1px 0px 0px #e5e5e5; /* Firefox 3.6 and earlier */
+  -webkit-box-shadow: -1px 0px 0px #e5e5e5; /* Safari and Chrome */
+  box-shadow: -1px 0px 0px #e5e5e5;
+  margin-bottom: 10px;
+}
+
+.attendstatus {
+  margin-left: 11px;
+  text-align: center;
+}
+
+</style>
+<script type="text/html" id='invitedetails'>
+<div class="span6">
+          <div class="event_info">
+            <h3><%= event.summary %></h3>
+            <dl class="dl-horizontal">
+              <dt>Location:</dt>
+              <dd><%= event.location %>, <%= event.city %>, <%= event.state %></dd>
+              <dt>Date:</dt>
+              <dd><%= event.startdate %></dd>
+              <dt>Time:</dt>
+              <dd><%= event.starttime %> - <%= event.endtime %>
+</dd>
+            </dl>
+            <p><% if(event.description){ print(event.description); } %>
+
+          </div>
+          <div class="blue_bar"></div><h2>
+								<a href="/invitation/accept?idinvite=<%=event.idinvite%>">Accept Invitation</a> | 
+								<a href="/invitation/decline?idinvite=<%=event.idinvite%>">Decline</a></h2>
+
+          <div class="message_area" name="<%=event.idactivity%>">
+			<% _.each(messages, function(one) { %>
+                <div class="message_entry" style="min-height: 72px;">
+				<% if(one.screenname){ 		%>
+                    <img class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.screenname %>/picture" alt="thumbnail"> 
+      			<%  }else if(one.oauth_uid) { %> 
+                    <img class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail"> 
+      			<%  }else { %> 
+                    <img class="img-polaroid thumbnail_profile" src="/images/gnome_stock_person.png" alt="thumbnail"> 
+				<%  } %>
+                    <div class="text_entry">
+                    <h4><%= one.firstname %> <%= one.lastname %></h4>
+                    <p><%= one.message %> </p>
+                    </div> 
+                </div>
+                    <div class="breakline_msg"></div>  
+			<% }); %>
+          </div>  
+</div>
+          <div class="span1">
+            <div class="namespanel">
+            <h5 class="attendstatus">Attending</h5>              
+            <div class="attend"> 
+			<% _.each(members, function(one) { %>
+				<div>
+				<% if(one.screenname){ 		%>
+                    <img id="<%=one.iduser%>" rel="tooltip" data-placement="left" data-original-title="<%=one.firstname%> <%=one.lastname%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.screenname %>/picture" alt="thumbnail"> 
+      			<%  }else if(one.oauth_uid) { %> 
+                    <img id="<%=one.iduser%>" rel="tooltip" data-placement="left" data-original-title="<%=one.firstname%> <%=one.lastname%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail"> 
+      			<%  }else { %> 
+                    <img id="<%=one.iduser%>" rel="tooltip" data-placement="left" data-original-title="<%=one.firstname%> <%=one.lastname%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="/images/gnome_stock_person.png" alt="thumbnail"> 
+				<%  } %>
+				</div>
+			<% }); %>
+            </div>   
+
+              <h5 class="attendstatus">Pending</h5>            
+            <div class="pending">
+			<% _.each(invited, function(one) { %>
+				<div>
+      			<%  if(one.oauth_uid) { %> 
+                    <img id="<%=one.idinvite%>invite" rel="tooltip" data-placement="left" data-original-title="<%=one.name%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail"> 
+      			<%  }else { %> 
+                    <img id="<%=one.idinvite%>invite" rel="tooltip" data-placement="left" data-original-title="<%=one.name%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="/images/gnome_stock_person.png" alt="thumbnail"> 
+				<%  } %>
+				</div>
+			<% }); %>
+            </div>    
+</div>       
+</div>
+</script>
+<script type="text/html" id='eventdetails'>
+<div class="span6">
+          <div class="event_info">
+            <h3><%= event.summary %></h3>
+            <dl class="dl-horizontal">
+              <dt>Location:</dt>
+              <dd><% if(event.location){ print(event.location+"<br> "); }  %> 
+<% if(event.city){ print(event.city+", "); } %> <%= event.state %></dd>
+              <dt>Date:</dt>
+              <dd><%= event.startdate %></dd>
+              <dt>Time:</dt>
+              <dd><%= event.starttime %> - <%= event.endtime %>
+</dd>
+            </dl>
+            <p>
+<% if(event.description){ print(event.description+"<br><br>"); }else{ print("&nbsp;"); } %>
+<% if(event.iduser==iduser){ %>
+<a href="javascript:void(0);" onclick='opencreateevent(<%=JSON.stringify(event)%>,1)' class="pull-right"> Edit<img src="/images/gtk-save.png" ></a><br>
+<% } %>
+</p>        
+          </div>
+          <div class="blue_bar"></div>
+                <form accept-charset="UTF-8" id="formpostmessage"  action="javascript:void(0);" method="POST">
+                    <textarea class="span6" id="new_message" name="message"
+                    placeholder="Type in your message" rows="5"></textarea>                    
+                    <button class="btn btn-blue" type="button" onclick="postactivitymessage(<%=event.idactivity%>)">Post New Message</button>
+                    <div style="margin-top: 12px;" class="breakline_msg"></div>                     
+                </form>            
+
+          <div class="message_area" name="<%=event.idactivity%>">
+			<% _.each(messages, function(one) { %>
+                <div class="message_entry" style="min-height: 72px;">
+				<% if(one.screenname){ 		%>
+                    <img class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.screenname %>/picture" alt="thumbnail"> 
+      			<%  }else if(one.oauth_uid) { %> 
+                    <img class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail"> 
+      			<%  }else { %> 
+                    <img class="img-polaroid thumbnail_profile" src="/images/gnome_stock_person.png" alt="thumbnail"> 
+				<%  } %>
+                    <div class="text_entry">
+                    <h4><%= one.firstname %> <%= one.lastname %></h4>
+                    <p><%= one.message %> </p>
+                    </div> 
+                </div>
+                    <div class="breakline_msg"></div>  
+			<% }); %>
+          </div>  
+</div>
+          <div class="span1">
+            <div class="namespanel">
+            <h5 class="attendstatus">Attending</h5>              
+            <div class="attend"> 
+			<% _.each(members, function(one) { %>
+				<div>
+				<% if(one.screenname){ 		%>
+                    <img id="<%=one.iduser%>" rel="tooltip" data-placement="left" data-original-title="<%=one.firstname%> <%=one.lastname%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.screenname %>/picture" alt="thumbnail"> 
+      			<%  }else if(one.oauth_uid) { %> 
+                    <img id="<%=one.iduser%>" rel="tooltip" data-placement="left" data-original-title="<%=one.firstname%> <%=one.lastname%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail"> 
+      			<%  }else { %> 
+                    <img id="<%=one.iduser%>" rel="tooltip" data-placement="left" data-original-title="<%=one.firstname%> <%=one.lastname%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="/images/gnome_stock_person.png" alt="thumbnail"> 
+				<%  } %>
+				</div>
+			<% }); %>
+            </div>   
+
+              <h5 class="attendstatus">Pending</h5>            
+            <div class="pending">
+			<% _.each(invited, function(one) { %>
+				<div>
+      			<%  if(one.oauth_uid) { %> 
+                    <img id="<%=one.idinvite%>invite" rel="tooltip" data-placement="left" data-original-title="<%=one.name%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail"> 
+      			<%  }else { %> 
+                    <img id="<%=one.idinvite%>invite" rel="tooltip" data-placement="left" data-original-title="<%=one.name%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="/images/gnome_stock_person.png" alt="thumbnail"> 
+				<%  } %>
+				</div>
+			<% }); %>
+            </div>    
+</div>       
+</div>
+</script>
+<script type="text/html" id='newpostmessages'>
+			<% _.each(messages, function(one) { %>
+                <div class="message_entry" style="min-height: 72px;">
+				<% if(one.screenname){ 		%>
+                    <img class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.screenname %>/picture" alt="thumbnail"> 
+      			<%  }else if(one.oauth_uid) { %> 
+                    <img class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail"> 
+      			<%  }else { %> 
+                    <img class="img-polaroid thumbnail_profile" src="/images/gnome_stock_person.png" alt="thumbnail"> 
+				<%  } %>
+                    <div class="text_entry">
+                    <h4><%= one.firstname %> <%= one.lastname %></h4>
+                    <p><%= one.message %> </p>
+                    </div> 
+                </div>
+                    <div class="breakline_msg"></div>  
+			<% }); %>
+</script>
+<script type="text/html" id='bookmarks'>
+
+			<% _.each(bookmarks, function(one) { %>
+				<%   // Used for modal events creation. 
+				one.summary=one.destname;
+				one.city=one.county;
+				var onejson = JSON.stringify(one);
+				%>
+                          <div class="eventbox"  id="<%=one.id%>pop" >
+<button type="button" class="close" onclick='deletebookmarks("<%=one.bookmarktype%>","<%=one.id%>")'>&times;</button>
+<a href="javascript:void(0);" onclick='opencreateevent(<%=onejson%>,1)' class="pull-right"> <img src="/images/gtk-save.png" width="19"></a>
+							<a href="javascript:void(0);" onclick='opencreateevent(<%=onejson%>,1)'><%=one.destname%></a><br>
+							<% if(one.startdate){ 		%>
+                            	<%=one.startdate%> <br>
+							<%  } %>
+							<%=one.county%>, <%=one.state%>
+                          </div>
+			<% }); %>
+</script>
+
+<script type="text/html" id="createeventtemplate">
+<!--Create Event Modal-->
+    <div id="CreateEvent" class="modal hide fade" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div id="modal-event">
+       <div class="modal-header">
+        <button type="button" id="done_button2" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h2 id="myModalLabel">Create/Update an Event</h2>
+        <div id="CreateEventErrors"></div>
+       </div> 
+        <div class="modal-body" style="overflow: inherit">
+            <div class="eventForm">
+              <input class="squareCorners" type="text" placeholder="Event Title" name="summary" id="summary" value="<%= activity.summary%>" style="width:516px;">
+              <input class="squareCorners" type="text" placeholder="Location (Optional)" name="location" id="location" value="<%=activity.location%>"  style="width:30%;">
+              <input class="squareCorners" type="text" placeholder="City (Optional)" name="city" value="<%=activity.city%>" id="city" style="width:30%;">
+              <input class="squareCorners" type="text" placeholder="State" name="state" value="<%=activity.state%>" id="state" style="text-align:center;width:10%;float:right;">
+              <input class="squareCorners" type="text" placeholder="Event Date" name="startdate" value="<%=activity.startdate%>" id="datepicker3" style="width:516px;">             
+              <input class="squareCorners" type="text" placeholder="Start Time (Optional)" name="starttime" value="<%=activity.starttime%>" id="timepicker3">
+              <input class="squareCorners" type="text" placeholder="End Time (Optional)" name="endtime" value="<%=activity.endtime%>" id="timepicker2">
+      <div class="breakline"></div>            		
+      <select data-placeholder="Invite friends to your event" class="chzn-select" multiple name="friendadd" id="friendadd"  style="width:350px; font-family:ubuntu;">
+			            	    <option value="five|5@1.com"> five</option> 		
+      					            	    <option value="one|1@1.com"> one</option> 		
+      					            	    <option value="six|6@1.com"> six</option> 		
+      					            	    <option value="six|6@1.com"> six</option> 		
+      							</select><br>
+          <!--               <input class="span4 squareCorners" type="text" placeholder="Invite your friends">
+ -->
+
+              <a id="add_button" data-target="#add_emailModal" style="cursor:pointer;" data-toggle="modal">Via Email</a>
+              <textarea  style=" width: 516px; border-radius: 0px;" rows="4"  id="description" type="text" placeholder="Details"><%=activity.description%></textarea>
+		<input type="hidden" class="idbusiness" name="idbusiness" value="<%=activity.idbusiness%>">
+		<input type="hidden" class="idplace" name="idplace" value="<%=activity.idplace%>">
+		<input type="hidden" class="idactivity" name="idactivity" value="<%=activity.idactivity%>">
+    <button value="Create Event!" onclick="createevent()" class="btn btn-blue btn-large" style="width:529px;" >Create Event!</button>
+<!--		<input type="button" value="Submit Event!" class="btn btn-blue btn-large" onclick="createevent()" />
+          <button class="btn btn-blue btn-large span5">Create Event!</button>  --> 
+            </div>
+       </div>
+       <div class="modal-footer" > 
+      </div>
+</div>
+<!--Side Bar Info-->    
+
+    <div id="emailModal" >
+      <div class="modal-header">
+        <h4 style="text-align:center;">Add Friend Via Email</h4>
+          <div class="breakline"></div>
+      </div>
+<div id="emailerrormsg"></div>
+      <div class="modal-body">
+          <input class="squareCorners" type="text" id="emailfullname" value="" placeholder="Add Name"><span id='erremailname'></span>
+          <input class="squareCorners" type="text" id="emailaddress" value="" placeholder="Add Email"><span id='erremailaddress'></span>
+          <button style="padding:4px 35px 4px 35px;" class="btn btn-blue" onclick="addemail()">Add Friend</button>  
+          <button id="done_button" style="float:right;" class="btn btn-blue">Done</button>   
+        <div class="friends_module">
+			          <div class=" alert Friends">
+            <button type="button" class="close" data-dismiss="alert" onclick='removeemail("5@1.com")'>&times;</button>
+            <p>five<br>5@1.com</p>
+          </div>
+      		          <div class=" alert Friends">
+            <button type="button" class="close" data-dismiss="alert" onclick='removeemail("1@1.com")'>&times;</button>
+            <p>one<br>1@1.com</p>
+          </div>
+      		          <div class=" alert Friends">
+            <button type="button" class="close" data-dismiss="alert" onclick='removeemail("6@1.com")'>&times;</button>
+            <p>six<br>6@1.com</p>
+          </div>
+      		          <div class=" alert Friends">
+            <button type="button" class="close" data-dismiss="alert" onclick='removeemail("6@1.com")'>&times;</button>
+            <p>six<br>6@1.com</p>
+          </div>
+      		 
+        </div>
+      </div>
+       <div class="modal-footer" > 
+      </div>
+    </div> 
+
+    </div>   
+</script>
+
+
+    <!-- Your Events + Buttons -->      
+    <div class="container">
+      <div class="row">
+        <div class="datebook span4">
+<!-- <input type="button" value="Create personal event" id="createevent" onclick="createpersonaleventform('/activity/createactivity')" > -->	
+        <button style="width:70%;float:left;" href="#CreateEvent" data-toggle="modal" role="button" class="btn btn-large btn-blue" type="submit" class="btn">Create Event!
+        </button>
+        <button id="calendarButton" class="btn btn-large btn-blue" style="height: 100%;">&nbsp;
+        </button>
+
+          <ul class="nav nav-pills" id="nav-pill_box">
+            <li class="tab-pane pill_width active">
+              <a id="Your_event" href="#home"  data-toggle="tab"><h4 style="font-size: 1.17em;">Your Events</h4></a>
+            </li>
+<!--           <li class="pill_width">
+            <a id="Your_bookmark" href="#profile"  data-toggle="tab"><h4 style="font-size: 1.17em;">Your Bookmarks</h4>
+            </a>
+            </li> --> 
+             <li class="tab-pane pill_bookmarks dropdown">
+            <a id="Your_bookmark" class="dropdown-toggle" data-toggle="dropdown" href="#" >
+           <h4 style="font-size: 1.17em;margin-left: 13px;text-align: center;">Bookmarks 
+<b class="caret"></b></h4>
+            </a>
+<ul class="nav nav-tab dropdown-menu" style="  border-radius: 0px !important; text-align: center; min-width: 115px;margin-top: 0px; margin-right: 0px;right: 2px;">
+<!-- links -->
+<li><a data-toggle="tab" href="#bookmarkbusiness"  onclick="loadbusinessbookmark('business')">Dining</a></li>
+<li><a data-toggle="tab"  href="#bookmarkplace" onclick="loadplacebookmark('places')">Places</a></li>
+<li><a data-toggle="tab"  href="#bookmarkevents"  onclick="loadeventsbookmark('events')">Events</a></li>
+</ul>
+</li>
+          </ul>
+
+<div class="tab-content">
+            <div class="tab-pane active" id="home">
+<div class="customscroll">
+              <div class="EventListing">
+															<div class="eventbox">
+									<a href="javascript:void(0);"
+										onclick="loadeventdetail(274)">
+									event 1</a> 
+									<span id="id274"></span>									<br>
+									Monday February 4, 2013	<br>
+																		</div>
+																<div class="eventbox">
+									<a href="javascript:void(0);"
+										onclick="loadeventdetail(275)">
+									event 2</a> 
+									<span id="id275"></span>									<br>
+									Monday February 4, 2013	<br>
+																		</div>
+																<div class="eventbox">
+									<a href="javascript:void(0);"
+										onclick="loadeventdetail(276)">
+									event 3</a> 
+									<span id="id276"></span>									<br>
+									Monday February 4, 2013	<br>
+																		</div>
+																<div class="eventbox">
+									<a href="javascript:void(0);"
+										onclick="loadeventdetail(277)">
+									EUFORIA LOUNGE</a> 
+									<span id="id277"></span>									<br>
+									Monday February 4, 2013	<br>
+									1350 JEROME AVENUE									</div>
+																<div class="eventbox">
+									<a href="javascript:void(0);"
+										onclick="loadeventdetail(278)">
+									DeSilva Hall</a> 
+									<span id="id278"></span>									<br>
+									Monday February 4, 2013	<br>
+									169-15 Grand Central Pky									</div>
+																<div class="eventbox">
+									<a href="javascript:void(0);"
+										onclick="loadeventdetail(279)">
+									Marcellus Hartley Dodge Physical Fitness Center</a> 
+									<span id="id279"></span>									<br>
+									Monday February 4, 2013	<br>
+																		</div>
+																<div class="eventbox">
+									<a href="javascript:void(0);"
+										onclick="loadeventdetail(271)">
+									Citi Pond Winter Film Festival: Peter Pan</a> 
+									<span id="id271"></span>									<br>
+									Monday February 4, 2013	<br>
+									Citi Pond at Bryant Park (in Bryant Park)									</div>
+																<div class="eventbox">
+									<a href="javascript:void(0);"
+										onclick="loadeventdetail(272)">
+									Morning Fitness at Fort Tryon Park</a> 
+									<span id="id272"></span>									<br>
+									Tuesday February 5, 2013	<br>
+									Heather Garden (in Fort Tryon Park)									</div>
+																<div class="eventbox">
+									<a href="javascript:void(0);"
+										onclick="loadeventdetail(273)">
+									Tropical Paradise at The New York Botanical Garden</a> 
+									<span id="id273"></span>									<br>
+									Tuesday February 5, 2013	<br>
+									The New York Botanical Garden									</div>
+																<div class="eventbox">
+									<a href="javascript:void(0);"
+										onclick="loadeventdetail(284)">
+									Greenbelt Tree Tots</a> 
+									<span id="id284"></span>									<br>
+									Wednesday February 6, 2013	<br>
+									Greenbelt Nature Center (in Blood Root Valley)									</div>
+													
+</div>
+              </div>
+            </div>
+        <div class="tab-pane" id="bookmarkplace">
+        <div class="BookmarkTitles">Bookmarked Places</div>
+            <div class="yourBookmarks">
+            Processing....
+            </div>   
+          </div>
+        <div class="tab-pane" id="bookmarkbusiness">
+        <div class="BookmarkTitles">Bookmarked Dining</div>
+            <div class="yourBookmarks">
+            Processing....
+            </div>   
+          </div>
+        <div class="tab-pane" id="bookmarkevents">
+        <div  class="BookmarkTitles">Bookmarked Events</div>
+            <div class="yourBookmarks">
+            Processing....
+            </div>   
+          </div>
+        </div>        
+
+        </div>
+      <div class="span8" id="grandcentral" >
+<div id='calendar'></div>
+<span id="event_main">
+Processing...</span>  
+</div>
+<span id="modalholder"></span>
+
+</div>
+</div>
+</div>
+
+
+
+   
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		opencreateevent(Array, 0);
+	    $(function () {
+	        $('#nav-pill_box a[href="#home"]').tab('show');
+	      });
+	      loadeventdetail(284);	      	      $("#calendarButton").click(function(){
+	    	    $("#event_main").fadeOut(function(){ $(this).hide(); });
+	    	    $("#calendar").slideDown();
+	    	  });
+	});
+
+</script>
+<!-- Footer -->
+  <div class="footer">
+    <p>Copyright Gathering Up Ltd. All rights reserved. Proudly made in New York City!</p>  
+    <p>
+      <a href="http://twitter.com">Follow Us on Twitter</a> | 
+      <a href="http://Facebook.com">Follow Us on Facebook</a><br>
+    </p> 
+    <p>  
+      <a href="terms.html">Terms of Use</a>  |  
+      <a href="Privacy.html">Privacy Policy</a> | 
+      <a href="Contact.html">Contact Us</a>
+    </p>  
+  </div>  
+
+<!--Register Modal-->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header registerModal">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h2 id="myModalLabel">Register with GatheringUP!</h2>
+        
+              <div class="facebookbg">
+              <a href="" class="facebookurl" ><h3>
+        <img style="padding-right: 15px;"src="/images/facebook.png" alt="facebook">REGISTER WITH FACEBOOK</h3>
+        </a>
+        </div>
+        <div class="breakline"></div>
+      </div>
+      <div id="RegistrationErrors"></div>
+        <div class="modal-body">
+            <form  id="registerform" action="#" class="form-horizontal">
+              <div class="control-group">
+                <label class="control-label" for="inputFirstName">First Name</label>
+                <div class="controls">
+                  <input type="text" name="firstname" id="firstname" class="squareCorners" placeholder="First Name">
+                  <b id="errfirstname"></b>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputEmail">Last Name</label>
+                <div class="controls">
+                  <input type="text" name="lastname" id="lastname" class="squareCorners" placeholder="Last Name">
+                <b id="errlastname"></b>
+                </div>
+              </div>        
+                  <div class="control-group">
+                <label class="control-label" for="inputEmail">Email</label>
+                <div class="controls">
+                  <input type="text" name="email" id="regemail" class="squareCorners" placeholder="Email">
+                  <b id="erremail"></b>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputPassword">Create Password</label>
+                              <p class="helper">*At least one number & one capital letter</p> 
+                <div class="controls">
+                  <input type="password" name="password" id="regpassword" class="squareCorners" placeholder="Min 8 Characters">
+<b id="errpassword"></b>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputConfirmPassword">Confirm Password</label>
+                <div class="controls">
+                  <input type="password" name="passwordconf" id="regpasswordconf" class="squareCorners" placeholder="Confirm Password">
+<b id="errpasswordconf"></b>
+                </div>
+              </div>     
+              <div class="control-group">
+                <div class="controls">
+                  <div id="captcha"><img src="/captcha"></div>
+                </div>
+              </div>   
+              <div class="control-group">
+                <label class="control-label" for="inputConfirmPassword">Enter Above</label>
+                <div class="controls">
+                  <input type="password" name="norobotcode" id="robotdistorter" class="squareCorners" placeholder="Enter Above">
+                  <b id="errrobotdistorter"></b>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="controls">
+                  <button type="button" value="Sign me up" class="btn btn-blue btn-large" onclick="register()">Register</button>
+                </div>
+              </div>
+            </form>
+        </div>
+    </div>   
+
+    <!--Sign Up Modal-->
+    <div id="Signin_Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header registerModal">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h2 id="myModalLabel">Sign In!</h2>
+      </div>
+        <div class="breakline"></div>       
+        <div class="modal-body">
+          <p >Don't have an account? &nbsp<a href="javascript:void(0);" onclick="registerpopup('')">Register Here!</a></p>
+            <form  id="loginform" action="#" class="form-horizontal">
+            
+            		<input type="hidden" id="redirect" name="redirect" value="">
+					<input type="hidden" class="bbookmark" name="bbookmark" value="">
+					<input type="hidden" class="pbookmark" name="pbookmark" value="">
+					<input type="hidden" class="ebookmark" name="ebookmark" value="">
+              <div class="SignInField_m">
+              <div class="facebookbg">
+              <a href="" class="facebookurl" >
+                    <img style="height:30px;width:auto;padding-right:5px;" src="/images/facebook.png" alt="facebook">Sign In with Facebook
+                 </a>
+              </div>
+        <div style="margin-top:20px;" class="breakline"></div>                 
+              </div>
+            	<div id="LoginErrors"></div>
+                <div class="SignInField_m">
+                    <input id="poploginemail" name="email" style="width:256px;" type="text" class="squareCorners" placeholder="Email">
+                </div>
+                <div class="SignInField_m">
+                    <input id="poploginpasswd" name="password" style="width:256px;" type="password" class="squareCorners" placeholder="Password">
+                </div>
+                <div class="SignInField_m">
+                    <a style="cursor:pointer;" data-target="#forgotModal" data-toggle="modal">Forgot Your Password?</a>
+                    <label class="checkbox">
+                    <input type="checkbox">Remember me
+                    </label>
+                        <button type="button"  onclick="login()" class="btn btn-blue btn-large" style="font-weight:bold;width:100%;margin-top:10px;">Sign In!</button>
+                      </div>
+                  </form> 
+               </div>
+            </div> 
+
+<!--Forgot Password Modal-->
+    <div id="forgotModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>        
+        <h2 id="myModalLabel">Forgot Password</h2>
+      </div>
+      <div class="breakline"></div>
+      <div style="padding: 0px 35px 32px;" class="modal-body">
+        <h4>Enter you email address below to reset your password</h4>
+        <input style="padding-right:71px;" class="form-large" type="text" placeholder="Email Address">
+        <button style="padding:15px 33px 15px 33px;" type="submit" class="btn btn-blue btn-large">Reset Your Password!</button>
+      </div>
+    </div>    
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!--     <script src="js/jquery.js"></script> -->
+    <script src="/js/bootstrap.min.js"></script>
+<!--     <script src="/js/bootstrap-transition.js"></script>
+    <script src="/js/bootstrap-alert.js"></script>
+    <script src="/js/bootstrap-modal.js"></script>
+    <script src="/js/bootstrap-dropdown.js"></script>
+    <script src="/js/bootstrap-scrollspy.js"></script>
+    <script src="/js/bootstrap-tab.js"></script>
+    <script src="/js/bootstrap-tooltip.js"></script>
+    <script src="/js/bootstrap-popover.js"></script>
+    <script src="/js/bootstrap-button.js"></script>
+    <script src="/js/bootstrap-collapse.js"></script>
+    <script src="/js/bootstrap-carousel.js"></script>
+    <script src="/js/bootstrap-typeahead.js"></script>
+ -->
+<!--Carousel Javascript-->    
+    <script type="text/javascript"> 
+	$('.dropdown-toggle ul.dropdown-menu form.form-horizontal, div.SignInField').click(function(e) {
+		e.stopPropagation();
+	});
+    
+      $('.carousel').carousel({
+        interval: 5000
+      });
+    </script>
+  </body>
+</html>
