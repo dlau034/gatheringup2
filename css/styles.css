@@ -94,7 +94,9 @@ form {
   /*margin-top: 3px;*/
   padding-top: 15px;
   padding-bottom: 15px;
+  margin-left: 10px;  
 }
+
 
 .btn_go:hover {
   background-color: #E71C75;
