@@ -52,6 +52,25 @@ form {
   height: 100%;
 }
 
+.btn_go {
+  background-color: #E71C75;
+  color: white;
+  text-shadow:0px;
+  /*width: 48px;*/
+  /*height: 23px; */
+  font-size: 0.8em;
+  text-shadow: -0px 2px 0px #555;
+  /*margin-top: 3px;*/
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.btn_go:hover {
+  background-color: #E71C75;
+  color: white;
+  text-decoration: none;
+}
+
 .namespanel {
   border-left: 1px solid white;
 
@@ -64,7 +83,28 @@ form {
 }
 
 
+.home_select {
+  -webkit-appearance: none;
+  border-radius: 0px;
+  padding: 0px;
+  /*margin: 0 auto;*/
+  padding-left: 10px;
+  height: 50px;
+  font-weight: bold;
+  font-family: ubuntu;  
+  font-size: .7em;
+  color: #00ACDB;
+  border: 0px;
+  margin: 0px 5px;
+  vertical-align:  middle;
+  /*box-shadow: 0px 2px 0px #555;*/
 
+}
+
+.home_select:focus { 
+  /*background-color: red;*/
+  outline: none;
+}
 
 .hero-unit {
   background-image: url("/images/new_york_city.jpg"); 
@@ -834,26 +874,26 @@ background-color: #00ACDB;
 
 .TitleText {
   text-align: center;
-  font-weight: "arvo";
-  font-size: 1.5em;
+  font-size: 1.2em;
   padding-top: 50px;
-  color: #999;
+  text-shadow: 0px 2px 0px #555;
 }
 
 .TitleInfo {
   height: 175px;
-  margin-bottom: 80px;
-  background-image: url("../images/bg_green.jpg");
-  border-bottom: 2px white solid;
+  background-color: #00ABDC;
   border-top: 6px #E71B75 solid;
+  color: white;
+  /*background-image: url("../images/darkdenim3.png");*/
 }
 
 .catogories_bg {
-  height: 420px;
-  margin-bottom: 80px;
-  background-image: url("../images/bg_green.jpg");
-  border-bottom: 2px white solid;
-  border-top: 6px #E71B75 solid;
+height: 420px;
+margin-bottom: 80px;
+background-image: url("../images/bg_green.jpg");
+/*border-bottom: 2px white solid;*/
+border-top: 1px #00ABDC solid;
+box-shadow: 0px 0px 30px rgba(0,0,0,0.35);
 }
 
 /* HomePage Bottom Info */
@@ -862,8 +902,9 @@ background-color: #00ACDB;
   height: 200px;
   margin-top: 80px;
   background-image: url("../images/bg_green.jpg");
-  border-top: 2px white solid;
+  /*border-top: 2px white solid;*/
   /*border-bottom: 6px #E71B75 solid;*/
+  box-shadow: 0px 0px 30px rgba(0,0,0,0.35);  
 }
 
 .TitleText_bm {
@@ -1181,7 +1222,7 @@ div.ui-datepicker-header {
 #calendarButton {
         width: 28%;
         margin-left: 2%;
-        background-image: url("../gathering UP_files/calendar.png");
+        background-image: url("../images/calendar.png");
         background-repeat: no-repeat;
         background-position: center;
         background-size: 1.3em;
@@ -1189,17 +1230,17 @@ div.ui-datepicker-header {
 
 
 #note_on {
-  background-image: url("../gathering UP_files/notification_on.png");
+  background-image: url("../images/notification_on.png");
   background-repeat: no-repeat;
   background-position: center;
   color: #E71B75;
-  font-size: 0.8em;
+  font-size: 0.9em;
   font-family: "ubuntu";
-  text-indent: -2px;
+  text-indent: -9px;
 }
 
 #note_off {
-  background-image: url("../gathering UP_files/notification_off.png");
+  background-image: url("../images/notification_off.png");
   background-repeat: no-repeat;
   background-position: center;
   text-indent: -999px;
@@ -1217,6 +1258,8 @@ div.imagebox {
   border-radius: 0px;
   background-color: white;
   border: 1px solid #ccc;
+  width: 37px;
+  float: left;
 }
 
 .note {

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="utf-8">
+	    <title>Events</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+
+    <!-- Le styles -->
+	    <link href="/css/bootstrap.css" rel="stylesheet">
+	    <style type="text/css">
+	      body {
+	        padding-top: 60px;
+	        padding-bottom: 0px;
+	      }
+    	</style>
+	    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/base/jquery-ui.css" />
+      <link rel="Stylesheet" type="text/css" href="/css/search.css"/>
+      <link href="/css/styles.css" rel="stylesheet">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Fav and touch icons -->
+      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+      <link rel="shortcut icon" href="ico/favicon.png">
+<!-- Google Fonts -->
+      <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500' rel='stylesheet' type='text/css'>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+<script type="text/javascript" src="/js/underscore-min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="/js/gatheringup-event.js"></script>
+<script type="text/javascript" src="/js/gatheringup-registration.js"></script>
+
+
+</head>
+
+<body>
+<div class="wrapper"> <!-- Wrapper --><!-- Header + Navbar -->
+
+<script type="text/javascript">
+<!--
+
+//-->
+function invitedecline(idinvite)
+{
+  $.get("/invitation/decline?idinvite="+idinvite);
+  $("#"+idinvite+"invl").remove();
+  $("#"+idinvite+"inv").remove();
+  $("#"+idinvite+"invn").remove();
+  $invites=$("#note_on>b").html();
+  $invites=$invites-1;
+  if($invites<=0){
+    $("#note_on").attr('id',"note_off");
+  }
+  $invites=$("#note_on>b").html($invites);
+}
+
+</script>
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="top-stripe"></div>
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/">GatheringUP</a>
+              <div class="nav-collapse collapse">
+                <ul class="nav">
+                  <li><a href="/Dining">Dining</a></li>
+                  <li><a href="/Places">Places</a></li>
+                  <li><a href="/Events">Events</a></li>
+                                 <li><a href="/datebook">Datebook</a></li>
+                  <li>
+          <a id="note_on" class="dropdown-toggle" data-toggle="dropdown" href=""><b>3</b></a>
+                      <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
+                        <div style="max-height: 21em; overflow-y: auto;" class="note_box">
+                                  <div class="breakline_note" id="294invl"></div>
+            <div class="roundedbox" id="294inv">
+                                <div class="imagebox">
+            <img src="/images/gnome_stock_person.png" width="37"><br>                                </div>
+              <div class="note" id="294invn">four one has invited you to join gathering( <a href="/datebook?idinvite=294">
+                Greenbelt Tree Tots </a>)<br>
+                <a href="/invitation/accept?idinvite=294">Accept</a> | 
+                <a href="javascript:void(0);" onclick="invitedecline(294)">Decline</a>
+            </div>
+                                        <div class="breakline_note" id="295invl"></div>
+            <div class="roundedbox" id="295inv">
+                                <div class="imagebox">
+            <img src="/images/gnome_stock_person.png" width="37"><br>                                </div>
+              <div class="note" id="295invn">one one has invited you to join gathering( <a href="/datebook?idinvite=295">
+                valentines </a>)<br>
+                <a href="/invitation/accept?idinvite=295">Accept</a> | 
+                <a href="javascript:void(0);" onclick="invitedecline(295)">Decline</a>
+            </div>
+                                        <div class="breakline_note" id="291invl"></div>
+            <div class="roundedbox" id="291inv">
+                                <div class="imagebox">
+            <img src="http://graph.facebook.com/kenneth.su.505/picture" title="Kenneth Su" width="37"><br>                                </div>
+              <div class="note" id="291invn">Kenneth Su has invited you to join gathering( <a href="/datebook?idinvite=291">
+                test </a>)<br>
+                <a href="/invitation/accept?idinvite=291">Accept</a> | 
+                <a href="javascript:void(0);" onclick="invitedecline(291)">Decline</a>
+            </div>
+                      </div>
+                            </div>                                    
+                        </div></div></ul>
+                          </li>
+                              </ul>
+                              <div class="dropdown">
+                                <form style="color:white;" class="navbar-form pull-right">Hello &nbsp;
+                <a class="dropdown-toggle " type="button" data-toggle="dropdown" href="#">one one</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                      <!-- <li><a href="logOut.html">Settings</a></li> -->                    
+                      <li style="text-align: center"><a href="/user/logout">Log Out</a></li>          
+                  </ul>
+              </form>
+              </div>
+                  
+                             </div><!--/.nav-collapse -->
+          </div>
+        </div>
+      </div><div class="main">
+  <script>
+//  $(function() {
+//    $( "#datepicker" ).datepicker();
+//  });
+  $(function() {
+    $('#datetimepicker3').datetimepicker({ ampm: true });
+    $('#datetimepicker2').datetimepicker({ ampm: true });
+    $( "#datepicker3" ).datepicker({ dateFormat: "yy-mm-dd" });
+    $( "#datepicker2" ).datepicker({ dateFormat: "yy-mm-dd" });
+    $('#timepicker3').timepicker({ampm: true});
+    $('#timepicker2').timepicker({ampm: true});
+    
+  });
+  </script>
+
+  <div class="container">
+    <h2>Submit your event</h2>
+      <p>If you have an event that you would like on our site, please use the form below to submit your event for review. Please provide your complete information so that we can quickly verify that you are hosting a legitimate event.</p> 
+    </div>
+
+  <div class="container">
+         <input class="offset3 span6 form-large" type="text" id="inputEmail" placeholder="Email">
+         <input class="offset3 span6 form-large" type="text" id="inputEmail" placeholder="Email">
+
+      </div>
+  
+
+    
+  </div>
+
+
+
+
+
+
+<!-- <p>Date: <input id="datepicker" type="text"></p>  -->
+<table style="display:none;" width="100%">
+<tbody><tr>
+<td></td>
+<td width="510">
+<div class="roundedbox">
+  <form action="http://gatheringup.com/about/submitevent" method="post" accept-charset="utf-8">   <table cellspacing="2" cellpadding="2" width="500">
+      <tbody><tr>
+        <td colspan="4">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">        </td>
+      </tr>
+      <tr>
+        <td valign="top" align="right"><b><font color="#ff0000">*</font> Name:</b></td>
+        <td colspan="2">  <input type="text" name="name" placeholder="Name" value="" size="30">        </td>
+        <td valign="top">(Not displayed on site.)
+</td>
+      </tr>
+      <tr>
+        <td valign="top" align="right"><b><font color="#ff0000">*</font> Email:</b></td>
+        <td colspan="2">  <input type="text" name="email" value="" size="30">       </td>
+        <td valign="top">(Not displayed on site.)
+</td>
+      </tr>
+      <tr>
+        <td valign="top" align="right"><b><font color="#ff0000">*</font> Contact:</b></td>
+        <td colspan="3">  <input type="text" name="contact" value="" size="30">
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" align="right"><b><font color="#ff0000">*</font> Phone:</b></td>
+        <td colspan="3">  <input type="text" name="phone" value="" size="30">
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" align="right"><b>Company URL:</b></td>
+        <td colspan="3">  <input type="text" name="companyurl" value="" size="30">
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" align="right"><b>Image URL:</b></td>
+        <td colspan="3">  <input type="text" name="imageurl" value="" size="30">
+        </td>
+      </tr>
+      
+      <tr>
+        <td valign="top" align="right"><b><font color="#ff0000">*</font> Summary:</b></td>
+        <td colspan="3">  <input type="text" name="summary" value="" size="50">
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" align="right"><b><font color="#ff0000">*</font> Location:</b></td>
+        <td colspan="3">  <input type="text" name="location" value="" size="50"> </td>
+      </tr>
+      <tr>
+        <td valign="top" align="right"> <b><font color="#ff0000">*</font> City:</b></td>
+        <td><input type="text" name="city" value="" size="20"></td>
+        <td valign="top" align="right"> <b><font color="#ff0000">*</font> State:</b></td>
+        <td>NY <!-- <input type="text" name="state" value="" size="2" />  --></td>
+      </tr>
+      <tr>
+        <td valign="top" align="right"><b><font color="#ff0000">*</font> Event date:</b></td>
+  <td>
+  <input type="text" name="startdate" value="" id="datepicker3" size="12" class="hasDatepicker">  </td>
+        <td valign="top"></td>
+        <td valign="top"></td>
+  </tr>
+      <tr>
+        <td valign="top" align="right"><b><font color="#ff0000">*</font> Start time:</b></td>
+  <td>
+  <input type="text" name="starttime" value="" id="timepicker3" size="12" class="hasDatepicker">  </td>
+<!--  <td>
+  <input type="text" name="enddate" value="" id="datepicker2" size="12" />  </td> -->
+        <td valign="top" align="right"><b>EndTime:</b></td>
+  <td>
+  <input type="text" name="endtime" value="" id="timepicker2" size="12" class="hasDatepicker">  </td>
+  </tr>
+    <tr>
+      <td valign="top" align="right"><b><font color="#ff0000">*</font>Description:</b></td>
+      <td colspan="3"><textarea name="description" cols="55" rows="10"></textarea></td>
+    </tr>
+<tr>
+  <td> </td>  <td colspan="3">  
+  <input type="submit" name="Create" class="btn btn-large btn-blue" value="Submit Event">  
+</td>
+  </tr>
+  <tr>
+  <td colspan="2"><input type="hidden" name="page" id="submitParam" value="1">
+  </td>
+  </tr>
+  </tbody></table>
+  </form></div>
+  </td>
+  <td></td>
+  </tr>
+  </tbody>
+</table>
+
+
+<!--Register Modal-->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header registerModal">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h2 id="myModalLabel">Register with GatheringUP!</h2>
+        
+              <div class="facebookbg">
+              <a href="" class="facebookurl"><h3>
+        <img style="padding-right: 15px;" src="/images/facebook.png" alt="facebook">REGISTER WITH FACEBOOK</h3>
+        </a>
+        </div>
+        <div class="breakline"></div>
+      </div>
+      <div id="RegistrationErrors"></div>
+        <div class="modal-body">
+            
+              <div class="control-group">
+                <label class="control-label" for="inputFirstName">First Name</label>
+                <div class="controls">
+                  <input type="text" name="firstname" id="firstname" class="squareCorners" placeholder="First Name">
+                  <b id="errfirstname"></b>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputEmail">Last Name</label>
+                <div class="controls">
+                  <input type="text" name="lastname" id="lastname" class="squareCorners" placeholder="Last Name">
+                <b id="errlastname"></b>
+                </div>
+              </div>        
+                  <div class="control-group">
+                <label class="control-label" for="inputEmail">Email</label>
+                <div class="controls">
+                  <input type="text" name="email" id="regemail" class="squareCorners" placeholder="Email">
+                  <b id="erremail"></b>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputPassword">Create Password</label>
+                              <p class="helper">*At least one number &amp; one capital letter</p> 
+                <div class="controls">
+                  <input type="password" name="password" id="regpassword" class="squareCorners" placeholder="Min 8 Characters">
+<b id="errpassword"></b>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputConfirmPassword">Confirm Password</label>
+                <div class="controls">
+                  <input type="password" name="passwordconf" id="regpasswordconf" class="squareCorners" placeholder="Confirm Password">
+<b id="errpasswordconf"></b>
+                </div>
+              </div>     
+              <div class="control-group">
+                <div class="controls">
+                  <div id="captcha"><img src="/captcha"></div>
+                </div>
+              </div>   
+              <div class="control-group">
+                <label class="control-label" for="inputConfirmPassword">Enter Above</label>
+                <div class="controls">
+                  <input type="password" name="norobotcode" id="robotdistorter" class="squareCorners" placeholder="Enter Above">
+                  <b id="errrobotdistorter"></b>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="controls">
+                  <button type="button" value="Sign me up" class="btn btn-blue btn-large" onclick="register()">Register</button>
+                </div>
+              </div>
+            
+        </div>
+    </div>   
+
+    <!--Sign Up Modal-->
+    <div id="Signin_Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header registerModal">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h2 id="myModalLabel">Sign In!</h2>
+      </div>
+        <div class="breakline"></div>       
+        <div class="modal-body">
+          <p>Don't have an account? &nbsp;<a href="javascript:void(0);" onclick="registerpopup('')">Register Here!</a></p>
+            <form id="loginform" action="javascript:void(0);" class="form-horizontal">
+            
+                <input type="hidden" id="redirect" name="redirect" value="">
+          <input type="hidden" class="bbookmark" name="bbookmark" value="">
+          <input type="hidden" class="pbookmark" name="pbookmark" value="">
+          <input type="hidden" class="ebookmark" name="ebookmark" value="">
+              <div class="SignInField_m">
+              <div class="facebookbg">
+              <a href="" class="facebookurl">
+                    <img style="height:30px;width:auto;padding-right:5px;" src="/images/facebook.png" alt="facebook">Sign In with Facebook
+                 </a>
+              </div>
+        <div style="margin-top:20px;" class="breakline"></div>                 
+              </div>
+              <div id="LoginErrors"></div>
+                <div class="SignInField_m">
+                    <input id="poploginemail" name="email" style="width:256px;" type="text" class="squareCorners" placeholder="Email">
+                </div>
+                <div class="SignInField_m">
+                    <input id="poploginpasswd" name="password" style="width:256px;" type="password" class="squareCorners" placeholder="Password">
+                </div>
+                <div class="SignInField_m">
+                    <a style="cursor:pointer;" data-target="#forgotModal" data-toggle="modal">Forgot Your Password?</a>
+<!--                     <label class="checkbox">
+                    <input type="checkbox">Remember me
+                    </label>   -->
+                        <button type="button" onclick="login()" class="btn btn-blue btn-large" style="font-weight:bold;width:100%;margin-top:10px;">Sign In!</button>
+                      </div>
+                  </form> 
+               </div>
+            </div> 
+
+<!--Forgot Password Modal-->
+    <div id="forgotModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>        
+        <h2 id="myModalLabel">Forgot Password</h2>
+      </div>
+      <div class="breakline"></div>
+      <div style="padding: 0px 35px 32px;" class="modal-body">
+        <h4>Enter you email address below to reset your password</h4>
+        <input style="padding-right:71px;" class="form-large" type="text" placeholder="Email Address">
+        <button style="padding:15px 33px 15px 33px;" type="submit" class="btn btn-blue btn-large">Reset Your Password!</button>
+      </div>
+    </div>    
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!--     <script src="js/jquery.js"></script> -->
+    <script src="/js/bootstrap.min.js"></script>
+<!--     <script src="/js/bootstrap-transition.js"></script>
+    <script src="/js/bootstrap-alert.js"></script>
+    <script src="/js/bootstrap-modal.js"></script>
+    <script src="/js/bootstrap-dropdown.js"></script>
+    <script src="/js/bootstrap-scrollspy.js"></script>
+    <script src="/js/bootstrap-tab.js"></script>
+    <script src="/js/bootstrap-tooltip.js"></script>
+    <script src="/js/bootstrap-popover.js"></script>
+    <script src="/js/bootstrap-button.js"></script>
+    <script src="/js/bootstrap-collapse.js"></script>
+    <script src="/js/bootstrap-carousel.js"></script>
+    <script src="/js/bootstrap-typeahead.js"></script>
+ -->
+<!--Carousel Javascript-->    
+    <script type="text/javascript"> 
+  $('.dropdown-toggle ul.dropdown-menu form.form-horizontal, div.SignInField').click(function(e) {
+    e.stopPropagation();
+  });
+    
+      $('.carousel').carousel({
+        interval: 5000
+      });
+    </script>
+  
+
+</div></div>
+
+<div class="footer">
+    <p>Copyright Gathering Up Ltd. All rights reserved. Proudly made in New York City!</p>  
+    <p>
+      <a href="http://twitter.com">Follow Us on Twitter</a> | 
+      <a href="http://Facebook.com">Follow Us on Facebook</a><br>
+    </p> 
+    <p>  
+      <a href="/about/termsofuse">Terms of Use</a>  |  
+      <a href="/about/privacy">Privacy Policy</a> | 
+      <a href="/about/contactus">Contact Us</a>
+    </p>  
+</div> 
+
+  </body>
+</html>
