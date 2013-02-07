@@ -162,36 +162,43 @@ function invitedecline(idinvite)
 
            <div class="Submitform">
               <div class="form-personal">
+                <p>Tell Us a bit about you!</p>
                 <div class="p_details">
-                  <input class="form-large" name ="name" type="text" placeholder="Name">
+                  <input class="form-large" name ="name" type="text" placeholder="Your Name *">
                 </div>       
                 <div class="p_details">
-                  <input class="form-large" name ="email" type="text"  placeholder="Email">
+                  <input class="form-large" name ="email" type="text"  placeholder="Your Email *">
                 </div>        
                 <div class="p_details">
                   <input class="form-large" type="text" name ="phone" placeholder="Your Number">
                 </div>
                 <div class="p_details">
-                  <input class="form-large" type="text" name ="phone" placeholder="Your Website*">
+                  <input class="form-large" type="text" name ="companyurl" placeholder="Your Website">
                 </div>                
               </div>  
 
 
               <div class="form-event">
-                  <input class="form-large" type="text" placeholder="Event Title">
-                  <input class="form-large" type="text" placeholder="Event Subject Line">
-                  <input style="width:280px;" class="form-large" type="text" placeholder="Location">
-                  <input style="width:150px;" class="form-large" type="text" placeholder="City">
-                  <input style="width:50px;" class="form-large" type="text" placeholder="NY">
-                  <input style="width:150px;" class="form-large" type="text" placeholder="Start-Time">
-                  <input style="width:150px;" class="form-large" type="text" placeholder="End-Time">
+                <p>Tell us about your event!</p>                
+                  <input class="form-large" type="text" name="summary" placeholder="Event Title *">
+                  <input style="width:280px;" class="form-large" type="text" name="location" placeholder="Location *">
+                  <input style="width:150px;margin-left:10px;" class="form-large" name="city" type="text" placeholder="City *">
+                  <input style="width:43px;float:right;" class="form-large" type="text" placeholder="NY" disabled>
+                  <p>
+                      <input type="text" style="width:150px;" class="form-large" id="datepicker3" name="endtime" placeholder="Start-Time"/>                      
+                      <input type="text" style="width:150px;margin-left:10px;" class="form-large" id="datepicker2" name="endtime" placeholder="End-Time"/>
+                  </p>
 
                   <div class="breakline_msg" style="margin-bottom: 15px;"></div>
 
-                  <textarea style="width:480px;"class="form-large" placeholder="Event Description" rows="4"></textarea>   
+                  <textarea style="width:480px;margin-bottom:0px;"class="form-large" placeholder="Event Description" rows="4"></textarea>   
 
-                  <input class="form-large" type="text" placeholder="Image URL">   
+                  <div class="div">
+                      <h4>Upload an Event Image<input class="form-large" type="file" placeholder="Image URL" id="submit_img" name="imageurl"></h4>
+                  </div>
+                  <button class="btn btn-large btn-blue">Submit Your Event!</button>    
                </div> 
+
             </div>                
          </form>  
   </div>
@@ -205,110 +212,7 @@ function invitedecline(idinvite)
 
 
 
-<!-- <p>Date: <input id="datepicker" type="text"></p>  -->
-<table style="display:none;" width="100%">
-<tbody><tr>
-<td></td>
-<td width="510">
-<div class="roundedbox">
-  <form action="http://gatheringup.com/about/submitevent" method="post" accept-charset="utf-8">   <table cellspacing="2" cellpadding="2" width="500">
-      <tbody><tr>
-        <td colspan="4">
-        </td>
-      </tr>
-      <tr>
-        <td colspan="4">
 
-        </td>
-      </tr>
-      <tr>
-        <td colspan="4">        </td>
-      </tr>
-      <tr>
-        <td valign="top" align="right"><b><font color="#ff0000">*</font> Name:</b></td>
-        <td colspan="2">  <input type="text" name="name" placeholder="Name" value="" size="30">        </td>
-        <td valign="top">(Not displayed on site.)
-</td>
-      </tr>
-      <tr>
-        <td valign="top" align="right"><b><font color="#ff0000">*</font> Email:</b></td>
-        <td colspan="2">  <input type="text" name="email" value="" size="30">       </td>
-        <td valign="top">(Not displayed on site.)
-</td>
-      </tr>
-      <tr>
-        <td valign="top" align="right"><b><font color="#ff0000">*</font> Contact:</b></td>
-        <td colspan="3">  <input type="text" name="contact" value="" size="30">
-        </td>
-      </tr>
-      <tr>
-        <td valign="top" align="right"><b><font color="#ff0000">*</font> Phone:</b></td>
-        <td colspan="3">  <input type="text" name="phone" value="" size="30">
-        </td>
-      </tr>
-      <tr>
-        <td valign="top" align="right"><b>Company URL:</b></td>
-        <td colspan="3">  <input type="text" name="companyurl" value="" size="30">
-        </td>
-      </tr>
-      <tr>
-        <td valign="top" align="right"><b>Image URL:</b></td>
-        <td colspan="3">  <input type="text" name="imageurl" value="" size="30">
-        </td>
-      </tr>
-      
-      <tr>
-        <td valign="top" align="right"><b><font color="#ff0000">*</font> Summary:</b></td>
-        <td colspan="3">  <input type="text" name="summary" value="" size="50">
-        </td>
-      </tr>
-      <tr>
-        <td valign="top" align="right"><b><font color="#ff0000">*</font> Location:</b></td>
-        <td colspan="3">  <input type="text" name="location" value="" size="50"> </td>
-      </tr>
-      <tr>
-        <td valign="top" align="right"> <b><font color="#ff0000">*</font> City:</b></td>
-        <td><input type="text" name="city" value="" size="20"></td>
-        <td valign="top" align="right"> <b><font color="#ff0000">*</font> State:</b></td>
-        <td>NY <!-- <input type="text" name="state" value="" size="2" />  --></td>
-      </tr>
-      <tr>
-        <td valign="top" align="right"><b><font color="#ff0000">*</font> Event date:</b></td>
-  <td>
-  <input type="text" name="startdate" value="" id="datepicker3" size="12" class="hasDatepicker">  </td>
-        <td valign="top"></td>
-        <td valign="top"></td>
-  </tr>
-      <tr>
-        <td valign="top" align="right"><b><font color="#ff0000">*</font> Start time:</b></td>
-  <td>
-  <input type="text" name="starttime" value="" id="timepicker3" size="12" class="hasDatepicker">  </td>
-<!--  <td>
-  <input type="text" name="enddate" value="" id="datepicker2" size="12" />  </td> -->
-        <td valign="top" align="right"><b>EndTime:</b></td>
-  <td>
-  <input type="text" name="endtime" value="" id="timepicker2" size="12" class="hasDatepicker">  </td>
-  </tr>
-    <tr>
-      <td valign="top" align="right"><b><font color="#ff0000">*</font>Description:</b></td>
-      <td colspan="3"><textarea name="description" cols="55" rows="10"></textarea></td>
-    </tr>
-<tr>
-  <td> </td>  <td colspan="3">  
-  <input type="submit" name="Create" class="btn btn-large btn-blue" value="Submit Event">  
-</td>
-  </tr>
-  <tr>
-  <td colspan="2"><input type="hidden" name="page" id="submitParam" value="1">
-  </td>
-  </tr>
-  </tbody></table>
-  </form></div>
-  </td>
-  <td></td>
-  </tr>
-  </tbody>
-</table>
 
 
 <!--Register Modal-->

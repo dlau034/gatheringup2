@@ -683,6 +683,29 @@ div.grandcentral {
   padding: 7px;
 }
 
+/*Datebook - Right SideBar*/
+
+.event_datebox {
+  background-color: #4d4d4d;
+  width: 60px;
+  height: 60px;
+  color: white;
+  text-align: center;
+  font-family: "arvo";
+  line-height: 1.2em;
+  float: left;
+  margin-right: 10px;
+}
+
+.datewrap {
+  margin-top: 2px;
+}
+
+.event_summary {
+  /*float: left;*/
+  margin-left: 70px;  
+}
+
 .yourBookmarks {
   /*overflow: auto;*/
 /*  min-height: 480px;
@@ -693,21 +716,28 @@ div.grandcentral {
   background-color: #e5e5e5;  
 }
 
-.eventbox > a {
-  font-weight: normal;
-  color: #222;
+.event_summary > a {
+  font-weight: 500;
+  color: #00ABDC;
   font-size: 1.1em;
 }
 
-.eventbox > a:hover {
+.event_summary > a:hover {
   color: #E71B75;
 }
 
 .EventListing {
-  max-height: 450px;
+  height: 490px;
   overflow: auto;
   border: 1px solid #e5e5e5;
   background-color: #e5e5e5;
+}
+
+@media screen and (min-height:800px){
+  
+  .EventListing {
+    height: 750px;
+  }
 }
 
 .eventbox {
@@ -717,12 +747,31 @@ div.grandcentral {
   border-top: 1px solid white;
   border-bottom: 1px solid #e5e5e5; 
   border-collapse: collapse;
+  min-height: 60px;
 }
 
 
 .eventbox:hover {
   background-color: #ffffff;
 }
+
+/*Datebook - Tutorial*/
+
+.tutorialbox {
+  padding: 15px;
+  /*margin-bottom: 10px;*/
+  background-color: #f9f9f9;
+  border-top: 1px solid white;
+  border-bottom: 1px solid #e5e5e5; 
+  border-collapse: collapse;
+  min-height: 60px;
+}
+
+.tutorialbox:hover {
+  background-color: #ffffff;
+}
+
+/*Datebook - Tutorial - END*/
 
 .icon-chevron-right {
   background-position: -456px -72px;
@@ -790,6 +839,7 @@ input.form-large {
   margin-bottom: 14px;
   width: 100%;
   text-indent: 11px;
+  font-family: "ubuntu";
 }
 
 textarea.form-large {
@@ -798,7 +848,13 @@ textarea.form-large {
   border-radius: 0px;
 }
 
-
+#submit_img {
+  width: 101px;
+  height: 20px;
+  /*background-color: red;*/
+  padding-top: 0px;
+  color: transparent;
+}
 
 
 /* Submit Form End */

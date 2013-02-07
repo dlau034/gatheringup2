@@ -73,7 +73,6 @@ function invitedecline(idinvite)
 	}
 	$invites=$("#note_on>b").html($invites);
 }
-
 </script>
       <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="top-stripe"></div>
@@ -86,7 +85,7 @@ function invitedecline(idinvite)
             </a>
             <a class="brand" href="/">GatheringUP</a>
               <div class="nav-collapse collapse">
-                <ul class="nav" style="color: #ffffff">
+                <ul class="nav">
                 
                   <li><a  href="/Dining">Dining</a></li>
                   <li><a  href="/Places">Places</a></li>
@@ -157,31 +156,11 @@ $(document).ready(function() {
 		unselectAuto: true,
 		events: [{
 title: '',
-hidden: 'Chinese New Year Celebration',
-hiddenactivity: '296',
-hiddentime: '09:30 AM',
-start: new Date(2013, 1, 6, 9, 30),
-end: new Date(2013, 1, 6, 14, 30),
-color: '#00abdc',
-allDay: false
-},
-{
-title: '',
-hidden: 'Greenbelt Tree Tots',
-hiddenactivity: '297',
-hiddentime: '09:45 AM',
-start: new Date(2013, 1, 6, 9, 45),
-end: new Date(2013, 1, 6, 10, 30),
-color: '#00abdc',
-allDay: false
-},
-{
-title: '',
-hidden: 'Greenbelt Tree Tots',
-hiddenactivity: '284',
-hiddentime: '09:45 AM',
-start: new Date(2013, 1, 6, 9, 45),
-end: new Date(2013, 1, 6, 10, 30),
+hidden: 'Chinese New Year Celebration: Year of the Snake',
+hiddenactivity: '307',
+hiddentime: '09:00 AM',
+start: new Date(2013, 1, 8, 9, 0),
+end: new Date(2013, 1, 8, 12, 0),
 color: '#00abdc',
 allDay: false
 },
@@ -277,7 +256,9 @@ Underscore is stripping out img's for select options for some reason.
             <h3><%= event.summary %></h3>
             <dl class="dl-horizontal">
               <dt>Location:</dt>
-              <dd><%= event.location %>, <%= event.city %>, <%= event.state %></dd>
+              <dd><% if(event.location){ print(event.location+"<br> "); }  %> 
+					<% if(event.city){ print(event.city+", "); } %> 
+					<%= event.state %>&nbsp;</dd>
               <dt>Date:</dt>
               <dd><%= event.startdate %></dd>
               <dt>Time:</dt>
@@ -349,7 +330,8 @@ Underscore is stripping out img's for select options for some reason.
             <dl class="dl-horizontal">
               <dt>Location:</dt>
               <dd><% if(event.location){ print(event.location+"<br> "); }  %> 
-<% if(event.city){ print(event.city+", "); } %> <%= event.state %></dd>
+					<% if(event.city){ print(event.city+", "); } %> 
+					<%= event.state %>&nbsp;</dd>
               <dt>Date:</dt>
               <dd><%= event.startdate %></dd>
               <dt>Time:</dt>
@@ -607,159 +589,27 @@ event.summary=event.summary.replace(/'/g, "&#x27;");
             <div class="tab-pane active" id="home">
 <div class="customscroll">
               <div class="EventListing">
-									<div class="eventbox">
-                    <div class="event_datebox">
-                      <div class="datewrap">
-                      <span style="font-size:1.1em;line-height:1.35em;">Feb</span><br> 
-                      <span style="font-size:1.5em;">6</span><br> 
-                      <span style="font-family:ubuntu;">WED</span>
-                      </div>                      
-                    </div> 
-                                      
-  									<div class="event_summary">
-                      <a href="javascript:void(0);"
-    										onclick="loadeventdetail(296)">
-    									Chinese New Year Celebration</a> 
-    									<span id="id296"></span>									
-                      <br>
-    									Lost Battalion Hall Recreation Center 
-                    </div>
-                  </div>
 
-                  <div class="eventbox">
-                    <div class="event_datebox">
-                      <div class="datewrap">
-                      <span style="font-size:1.1em;line-height:1.35em;">Feb</span><br> 
-                      <span style="font-size:1.5em;">7</span><br> 
-                      <span style="font-family:ubuntu;">THU</span>
-                      </div>                      
-                    </div> 
-                                      
-                    <div class="event_summary">
-                      <a href="javascript:void(0);"
-                        onclick="loadeventdetail(296)">
-                      Greenbelt Tree Tots</a> 
-                      <span id="id296"></span>                  
-                      <br>
-                      Greenbelt Nature Center (in Blood Root Valley)
-                    </div>
-                  </div>  
-                  
-                  <div class="eventbox">
-                    <div class="event_datebox">
-                      <div class="datewrap">
-                      <span style="font-size:1.1em;line-height:1.35em;">Feb</span><br> 
-                      <span style="font-size:1.5em;">6</span><br> 
-                      <span style="font-family:ubuntu;">WED</span>
-                      </div>                      
-                    </div> 
-                                      
-                    <div class="event_summary">
-                      <a href="javascript:void(0);"
-                        onclick="loadeventdetail(296)">
-                      Chinese New Year Celebration</a> 
-                      <span id="id296"></span>                  
-                      <br>
-                      Lost Battalion Hall Recreation Center 
-                    </div>
-                  </div>    
-
-                  <div class="eventbox">
-                    <div class="event_datebox">
-                      <div class="datewrap">
-                      <span style="font-size:1.1em;line-height:1.35em;">Feb</span><br> 
-                      <span style="font-size:1.5em;">10</span><br> 
-                      <span style="font-family:ubuntu;">SAT</span>
-                      </div>                      
-                    </div> 
-                                      
-                    <div class="event_summary">
-                      <a href="javascript:void(0);"
-                        onclick="loadeventdetail(296)">
-                      Greenbelt Tree Tots</a> 
-                      <span id="id296"></span>                  
-                      <br>
-                      Greenbelt Nature Center (in Blood Root Valley)
-                    </div>
-                  </div>  
-
-                  <div class="eventbox">
-                    <div class="event_datebox">
-                      <div class="datewrap">
-                      <span style="font-size:1.1em;line-height:1.35em;">Feb</span><br> 
-                      <span style="font-size:1.5em;">11</span><br> 
-                      <span style="font-family:ubuntu;">SUN</span>
-                      </div>                      
-                    </div> 
-                                      
-                    <div class="event_summary">
-                      <a href="javascript:void(0);"
-                        onclick="loadeventdetail(296)">
-                      Chinese New Year Celebration</a> 
-                      <span id="id296"></span>                  
-                      <br>
-                      Lost Battalion Hall Recreation Center 
-                    </div>
+									<div class="tutorialbox">
+									   <h4> <span style="font-size:2em;">1</span>&nbspClick<span style="font-weight:500;color:#00abdc;"> Places, Dining or Events</span></h4>
+                     <img style="width:100%" src="/images/tutorial_scn1.png" alt="">
+								  </div>
+                  <div class="tutorialbox">
+                     <h4> <span style="font-size:2em;">2</span>&nbspPick Event & Add to<span style="font-weight:500;color:#00abdc;"> Datebook</span></h4>
+                     <img style="width:100%" src="/images/tutorial_scn2.png" alt="">
                   </div>                  
+                  <div class="tutorialbox">
+                     <h4> <span style="font-size:2em;">3</span>&nbspCreate the <span style="font-weight:500;color:#00abdc;"> Event</span></h4>
+                     <img style="width:100%" src="/images/tutorial_scn3.png" alt="">
+                  </div>      
+                  <div class="tutorialbox">
+                     <h4> <span style="font-size:2em;">4</span>&nbspManage Your Events in<span style="font-weight:500;color:#00abdc;"> Datebook</span></h4>
+                     <img style="width:100%" src="/images/tutorial_scn4.png" alt="">
+                  </div>                                    
 
-                  <div class="eventbox">
-									<a href="javascript:void(0);"
-										onclick="loadeventdetail(297)">
-									Greenbelt Tree Tots</a> 
-									<span id="id297"></span>									<br>
-									Wednesday February 6, 2013	<br>
-									Greenbelt Nature Center (in Blood Root Valley)									</div>
-																<div class="eventbox">
-									<a href="javascript:void(0);"
-										onclick="loadeventdetail(284)">
-									Greenbelt Tree Tots</a> 
-									<span id="id284"></span>									<br>
-									Wednesday February 6, 2013	<br>
-									Greenbelt Nature Center (in Blood Root Valley)									</div>
-																<div class="eventbox">
-									<a href="javascript:void(0);"
-										onclick="loadeventdetail(267)">
-									GRAND MORELOS DINER & BAKERY</a> 
-									<span id="id267"></span>									<br>
-									Wednesday February 13, 2013	<br>
-									727 GRAND STREET									</div>
-																<div class="eventbox">
-									<a href="javascript:void(0);"
-										onclick="loadeventdetail(267)">
-									GRAND MORELOS DINER & BAKERY</a> 
-									<span id="id267"></span>									<br>
-									Wednesday February 13, 2013	<br>
-									727 GRAND STREET									</div>
-																<div class="eventbox">
-									<a href="javascript:void(0);"
-										onclick="loadeventdetail(300)">
-									Valentines day</a> 
-									<span id="id300"></span>									<br>
-									Thursday February 14, 2013	<br>
-																		</div>
-																<div class="eventbox">
-									<a href="javascript:void(0);"
-										onclick="loadeventdetail(301)">
-									Valentines day3</a> 
-									<span id="id301"></span>									<br>
-									Thursday February 14, 2013	<br>
-																		</div>
-																<div class="eventbox">
-									<a href="javascript:void(0);"
-										onclick="loadeventdetail(299)">
-									valentines</a> 
-									<span id="id299"></span>									<br>
-									Thursday February 14, 2013	<br>
-									love bost									</div>
-																<div class="eventbox">
-									<a href="javascript:void(0);"
-										onclick="loadeventdetail(299)">
-									valentines</a> 
-									<span id="id299"></span>									<br>
-									Thursday February 14, 2013	<br>
-									love bost									</div>
-													
-</div>
+                    
+
+								</div>
               </div>
             </div>
         <div class="tab-pane" id="bookmarkplace">
@@ -930,28 +780,30 @@ Processing...</span>
                     <input id="poploginpasswd" name="password" style="width:256px;" type="password" class="squareCorners" placeholder="Password">
                 </div>
                 <div class="SignInField_m">
-                    <a style="cursor:pointer;" data-target="#forgotModal" data-toggle="modal">Forgot Your Password?</a>
+                    <a style="cursor:pointer;" data-toggle="modal" onclick="logintoforget()">Forgot Your Password?</a>
 <!--                     <label class="checkbox">
                     <input type="checkbox">Remember me
                     </label>   -->
-                        <button type="button"  onclick="login()" class="btn btn-blue btn-large" style="font-weight:bold;width:100%;margin-top:10px;">Sign In!</button>
+                        <button  onclick="login()" class="btn btn-blue btn-large" type="submit" style="font-weight:bold;width:100%;margin-top:10px;">Sign In!</button>
                       </div>
                   </form> 
                </div>
             </div> 
 
 <!--Forgot Password Modal-->
-    <div id="forgotModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="forgotModal" class="modal hide fade"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>        
         <h2 id="myModalLabel">Forgot Password</h2>
       </div>
       <div class="breakline"></div>
+      <form  id="forgotpasswordform" action="javascript:void(0);" class="form-horizontal">
       <div style="padding: 0px 35px 32px;" class="modal-body">
-        <h4>Enter you email address below to reset your password</h4>
-        <input style="padding-right:71px;" class="form-large" type="text" placeholder="Email Address">
-        <button style="padding:15px 33px 15px 33px;" type="submit" class="btn btn-blue btn-large">Reset Your Password!</button>
+        <h4>Enter your email address below to reset your password</h4>
+        <input style="padding-right:71px;" class="form-large" type="text" id="forgotemail" placeholder="Email Address" value="">
+        <button style="padding:15px 33px 15px 33px; width: 100%;" type="submit" class="btn btn-blue btn-large" onclick="forgotpassword()">Reset Your Password!</button>
       </div>
+      </form>
     </div>    
 
 <!-- Le javascript
@@ -974,9 +826,7 @@ Processing...</span>
  -->
 <!--Carousel Javascript-->    
     <script type="text/javascript"> 
-	$('.dropdown-toggle ul.dropdown-menu form.form-horizontal, div.SignInField').click(function(e) {
-		e.stopPropagation();
-	});
+
     
       $('.carousel').carousel({
         interval: 5000
