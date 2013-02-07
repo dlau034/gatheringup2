@@ -38,9 +38,11 @@ form {
 .customscroll ::-webkit-scrollbar-thumb:vertical{height:50px;background-color:#ccc;-webkit-border-radius:0px;}
 .customscroll ::-webkit-scrollbar-thumb:horizontal{width:50px;background-color:#ccc;-webkit-border-radius:0px;}
 
-/*.nav > li > a {
+.nav > li > a {
+  /*font-size: 1.05em;*/
   font-weight: 400;
   color: white;
+  /*background-color: red;*/
   padding: 10px 17px;
   text-shadow: none;
 }
@@ -54,24 +56,14 @@ form {
   color: #f5f5f5;
   text-shadow: none;
 }
+
 .navbar-inner { 
   border: none !important; 
-  color: #f5f5f5;
   box-shadow: 0px 3px 10px rgba(0,0,0,0.3) !important;
 }
-*/
-.navbar-inverse .brand, .navbar-inverse .nav > li > a {
-	color: #ffffff;
-}
 
-.nav-pills > .active > a, .nav-pills > .active > a:hover {
-	background-color: #4d4d4d;	
-}
-.tab-pane.pill_bookmarks.dropdown  {
-	background-color: #00ACDB;
-}
 
-.header-active {
+.active {
   background-color: #00abdc !important;
   /*color: #E71C75;*/
   font-weight: 500 !important;  
@@ -102,7 +94,9 @@ form {
   /*margin-top: 3px;*/
   padding-top: 15px;
   padding-bottom: 15px;
+  margin-left: 10px;  
 }
+
 
 .btn_go:hover {
   background-color: #E71C75;
@@ -267,9 +261,7 @@ form {
   margin-bottom: 0px;
  }
 
-/* Search.css Overrides */
-
-
+  /* Search.css Overrides */
 
 #appendedInputButton {
   font-size: 16px;
@@ -687,6 +679,7 @@ div.grandcentral {
   /*overflow: auto;*/
 /*  min-height: 480px;
   max-height: 500px;  */
+  min-height: 250px;
   max-height: 450px;
   overflow: auto;
   border: 1px solid #e5e5e5;
@@ -704,6 +697,7 @@ div.grandcentral {
 }
 
 .EventListing {
+  min-height: 250px;
   max-height: 450px;
   overflow: auto;
   border: 1px solid #e5e5e5;
@@ -721,7 +715,7 @@ div.grandcentral {
 
 
 .eventbox:hover {
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .icon-chevron-right {
@@ -765,31 +759,12 @@ div.grandcentral {
   width: 100%;
 }
 
-/* Submit Form */
-
-.submit_container {
-  width: 800px;
-  margin: 0 auto;
-}
-
-.form-personal {
-  width: 250px;
-  float: left;
-}
-
-.form-event {
-  width: 500px;
-  float: right;
-}
-
 input.form-large {
-  padding: 10px 0px 10px 0px;
+  padding:10px; 
   font-size: 1.2em;
   border-radius: 0px;
   margin-top: 2px;
   margin-bottom: 14px;
-  width: 100%;
-  text-indent: 11px;
 }
 
 textarea.form-large {
@@ -797,12 +772,6 @@ textarea.form-large {
   font-size: 1.2em;
   border-radius: 0px;
 }
-
-
-
-
-/* Submit Form End */
-
 
 .footer {
   text-align: center;
@@ -1193,48 +1162,28 @@ div.ui-datepicker-header {
 #Your_event {
   border-radius: 0px;
   text-align: center;
-	color: #FFFFFF;
+
 }
+
 
 #Your_bookmark {
-	color: #FFFFFF;
   border-radius: 0px;
 /*  text-align: center;
   width: 95%;*/
 }
-#Your_bookmark{
-	color: #FFFFFF;
-  border-radius: 0px;
-/*  text-align: center;
-  width: 95%;*/
-}
+
 .pill_width {
-	padding:0px;
-	margin:0px;
   width: 49%;
-	background-color: #00ABDC;
 }
 
-.nav-pills > li > a{
-	margin:0px;
-}
-.nav-pills > li > a:hover{
-	background-color: inherit;
-}
-
-.pill_width .active{
-background-color: #4D4D4D;
-}
-.tab-pane.pill_bookmarks.dropdown.active{
-background-color: #4D4D4D;
-}
-.tab-pane.pill_bookmarks.dropdown hover{
-	background-color: #00ABDC;
-}
 .tab-pane.pill_bookmarks.dropdown {
   float: right;
   width: 49.5%;
   margin-right: -2px;
+}
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
+  background-color: #00ABDC;
 }
 
 .EventSearchFilter {
@@ -1350,14 +1299,13 @@ div.imagebox {
 
 .note {
   margin-left: 53px;
-  color: #4d4d4d;
 }
 
 .BookmarkTitles {
   text-align: center;
   font-size: 1.1em;
   padding-bottom: 8px;
-  background-color: #4d4d4d;
+  background-color: #00ABDC;
   color: white;
   padding-top: 10px;
   /*padding-right: 21px;*/

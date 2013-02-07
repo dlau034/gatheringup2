@@ -148,16 +148,53 @@ function invitedecline(idinvite)
   });
   </script>
 
-  <div class="container">
-    <h2>Submit your event</h2>
-      <p>If you have an event that you would like on our site, please use the form below to submit your event for review. Please provide your complete information so that we can quickly verify that you are hosting a legitimate event.</p> 
-    </div>
+  <div class="submit_container">
+      <div style="margin-bottom:20px" >
+      <h2>Submit your event</h2>
+       <h4 style="line-height:1.35em">If you have an event that you would like on our site, please use the form below to submit your event for review. Please provide your complete information so that we can quickly verify that you are hosting a legitimate event.</h4> 
+     </div>  
+    <div class="breakline_msg" style="margin-bottom: 15px;"></div>
+  </div>
 
-  <div class="container">
-         <input class="offset3 span6 form-large" type="text" id="inputEmail" placeholder="Email">
-         <input class="offset3 span6 form-large" type="text" id="inputEmail" placeholder="Email">
 
-      </div>
+  <div class="submit_container">
+         <form action="http://www.gatheringup.com/about/submitevent" method="post" accept-charset="utf-8">
+
+           <div class="Submitform">
+              <div class="form-personal">
+                <div class="p_details">
+                  <input class="form-large" name ="name" type="text" placeholder="Name">
+                </div>       
+                <div class="p_details">
+                  <input class="form-large" name ="email" type="text"  placeholder="Email">
+                </div>        
+                <div class="p_details">
+                  <input class="form-large" type="text" name ="phone" placeholder="Your Number">
+                </div>
+                <div class="p_details">
+                  <input class="form-large" type="text" name ="phone" placeholder="Your Website*">
+                </div>                
+              </div>  
+
+
+              <div class="form-event">
+                  <input class="form-large" type="text" placeholder="Event Title">
+                  <input class="form-large" type="text" placeholder="Event Subject Line">
+                  <input style="width:280px;" class="form-large" type="text" placeholder="Location">
+                  <input style="width:150px;" class="form-large" type="text" placeholder="City">
+                  <input style="width:50px;" class="form-large" type="text" placeholder="NY">
+                  <input style="width:150px;" class="form-large" type="text" placeholder="Start-Time">
+                  <input style="width:150px;" class="form-large" type="text" placeholder="End-Time">
+
+                  <div class="breakline_msg" style="margin-bottom: 15px;"></div>
+
+                  <textarea style="width:480px;"class="form-large" placeholder="Event Description" rows="4"></textarea>   
+
+                  <input class="form-large" type="text" placeholder="Image URL">   
+               </div> 
+            </div>                
+         </form>  
+  </div>
   
 
     
