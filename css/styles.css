@@ -287,7 +287,7 @@ div.eventmain {
   font-size: 1.2em;
   line-height: 1.4em;
   padding: 15px;
-  cursor: pointer;
+  cursor: default;
   border-top: 1px solid #e0e0e0; 
   border-right: 1px solid #e0e0e0; 
   border-left: 1px solid #e0e0e0;     
@@ -318,11 +318,21 @@ div.boxdate {
     padding: 1px;
     text-align: center;
 }
+div.boxday {
+	color: #ffffff;
+	padding:2px;
+	margin:0px;
+	text-align:center;
+	font-size: 45px;
+	font-weight:bold;
+	
+}
 div.eventtitle {
   color: #4D4D4D;
   font-size: 1em;
   line-height: 1.4em;
   margin-top: 5px;
+  cursor: pointer;
 }
 
 div.eventbody a {
@@ -734,7 +744,7 @@ div.grandcentral {
   height: 490px;
   overflow: auto;
   border: 1px solid #e5e5e5;
-  background-color: #e5e5e5;
+  background-color: #f5f5f5;
 }
 
 @media screen and (min-height:800px){
