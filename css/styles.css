@@ -313,6 +313,10 @@ div.boxdate {
   font-family: arvo;
   line-height: 2em;
   margin-right: 16px;
+ cursor: default;
+  float: left;
+    padding: 1px;
+    text-align: center;
 }
 div.eventtitle {
   color: #4D4D4D;
