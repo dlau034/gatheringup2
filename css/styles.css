@@ -354,17 +354,20 @@ div.eventbody a {
   text-align: center;
   padding-bottom: 20px;
   padding-top: 20px;
-  border: 1px #E0E0E0 solid; 
+  border: 1px #E0E0E0 solid;
+  /*width: 220px; */
+  /*display: none;*/
 }
 
 .feelLuck {
   background-color: #F9F9F9;
   text-align: center;
   padding-bottom: 20px;
-  padding-top: 20px;
-  border: 1px black; 
+  padding-top: 20px; 
   margin-top: 25px;
   border: 1px #E0E0E0 solid; 
+  /*width: 220px;*/
+  /*display: none;*/
 }
 
 .placeSearch {
@@ -384,43 +387,48 @@ div.eventbody a {
   border: 1px #E0E0E0 solid; 
 }
 
+.leftbox {
+  float: left;
+  /*background-color: red;*/
+  width: 250px;
+}
 
-input.SearchForm {
-  width: 80%;
-  padding: 10px;
+#search {
   border-radius: 0px;
-  font-family: "ubuntu";
   font-size: 1.2em;
-  margin-bottom: 10px; 
-  border: 1px #ccc solid; 
+  width: 206px;
+  padding: 12px 5px 12px 7px;
 }
 
-@media (min-width: 1200px) { 
-  input.SearchForm {
-    width: 213px;
-  }
-}
-
-@media (max-width: 1199px) { 
-  input.SearchForm {
-    width: 169px;
-  }
-}
-
-
-.chzn-select {
-  width: 90%;
+#search2 {
   border-radius: 0px;
-  padding: 10px;
-  top: 0;
+  font-size: 1.2em;
+  width: 206px;
+  padding: 12px 5px 12px 7px;
 }
+
+.Nat_SearchForm {
+  font-size: 1.2em;
+  padding: 10px 5px 10px 5px;
+  margin-left: 3px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+
 .Mapbox {
   margin-top: 60px;
+  margin-left: 20px;
+  float: left;
+}
+
+.map_canvas {
+  position: absolute;
 }
 
 @media (min-width: 1200px) { 
   #map_canvas {
-    width: 370px;
+    width: 385px;
   }
 }
 
@@ -437,11 +445,12 @@ input.SearchForm {
 }
 
 
-@media (min-width: 768px) and (max-width: 979px) { 
+@media (max-width: 1199px) { 
   #map_canvas {
-    width: 300px;
+    width: 260px;
   }
 }
+
 
     /* Button Style Overrides */
 
@@ -510,7 +519,7 @@ input.SearchForm {
 
 
 
-#spaceholder {
+.spaceholder {
   height: 50px;
 }
 
@@ -747,7 +756,21 @@ div.grandcentral {
   background-color: #f5f5f5;
 }
 
-@media screen and (min-height:800px){
+@media screen and (min-height:750px){
+  
+  .EventListing {
+    height: 600px;
+  }
+}
+
+@media screen and (min-height:850px){
+  
+  .EventListing {
+    height: 700px;
+  }
+}
+
+@media screen and (min-height:950px){
   
   .EventListing {
     height: 750px;
@@ -1163,7 +1186,7 @@ margin-left: 25px;
 
 .result_Box {
   min-height: 700px;
-  max-height: 800px;
+  max-height: 788px;
   height: 100%;
   overflow: scroll;
   position: relative;
@@ -1288,6 +1311,8 @@ div.ui-datepicker-header {
 .nav-pills > li > a{
 	margin:0px;
 }
+
+#search
 .nav-pills > li > a:hover{
 	background-color: inherit;
 }

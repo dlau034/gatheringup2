@@ -153,8 +153,7 @@ var bookmarks = {};
 </script>
 
 <div class="container"> <!-- Container -->
-  <div class="row">
-    <div class="sideBar span3">
+    <div class="leftbox">
         <h2>Places Search</h2>
         <div class="placeSearch">
 <input type="text" class="SearchForm"  name="search" id="search" placeholder="Pick a Place" tabindex="1"><br>
@@ -461,20 +460,20 @@ var bookmarks = {};
                 <option value="219">Woodrow, Staten Island</option> 		
 </select>
 
-<input type="button" class="SearchForm btn btn-large btn-blue btn-search" onclick="nycsearch(1)" value="Find It!"  id="searchnyc" tabindex="3">
+<input type="button" class="SearchForm btn btn-large btn-blue btn-search" onclick="nycsearch(1)" value="Find It!"  id="searchnyc" tabindex="3" style="width:88%">
 <!-- <img src="/images/350_lightgrey.gif" id="ajaxSpinnerImage" title="working..." style="display: none; margin-bottom:0px; padding-bottom:0px"> -->
         </div>
         <h2>National Search</h2>
         <div class="nationalSearch">
 <input type="text" class="SearchForm"  name="search" id="search2"  placeholder="Pick a place" tabindex="4"/><br>
 
-<input id="city" class="SearchForm" placeholder="Pick a City" name="city" tabindex="5"/> <br>
+<input id="city" class="Nat_SearchForm" placeholder="Pick a City" name="city" tabindex="5"/> <br>
 
-<input id="zipcode" class="SearchForm"  placeholder="Zipcode (Optional)" name="zipcode"  tabindex="6"/> <br>
+<input id="zipcode" class="Nat_SearchForm"  placeholder="Zipcode (Optional)" name="zipcode"  tabindex="6"/> <br>
 
-<input id="county" class="SearchForm" placeholder="County (Optional)" name="county" tabindex="7"/> <br>
+<input id="county" class="Nat_SearchForm" placeholder="County (Optional)" name="county" tabindex="7"/> <br>
 
-<select data-placeholder="state (Optional)" class="chzn-select" multiple  id="state" tabindex="8">
+<select data-placeholder="State (Optional)" class="chzn-select" multiple  id="state" tabindex="8">
 <option value=""></option>
 <option value="AL">Alabama</option>
 <option value="AK">Alaska</option>
@@ -529,7 +528,7 @@ var bookmarks = {};
 <option value="WY">Wyoming</option>
 </select><br>
 
-<input type="button" class="SearchForm btn btn-large btn-blue btn-search" onclick="nationalsearch(1)" value="Search U.S." tabindex="9" />
+<input type="button" class="SearchForm btn btn-large btn-blue btn-search" onclick="nationalsearch(1)" value="Search U.S." style="width:88%;" tabindex="9" />
 <!-- <img src="/images/350_lightgrey.gif" id="ajaxSpinnerImage2" title="working..." style="display: none; margin-bottom:0px; padding-bottom:0px">  -->
 </div>
 </div>
@@ -850,19 +849,18 @@ Bookmark</a>
 </form>
 	
 
-</div>
-</div>
-</div>
-	</div>
-</div>
+            </div>
+            </div>
+            </div>
+	       </div>
+        </div>
     </div>
-        <div class="sideBar span4">
-           <div class= "Mapbox"> 
- <div id="map_canvas" class="img-polaroid"  style="width: 440px; height:850px;"></div> 
+    <div class= "Mapbox"> 
+    <div id="map_canvas" class="img-polaroid"  style="height:776px;position:absolute;"></div> 
+    </div>
+    </div>  
 </div>
-</div>
-</div>
-</div>
+<div class="spaceholder"></div>
 </div>
 <script type="text/javascript">
 $(".chzn-select").chosen();

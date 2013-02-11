@@ -20,8 +20,8 @@
   border: 1px solid #aaa;
   border-top: 0;
   position: absolute;
-  top: 0; 
-  left: 0;
+  margin-top: 15px;
+  margin-left: 1px;
   -webkit-box-shadow: 0 4px 5px rgba(0,0,0,.15);
   -moz-box-shadow   : 0 4px 5px rgba(0,0,0,.15);
   box-shadow        : 0 4px 5px rgba(0,0,0,.15);
@@ -139,7 +139,9 @@
 
 /* @group Multi Chosen */
 
-@media (min-width: 1200px) { 
+
+
+
   .chzn-container-multi .chzn-choices {
     background-color: #fff;
   /*  background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(1%, #eeeeee), color-stop(15%, #ffffff));
@@ -147,7 +149,7 @@
     background-image: -moz-linear-gradient(top, #eeeeee 1%, #ffffff 15%);
     background-image: -o-linear-gradient(top, #eeeeee 1%, #ffffff 15%);
     background-image: linear-gradient(#eeeeee 1%, #ffffff 15%);*/
-   border: 1px solid #ccc;
+    border: 1px solid #ccc;
     margin: 0;
     padding: 0;
     cursor: text;
@@ -156,46 +158,18 @@
     height: 1%;
     position: relative;
     margin: 0 auto;
-    width: 233px;
+    /*width: 225px;*/
     padding-top: 6px;
     padding-bottom: 6px; 
     margin-bottom: -5px;
     margin-top: -11px;
-    left: -1px;
+    /*left: 1px;*/
   }
-}
 
 
 
 
-@media (max-width: 1199px) { 
-  .chzn-container-multi .chzn-choices {
-  background-color: #fff;
-/*  background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(1%, #eeeeee), color-stop(15%, #ffffff));
-  background-image: -webkit-linear-gradient(top, #eeeeee 1%, #ffffff 15%);
-  background-image: -moz-linear-gradient(top, #eeeeee 1%, #ffffff 15%);
-  background-image: -o-linear-gradient(top, #eeeeee 1%, #ffffff 15%);
-  background-image: linear-gradient(#eeeeee 1%, #ffffff 15%);*/
- border: 1px solid #ccc;
-  margin: 0;
-  padding: 0;
-  cursor: text;
-  overflow: hidden;
-  height: auto !important;
-  height: 1%;
-  position: relative;
-  margin: 0 auto;
-  width: 180px;
-  padding-top: 6px;
-  padding-bottom: 6px; 
-  margin-bottom: -5px;
-  margin-top: -11px;
-  left: -1px;
-}
 
-
-  }
-}
 
 
 .chzn-container-multi .chzn-choices li {

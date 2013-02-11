@@ -166,8 +166,7 @@ var bookmarks = {};
 
 <!-- Sidemenu -->
       <div class="container"> <!-- Container -->
-        <div class="row">
-          <div class="sideBar span3">
+        <div class="leftbox">  
               <h2>Food Search</h2>
               <div class="foodSearch">
               
@@ -936,7 +935,7 @@ var bookmarks = {};
                 <option value="288">Willowbrook, Staten Island</option> 		
                 <option value="219">Woodrow, Staten Island</option> 		
 </select>
-<input type="button" class="btn btn-large btn-blue btn-search"  class="btn" onclick="randomrestaurant()" style="width:88%" value="I feel Lucky">
+<input type="button" class="btn btn-large btn-blue btn-search"  class="btn" onclick="randomrestaurant()" style="width:88%;margin-bottom:15px;" value="I feel Lucky">
 <!-- <img src="/images/350_lightgrey.gif" id="ajaxSpinnerImage2" title="working..." style="display: none; margin-bottom:0px; padding-bottom:0px"> -->
 
 <!--  <input class="SearchForm" type="text" placeholder="Neighbourhood">
@@ -945,8 +944,16 @@ var bookmarks = {};
                   </fieldset>
                   </form>
 <a style="margin-top:10px;" href="http://www.nyc.gov/html/dcp/html/neighbor/neigh.shtml" target="_blank">NYC Neighborhood Map</a><br>
-				</div>
-			</div>
+
+
+</div> 
+</div> 
+
+
+
+
+
+
 
         <div class="sideBar span5">
           <h2>What's Around Here?</h2>
@@ -1238,14 +1245,14 @@ Cuban, Latin American, Dominican, Haitian, Puerto Rican, Trinidadian, Colombian,
     </div>
     </div>
     </div>
-        <div class="sideBar span4">
+
            <div class= "Mapbox"> 
-                <div id="map_canvas"  style="min-height: 776px;" class="img-polaroid"></div>
+                <div id="map_canvas"  style="min-height: 776px; position:absolute;" class="img-polaroid"></div>
           </div>
-        </div>
+
       </div>
     </div>
-  <div id="spaceholder"></div>
+  <div class="spaceholder"></div>
 </div> <!--Wrapper End--> 
 
 <script type="text/javascript">
