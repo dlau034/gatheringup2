@@ -20,7 +20,7 @@ div.mainsection {
     background-color: #fff;
 }
 
-div.eventmain {
+/*div.eventmain {
     padding: 6px;
     width: 600px;
     margin-top: 12px;
@@ -29,14 +29,13 @@ div.eventmain {
     border: 0px solid;
     border-color: #ddd;
 	background-color:#f9f9f9;
-/*    border-color: #ffcb65;*/
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
     -moz-box-shadow: 1px 1px 2px 1px #c8c8c8;
     -webkit-box-shadow: 1px 1px 2px 1px #c8c8c8;
     box-shadow: 1px 1px 2px 1px #c8c8c8;
-}
+}*/
 
 div.eventtitle {
     padding: 3px;
