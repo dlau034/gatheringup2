@@ -148,68 +148,24 @@ function invitedecline(idinvite)
   });
   </script>
 
-  <div class="submit_container">
+  <div class="reset_container">
       <div style="margin-bottom:20px" >
-      <h2>Submit your event</h2>
-       <h4 style="line-height:1.35em">If you have an event that you would like on our site, please use the form below to submit your event for review. Please provide your complete information so that we can quickly verify that you are hosting a legitimate event.</h4> 
+      <h2>Change Your Password</h2>     
      </div>  
     <div class="breakline_msg" style="margin-bottom: 15px;"></div>
   </div>
 
 
-  <div class="submit_container">
-         <form action="http://www.gatheringup.com/about/submitevent" method="post" accept-charset="utf-8">
-
-           <div class="Submitform">
-              <div class="form-personal">
-                <p>Tell Us a bit about you!</p>
-                <div class="p_details">
-                  <input class="form-large" name ="name" type="text" placeholder="Your Name *">
-                </div>       
-                <div class="p_details">
-                  <input class="form-large" name ="email" type="text"  placeholder="Your Email *">
-                </div>        
-                <div class="p_details">
-                  <input class="form-large" type="text" name ="phone" placeholder="Your Number">
-                </div>
-                <div class="p_details">
-                  <input class="form-large" type="text" name ="companyurl" placeholder="Your Website">
-                </div>                
-              </div>  
-
-
-              <div class="form-event">
-                <p>Tell us about your event!</p>                
-                  <input class="form-large" type="text" name="summary" placeholder="Event Title *">
-                  <input style="width:280px;" class="form-large" type="text" name="location" placeholder="Location *">
-                  <input style="width:150px;margin-left:10px;" class="form-large" name="city" type="text" placeholder="City *">
-                  <input style="width:43px;float:right;" class="form-large" type="text" placeholder="NY" disabled>
-                  <p>
-                      <input type="text" style="width:150px;" class="form-large" id="datepicker3" name="endtime" placeholder="Start-Time"/>                      
-                      <input type="text" style="width:150px;margin-left:10px;" class="form-large" id="datepicker2" name="endtime" placeholder="End-Time"/>
-                  </p>
-
-                  <div class="breakline_msg" style="margin-bottom: 15px;"></div>
-
-                  <textarea style="width:480px;margin-bottom:0px;"class="form-large" placeholder="Event Description" rows="4"></textarea>   
-
-                  <div class="div">
-                      <h4>Upload an Event Image<input class="form-large" type="file" placeholder="Image URL" id="submit_img" name="imageurl"></h4>
-                  </div>
-                  <button class="btn btn-large btn-blue">Submit Your Event!</button>    
-               </div> 
-            </div>                
+  <div class="reset_container">
+       <h4 style="line-height:1.35em">Please Submit Details Below:</h4>  
+         <form action="" method="post" accept-charset="utf-8">
+            <input class="form-large2" type="text" name="old-password" placeholder="Old Password *">
+            <input class="form-large2" type="text" name="new-password" placeholder="New Password *">
+            <input class="form-large2" type="text" name="new-password-confirm" placeholder="New Password Confirm *">
+            <button class="btn btn-large btn-blue" style="margin-top:10px;">Change Your Password</button>              
          </form>  
-      </div>
   </div>
-
-
-
-
-
-
-
-
+</div>
 
 <!--Register Modal-->
     <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
