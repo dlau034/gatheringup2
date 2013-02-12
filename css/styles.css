@@ -47,30 +47,13 @@ form {
 .customscroll ::-webkit-scrollbar-thumb:vertical{height:50px;background-color:#999;-webkit-border-radius:0px;}
 .customscroll ::-webkit-scrollbar-thumb:horizontal{width:50px;background-color:#999;-webkit-border-radius:0px;}
 
-/*.nav > li > a {
-  font-weight: 400;
-  color: white;
-  padding: 10px 17px;
-  text-shadow: none;
-}
 
-.navbar-inverse .nav > li > a:focus, .navbar-inverse .nav > li > a:hover {
-  color: #E71C75;
-}
-
-
-.navbar-inverse .brand, .navbar-inverse .nav > li > a {
-  color: #f5f5f5;
-  text-shadow: none;
-}
-.navbar-inner { 
-  border: none !important; 
-  color: #f5f5f5;
-  box-shadow: 0px 3px 10px rgba(0,0,0,0.3) !important;
-}
-*/
-.navbar-inverse .brand, .navbar-inverse .nav > li > a {
+.navbar-inverse .nav > li > a {
 	color: #ffffff;
+}
+
+.navbar-inverse .nav > li > a:hover {
+  background-color: #e71b75;
 }
 
 .nav-pills > .active > a, .nav-pills > .active > a:hover {
@@ -82,7 +65,7 @@ form {
 
 .header-active {
   background-color: #00abdc !important;
-  /*color: #E71C75;*/
+  /*background-color: #00abdc !important;*/
   font-weight: 500 !important;  
 }
 
@@ -101,22 +84,23 @@ form {
 }
 
 .btn_go {
-  background-color: #E71C75;
-  color: white;
-  text-shadow:0px;
-  /*width: 48px;*/
-  /*height: 23px; */
-  font-size: 0.8em;
-  text-shadow: -0px 2px 0px #555;
-  /*margin-top: 3px;*/
-  padding-top: 15px;
-  padding-bottom: 15px;
+  background-color: white;
+  color: #00abdc;
+  font-size: 0.9em;
+  padding: 10px 57px 12px 13px;
+  background-image: url("/images/go_blue.png");
+  background-repeat: no-repeat;
+  background-position: 65px center;
+  text-shadow: none;  
+  font-weight: 400;
+  margin-left: 10px;
 }
 
 .btn_go:hover {
   background-color: #E71C75;
   color: white;
   text-decoration: none;
+  background-image: url("/images/go.png");  
 }
 
 .namespanel {
@@ -133,20 +117,14 @@ form {
 
 .home_select {
   -webkit-appearance: none;
-  border-radius: 0px;
-  padding: 0px;
-  /*margin: 0 auto;*/
-  padding-left: 10px;
-  height: 50px;
-  /*font-weight: bold;*/
-  font-family: ubuntu;  
-  font-size: .6em;
+  border: 0 none;
+  border-radius: 0 0 0 0;
   color: #00ACDB;
-  border: 0px;
-  margin: 0px 5px;
-  vertical-align:  middle;
-  /*box-shadow: 0px 2px 0px #555;*/
-
+  font-family: ubuntu;
+  font-size: 0.9em;
+  height: 60px;
+  margin: 0 7px;
+  padding: 10px 15px 10px 15px;
 }
 
 .home_select:focus { 
@@ -991,6 +969,16 @@ html, body {
   min-width: 100%;
   height: 500px;
 }
+
+@media (max-width:1199px) {
+  .carousel img {
+    min-width: 1200px;
+  }    
+}
+
+
+
+
 .carousel-caption {
   background-color: transparent;
   position: static;
@@ -1063,11 +1051,18 @@ border: none;
 
 /* HomePage Title Info */
 
+
+
 .TitleText {
   text-align: center;
   font-size: 1.2em;
   padding-top: 50px;
-  text-shadow: 0px 2px 0px #555;
+  text-shadow: 0px 2px 0px #555, 0px 0px 8px #555;
+}
+
+.TitleText > h1{
+  /*font-size: 1.9em;*/
+  font-weight: 400;
 }
 
 .TitleInfo {
@@ -1075,6 +1070,7 @@ border: none;
   background-color: #00ABDC;
   border-top: 6px #E71B75 solid;
   color: white;
+  font-weight: 400;
   /*background-image: url("../images/darkdenim3.png");*/
 }
 
@@ -1123,6 +1119,7 @@ width: 170px;
   width:240px;
   margin-top:-45px;
   background-color: #00ABDC;
+  padding: 5px;
 }
 
 .img-circle.catogeries_dining:hover {
