@@ -40,6 +40,9 @@ form {
   margin: 0px;
 }
 
+textarea {
+  font-family: "ubuntu";
+}
 
 
 .customscroll ::-webkit-scrollbar{width:9px;height:9px;}
@@ -55,6 +58,10 @@ form {
 
 .navbar-inverse .nav > li > a:hover {
   background-color: #00ACDB;
+}
+
+.nav > li > a:hover { 
+  background-color: #999;
 }
 
 .nav-pills > .active > a, .nav-pills > .active > a:hover {
@@ -836,6 +843,10 @@ div.grandcentral {
   /*padding-left: 28px;*/
 }
 
+#description {
+  margin-top: 3px;
+}
+
 #CreateEvent {
   border-radius: 0px;
   background-color: #f9f9f9;
@@ -1276,16 +1287,16 @@ div.ui-datepicker-header {
 }
 
 #add_button {
-  top: 10px;
   padding: 7px;
-  background-image: url("/images/add.png");
+  background-image: url("/images/edit_add2.png");
   background-repeat: no-repeat;
-  top: 207px;
+  top: 209px;
   position: absolute;
   right: 17px;
-  background-position-x: 11px;
-  width: 97px;
+  background-position-x: 1px;
+  width: 106px;
   text-align: right;
+  background-position-y: center;
 }
 
 .alert {

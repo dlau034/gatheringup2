@@ -21,7 +21,7 @@
   border-top: 0;
   position: absolute;
   margin-top: 15px;
-  margin-left: 1px;
+  /*margin-left: 1px;*/
   -webkit-box-shadow: 0 4px 5px rgba(0,0,0,.15);
   -moz-box-shadow   : 0 4px 5px rgba(0,0,0,.15);
   box-shadow        : 0 4px 5px rgba(0,0,0,.15);
@@ -197,6 +197,7 @@
 }
 .chzn-container-multi .chzn-choices .search-field .default {
   color: #999;
+  font-family: "ubuntu";
 }
 .chzn-container-multi .chzn-choices .search-choice {
   -webkit-border-radius: 3px;
