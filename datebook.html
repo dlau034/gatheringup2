@@ -93,18 +93,26 @@ function invitedecline(idinvite)
                   <li><a  href="/Events">Events</a></li>
                                  <li><a class="header-active" href="/datebook">Datebook</a></li>
                   <li>
-					<a id="note_on" class="dropdown-toggle" data-toggle="dropdown"  href=""><b>1</b></a>
+				          	<a id="note_on" class="dropdown-toggle" data-toggle="dropdown"  href=""><b>1</b></a>
                       <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
                         <div style="max-height: 21em; overflow-y: auto;" class="note_box">
-			                            <div class="breakline_note" id="301invl"></div>
-						<div class="roundedbox" id="301inv">
-                                <div class="imagebox" >
+			                            
+                        <div class="alert alert-pink">
+                          <button type="button" class="close" data-dismiss="alert">&times;</button>
+                          Your Notifications will show up in here in <b>RED</b> if you have outgoing event invitations. 
+                          </div>
+
+
+                            <div class="breakline_note" id="301invl"></div>
+				
+        <div class="roundedbox" id="301inv">
+          <div class="imagebox" >
 						<img src="/images/gnome_stock_person.png" width="37"><br>                                </div>
 							<div class="note" id="301invn">four one has invited you to join gathering( <a href="/datebook?idinvite=301">
 								Kenneth Brown Reservoir Dam </a>)<br>
 								<a href="/invitation/accept?idinvite=301">Accept</a> | 
-								<a href="javascript:void(0);" onclick="invitedecline(301)">Decline</a>
-						</div>
+								    <a href="javascript:void(0);" onclick="invitedecline(301)">Decline</a>
+						        </div>
 											</div>
                             </div>                                    
                         </ul>

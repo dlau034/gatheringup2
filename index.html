@@ -59,7 +59,7 @@
                       <div class="SignInField">
                       <div class="facebookbg">
                         <a href="" class="facebookurl">
-                          <img style="height:30px;width:auto;padding-right:5px;"src="/images/facebook.png" alt="facebook">Sign In with Facebook
+                          <img style="height:30px;width:auto;padding-right:17px;"src="/images/facebook.png" alt="facebook">Sign In with Facebook
                         </a>
                         </div>
                       </div>
@@ -315,71 +315,67 @@ Fusce dapibus, tellus ac cursus commodo</p>
       <div class="modal-header registerModal">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
         <h2 id="myModalLabel">Register with GatheringUP!</h2>
-        
-              <div class="facebookbg">
-              <a href="" class="facebookurl" ><h3>
-        <img style="padding-right: 15px;"src="/images/facebook.png" alt="facebook">REGISTER WITH FACEBOOK</h3>
-        </a>
-        </div>
-        <div class="breakline"></div>
+          <div style="width: 400px;" class="breakline"></div> 
+          <!-- <h4>Create your account to explore Gathering UP</h4> -->
       </div>
+      
       <div id="RegistrationErrors"></div>
-        <div class="modal-body">
-            <form  id="registerform" action="#" class="form-horizontal">
-              <div class="control-group">
-                <label class="control-label" for="inputFirstName">First Name</label>
-                <div class="controls">
-                  <input type="text" name="firstname" id="firstname" class="squareCorners" placeholder="First Name">
-                  <b id="errfirstname"></b>
-                </div>
+        <div style="padding-top: 2px;" class="modal-body">
+
+            <form id="registerform" action="#">
+
+<!--               <div id="fb_register" class="facebookbg">
+                <img style="padding-right: 15px;"src="/images/facebook.png" alt="facebook">Sign In with Facebook
+              </div> -->
+                  
+              
+              <div>    
+                <input type="text" name="firstname" id="firstname" class="form-large" style="width:402px;" placeholder="First Name">
+                  <b style="position: absolute;" id="errfirstname"></b>
+              </div> 
+              
+              <div>                      
+              <input type="text" name="lastname" id="lastname" class="form-large" style="width:402px;" placeholder="Last Name">
+                <b style="position: absolute;" id="errlastname"></b>
               </div>
-              <div class="control-group">
-                <label class="control-label" for="inputEmail">Last Name</label>
-                <div class="controls">
-                  <input type="text" name="lastname" id="lastname" class="squareCorners" placeholder="Last Name">
-                <b id="errlastname"></b>
-                </div>
-              </div>        
-                  <div class="control-group">
-                <label class="control-label" for="inputEmail">Email</label>
-                <div class="controls">
-                  <input type="text" name="email" id="regemail" class="squareCorners" placeholder="Email">
-                  <b id="erremail"></b>
-                </div>
+              
+              <div>                   
+              <input type="text" name="email" id="regemail" class="form-large" style="width:402px;" placeholder="Email">
+                <b style="position: absolute;" id="erremail"></b>
               </div>
-              <div class="control-group">
-                <label class="control-label" for="inputPassword">Create Password</label>
-                              <p class="helper">*At least one number & one capital letter</p> 
-                <div class="controls">
-                  <input type="password" name="password" id="regpassword" class="squareCorners" placeholder="Min 8 Characters">
-<b id="errpassword"></b>
-                </div>
+
+              <div>
+              <input type="password" name="password" id="regpassword2" title="Must contain one number & 8 characters" class="form-large" style="width:190px;float:left;" placeholder="Create Password">
+
+                <b style="position: absolute;" id="errpassword"></b>
               </div>
-              <div class="control-group">
-                <label class="control-label" for="inputConfirmPassword">Confirm Password</label>
-                <div class="controls">
-                  <input type="password" name="passwordconf" id="regpasswordconf" class="squareCorners" placeholder="Confirm Password">
-<b id="errpasswordconf"></b>
-                </div>
-              </div>     
-              <div class="control-group">
-                <div class="controls">
-                  <div id="captcha"><img src="/captcha"></div>
-                </div>
-              </div>   
-              <div class="control-group">
-                <label class="control-label" for="inputConfirmPassword">Enter Above</label>
-                <div class="controls">
-                  <input type="password" name="norobotcode" id="robotdistorter" class="squareCorners" placeholder="Enter Above">
-                  <b id="errrobotdistorter"></b>
-                </div>
+
+              <div>
+              <input type="password" name="passwordconf" id="regpasswordconf" class="form-large" style="margin-left:20px; width:190px;float:left;" placeholder="Retype Password">
+                <b style="position: absolute;" id="errpasswordconf"></b>
               </div>
-              <div class="control-group">
-                <div class="controls">
-                  <button type="button" value="Sign me up" class="btn btn-blue btn-large" onclick="register()">Register</button>
-                </div>
+
+          <div style="clear:both;" class="breakline"></div> 
+
+              <div style="float:left;margin-top: 3px;width:192px;" id="captcha"><img src="/images/captcha.jpeg"></div>
+              
+              <div>
+              <input type="password" name="norobotcode" id="robotdistorter" class="form-large" style="margin-left:20px; width:190px;float:left;" placeholder="Enter Captcha">
+                <b style="position: absolute;" id="errrobotdistorter"></b>
               </div>
-            </form>
+
+          <div style="clear:both;" class="breakline"></div>               
+
+              <button type="button" style="width:405px;" value="Sign me up" class="btn btn-blue btn-large" onclick="register()">Register</button>
+            
+              <img src="/images/divider.png" style="margin-bottom:10px;margin-top: 14px;" alt="">    
+              <div style="width:388px;height: 65px;">
+                <a class="facebookbg" alt="facebook" id="fb_register" href="">Sign In with Facebook</a> 
+              </div>              
+              </div>
+            </div>
+          </form>
+          <div class="breakline"></div>                  
         </div>
     </div>   
 
@@ -389,23 +385,16 @@ Fusce dapibus, tellus ac cursus commodo</p>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
         <h2 id="myModalLabel">Sign In!</h2>
       </div>
-        <div class="breakline"></div>       
-        <div class="modal-body">
+        <div style="width:89%;" class="breakline"></div>       
+        <div style="padding-top: 0px;" class="modal-body">
           <p >Don't have an account? &nbsp<a href="javascript:void(0);" onclick="registerpopup('')">Register Here!</a></p>
-            <form  id="loginform" action="javascript:void(0);" class="form-horizontal">
+          <form  id="loginform" action="javascript:void(0);" class="form-horizontal">
             
-                <input type="hidden" id="redirect" name="redirect" value="">
+          <input type="hidden" id="redirect" name="redirect" value="">
           <input type="hidden" class="bbookmark" name="bbookmark" value="">
           <input type="hidden" class="pbookmark" name="pbookmark" value="">
           <input type="hidden" class="ebookmark" name="ebookmark" value="">
-              <div class="SignInField_m">
-              <div class="facebookbg">
-              <a href="" class="facebookurl" >
-                    <img style="height:30px;width:auto;padding-right:5px;" src="/images/facebook.png" alt="facebook">Sign In with Facebook
-                 </a>
-              </div>
-        <div style="margin-top:20px;" class="breakline"></div>                 
-              </div>
+
               <div id="LoginErrors"></div>
                 <div class="SignInField_m">
                     <input id="poploginemail" name="email" style="width:256px;" type="text" class="squareCorners" placeholder="Email">
@@ -418,9 +407,15 @@ Fusce dapibus, tellus ac cursus commodo</p>
 <!--                     <label class="checkbox">
                     <input type="checkbox">Remember me
                     </label>   -->
-                        <button type="button"   type="submit" onclick="login()" class="btn btn-blue btn-large" style="font-weight:bold;width:100%;margin-top:10px;">Sign In!</button>
-                      </div>
-                  </form> 
+                    <button type="button"   type="submit" onclick="login()" class="btn btn-blue btn-large" style="font-weight:bold;width:100%;margin-top:10px;">Sign In!</button>
+                </div>
+                <div style="margin-bottom:14px;" class="breakline"></div> 
+                <div class="facebookbg">
+                    <a href="" class="facebookurl" >
+                      <img style="height:30px;width:auto;padding-right:35px;" src="/images/facebook.png" alt="facebook">Sign In with Facebook
+                    </a>
+                </div>                      
+                </form> 
                </div>
             </div> 
 
@@ -433,7 +428,7 @@ Fusce dapibus, tellus ac cursus commodo</p>
       <div class="breakline"></div>
       <div style="padding: 0px 35px 32px;" class="modal-body">
         <h4>Enter you email address below to reset your password</h4>
-        <input style="padding-right:71px;" class="form-large" type="text" placeholder="Email Address">
+        <input class="form-large" type="text" placeholder="Email Address">
         <button style="padding:15px 33px 15px 33px;" type="submit" class="btn btn-blue btn-large">Reset Your Password!</button>
       </div>
     </div>    
@@ -443,13 +438,14 @@ Fusce dapibus, tellus ac cursus commodo</p>
 <!-- Placed at the end of the document so the pages load faster -->
 <!--     <script src="js/jquery.js"></script> -->
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap-tooltip.js"></script>
 <!--     <script src="/js/bootstrap-transition.js"></script>
     <script src="/js/bootstrap-alert.js"></script>
     <script src="/js/bootstrap-modal.js"></script>
     <script src="/js/bootstrap-dropdown.js"></script>
     <script src="/js/bootstrap-scrollspy.js"></script>
     <script src="/js/bootstrap-tab.js"></script>
-    <script src="/js/bootstrap-tooltip.js"></script>
+    
     <script src="/js/bootstrap-popover.js"></script>
     <script src="/js/bootstrap-button.js"></script>
     <script src="/js/bootstrap-collapse.js"></script>
@@ -464,6 +460,12 @@ Fusce dapibus, tellus ac cursus commodo</p>
     
       $('.carousel').carousel({
         interval: 5000
+      });
+    </script>
+
+    <script>
+      $(document).ready(function() {
+          $("#regpassword2").tooltip();              
       });
     </script>
   </body>

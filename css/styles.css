@@ -17,6 +17,10 @@ h2 {
   line-height: 1.2em;
 }
 
+h3 {
+  font-weight: 400;
+}
+
 h4 {
   font-weight: 400;
 }
@@ -53,7 +57,7 @@ textarea {
 
 
 .navbar-inverse .nav > li > a {
-	color: #ffffff;
+  color: #ffffff;
 }
 
 .navbar-inverse .nav > li > a:hover {
@@ -65,10 +69,10 @@ textarea {
 }
 
 .nav-pills > .active > a, .nav-pills > .active > a:hover {
-	background-color: #4d4d4d;	
+  background-color: #4d4d4d;  
 }
 .tab-pane.pill_bookmarks.dropdown  {
-	background-color: #00ACDB;
+  background-color: #00ACDB;
 }
 
 .header-active {
@@ -322,16 +326,17 @@ div.boxdate {
   text-align: center;
 }
 div.boxday {
-	color: #ffffff;
-	padding:2px;
-	margin:0px;
-	text-align:center;
-	font-size: 45px;
-	font-weight:bold;
-	
+  color: #ffffff;
+  padding:2px;
+  margin:0px;
+  text-align:center;
+  font-size: 45px;
+  font-weight:bold;
+  
 }
 div.eventtitle {
   color: #4D4D4D;
+    padding-bottom: 10px;
   font-size: 1em;
   line-height: 1.4em;
   margin-top: 5px;
@@ -345,6 +350,11 @@ font-weight: 500;
 
 div.eventtitle > b:hover {
 color: #e71b75;
+}
+
+div.eventbody {
+    display: none;
+    padding: 3px;
 }
 
 div.eventbody a {
@@ -386,6 +396,10 @@ div.eventbody a©144 {
   border: 1px #E0E0E0 solid; 
   /*width: 220px;*/
   /*display: none;*/
+}
+
+div.feelLuck > a {
+  margin-top: 10px!important;
 }
 
 .placeSearch {
@@ -435,7 +449,7 @@ div.eventbody a©144 {
 
 
 .Mapbox {
-  margin-top: 60px;
+  margin-top: 51px;
   margin-left: 20px;
   float: left;
 }
@@ -511,12 +525,12 @@ div.eventbody a©144 {
   color: white;
 } 
 .facebookbg a:hover{
-  color: #999;
+  color: #ECEFF5;
   }
 
 .facebookurl {
   color: white;
-  font-weight: bold;
+  /*font-weight: bold;*/
 } 
 
 .btn-menu {
@@ -553,16 +567,22 @@ div.eventbody a©144 {
   border-bottom: none;
 }
 
+#registerform {
+  width: 410px;
+  margin: 0 auto;
+
+}
+
 #myModal {
   background-color: #f9f9f9;
   border-radius: 0px;
   margin-top: -45px;
-  height: 600px;
+  padding-bottom: 7px;
 
 }
 
 .modal-body {
-  max-height: 430px;
+  max-height: 600px;
 }
 
 .modal-header {
@@ -594,8 +614,16 @@ div.eventbody a©144 {
   background-color: #f9f9f9;  
 }
 
-.modal-body {
-  max-height: 430px;
+#fb_register {
+  position: absolute;
+  width: 387px;
+  text-align: center;
+  padding: 15px 8px;
+  font-size: 1.3em;
+  background-image: url("/images/facebook.png");
+  background-size: 21px;
+  background-position-x: 6px;
+  background-position-y: center;
 }
 
 input.squareCorners {
@@ -607,10 +635,10 @@ input.squareCorners {
 }
 
 .breakline {
-  width: 80%;
+  width: 100%;
   height: 1px;
   background-color: #e5e5e5;
-  margin: auto;
+  margin: 0 auto;
   border-bottom: 1px solid #ffffff;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -640,7 +668,7 @@ input.squareCorners {
   width: 100%;
   height: 1px;
   background-color: #e5e5e5;
-  margin: auto;
+  /*margin: auto;*/
   border-bottom: 1px solid #ffffff;
   margin-bottom: 6px;
   margin-top: 6px;
@@ -768,7 +796,7 @@ div.grandcentral {
 }
 
 .EventListing {
-  height: 490px;
+  height: 482px;
   overflow: auto;
   border: 1px solid #e5e5e5;
   background-color: #f5f5f5;
@@ -978,6 +1006,19 @@ html, body {
   margin-bottom: 0px;
 }
 
+/*@media (min-height:680px) {
+  .carousel {
+     margin-top: 30px;
+  }
+}*/
+
+@media (max-height:649px) {
+  .carousel {
+     margin-top: -40px;
+  }
+}
+
+
 .carousel .container {
   position: relative;
   z-index: 9;
@@ -1177,6 +1218,12 @@ margin-top: 27px;
 margin-left: 25px;
 }
 
+@media (min-width:1199px) {
+  #arrow {
+    margin-top: 40px;
+  }
+}
+
 
 /* Thumbnail */
 
@@ -1192,10 +1239,11 @@ margin-left: 25px;
 
 .thumbnail_profile {
         float: left;
-
         height: 60px;
         width: auto;
         margin: 0px 10px 10px 10px;
+        margin-left: 20px;
+}
 
 }
 
@@ -1247,7 +1295,7 @@ margin-left: 25px;
 
 .result_Box {
   min-height: 700px;
-  max-height: 788px;
+  max-height: 820px;
   height: 100%;
   overflow: scroll;
   position: relative;
@@ -1349,35 +1397,35 @@ div.ui-datepicker-header {
 #Your_event {
   border-radius: 0px;
   text-align: center;
-	color: #FFFFFF;
+  color: #FFFFFF;
 }
 
 #Your_bookmark {
-	color: #FFFFFF;
+  color: #FFFFFF;
   border-radius: 0px;
 /*  text-align: center;
   width: 95%;*/
 }
 #Your_bookmark{
-	color: #FFFFFF;
+  color: #FFFFFF;
   border-radius: 0px;
 /*  text-align: center;
   width: 95%;*/
 }
 .pill_width {
-	padding:0px;
-	margin:0px;
+  padding:0px;
+  margin:0px;
   width: 49%;
-	background-color: #00ABDC;
+  background-color: #00ABDC;
 }
 
 .nav-pills > li > a{
-	margin:0px;
+  margin:0px;
 }
 
 #search
 .nav-pills > li > a:hover{
-	background-color: inherit;
+  background-color: inherit;
 }
 
 .pill_width .active{
@@ -1387,7 +1435,7 @@ background-color: #4D4D4D;
 background-color: #4D4D4D;
 }
 .tab-pane.pill_bookmarks.dropdown hover{
-	background-color: #00ABDC;
+  background-color: #00ABDC;
 }
 .tab-pane.pill_bookmarks.dropdown {
   float: right;
@@ -1466,7 +1514,7 @@ background-color: #4D4D4D;
 #calendarButton {
         width: 28%;
         margin-left: 2%;
-        background-image: url("../images/calendar.png");
+        background-image: url("/images/calendar.png");
         background-repeat: no-repeat;
         background-position: center;
         background-size: 1.3em;
@@ -1474,7 +1522,7 @@ background-color: #4D4D4D;
 
 
 #note_on {
-  background-image: url("../images/notification_on.png");
+  background-image: url("/images/notification_on.png");
   background-repeat: no-repeat;
   background-position: center;
   color: #E71B75;
@@ -1485,17 +1533,28 @@ background-color: #4D4D4D;
 }
 
 #note_off {
-  background-image: url("../images/notification_off.png");
+  background-image: url("/images/notification_off.png");
   background-repeat: no-repeat;
   background-position: center;
   text-indent: -9px;
   margin-left: 10px;
+}
+#note_off:hover {
+  background-color: inherit;
+  cursor: default;
 }
 
 .dropdown-menu.notifications {
   left: 22em;
   top: 0.4em;
   width: 22em;
+}
+
+.alert-pink {
+  color: rgba(231, 28, 117, 0.8);
+  background-color: rgba(231, 28, 117, 0.1);
+  border-color: rgba(231, 28, 117, 0.1);
+  padding-bottom: 7px;
 }
 
 div.imagebox {
