@@ -524,14 +524,37 @@ div.feelLuck > a {
   padding: 8px;
   color: white;
 } 
-.facebookbg a:hover{
-  color: #ECEFF5;
-  }
+.facebookbg2 {
+  background-color: hsl(221, 44%, 42%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3b5998", endColorstr="#3b5998");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#3b5998), to(#3b5998));
+  background-image: -moz-linear-gradient(top, #3b5998, #3b5998);
+  background-image: -ms-linear-gradient(top, #3b5998, #3b5998);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3b5998), color-stop(100%, #3b5998));
+  background-image: -webkit-linear-gradient(top, #3b5998, #3b5998);
+  background-image: -o-linear-gradient(top, #3b5998, #3b5998);
+  background-image: linear-gradient(#3b5998, #3b5998);
+  border-color: #3b5998 #3b5998 hsl(221, 44%, 42%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.00);
+  -webkit-font-smoothing: antialiased;
+  border-radius: 0px;
+  background-repeat: no-repeat;
+  padding: 8px;
+  color: white;
+  height: 30px;
+  width: 389px;
+} 
 
 .facebookurl {
   color: white;
   /*font-weight: bold;*/
 } 
+
+#RegistrationErrors{
+  color: red;
+  padding-bottom: 5px;
+}
 
 .btn-menu {
   background-color: transparent; !important;
@@ -618,12 +641,13 @@ div.feelLuck > a {
   position: absolute;
   width: 387px;
   text-align: center;
-  padding: 15px 8px;
+  padding: 6px 0px;
   font-size: 1.3em;
   background-image: url("/images/facebook.png");
   background-size: 21px;
   background-position-x: 6px;
   background-position-y: center;
+  background-repeat: no-repeat;
 }
 
 input.squareCorners {
@@ -878,7 +902,7 @@ div.grandcentral {
 #CreateEvent {
   border-radius: 0px;
   background-color: #f9f9f9;
-  height: 510px;
+  height: 540px;
   padding: 15px;
   margin-left: -327px;
 }
@@ -1338,13 +1362,18 @@ div.ui-datepicker-header {
   padding: 7px;
   background-image: url("/images/edit_add2.png");
   background-repeat: no-repeat;
-  top: 209px;
+  /*top: 209px;*/
   position: absolute;
   right: 17px;
   background-position-x: 1px;
   width: 106px;
   text-align: right;
+  float: right;
   background-position-y: center;
+}
+
+.invitebox {
+  height: 42px;
 }
 
 .alert {
@@ -1360,7 +1389,7 @@ div.ui-datepicker-header {
 }
 
 #emailModal {
-  height: 510px;
+  height: 540px;
   width: 250px;
   background-color: #f9f9f9;
   position: absolute;

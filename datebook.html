@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
     <title>Gathering UP</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="viewport" content="width=device-width, initial-scale=0.6">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -46,7 +46,8 @@
 
 <script type="text/javascript" src="/js/underscore-min.js"></script>
 <script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
-<script type="text/javascript" src="/js/gatheringup-emaildialog.js">	</script>
+<!-- <script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="/js/gatheringup-emaildialog.js">	</script>  -->
 <script type="text/javascript" src="/js/gatheringup-home.js"></script>
 
 </head>
@@ -73,7 +74,6 @@ function invitedecline(idinvite)
 	}
 	$invites=$("#note_on>b").html($invites);
 }
-
 </script>
       <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="top-stripe"></div>
@@ -84,45 +84,24 @@ function invitedecline(idinvite)
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="/">GatheringUP</a>
+            <a class="brand" href="/">Gathering UP</a>
               <div class="nav-collapse collapse">
-                <ul class="nav" style="color: #ffffff">
+                <ul class="nav">
                 
                   <li><a  href="/Dining">Dining</a></li>
                   <li><a  href="/Places">Places</a></li>
                   <li><a  href="/Events">Events</a></li>
                                  <li><a class="header-active" href="/datebook">Datebook</a></li>
                   <li>
-				          	<a id="note_on" class="dropdown-toggle" data-toggle="dropdown"  href=""><b>1</b></a>
-                      <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
-                        <div style="max-height: 21em; overflow-y: auto;" class="note_box">
-			                            
-                        <div class="alert alert-pink">
-                          <button type="button" class="close" data-dismiss="alert">&times;</button>
-                          Your Notifications will show up in here in <b>RED</b> if you have outgoing event invitations. 
-                          </div>
-
-
-                            <div class="breakline_note" id="301invl"></div>
-				
-        <div class="roundedbox" id="301inv">
-          <div class="imagebox" >
-						<img src="/images/gnome_stock_person.png" width="37"><br>                                </div>
-							<div class="note" id="301invn">four one has invited you to join gathering( <a href="/datebook?idinvite=301">
-								Kenneth Brown Reservoir Dam </a>)<br>
-								<a href="/invitation/accept?idinvite=301">Accept</a> | 
-								    <a href="javascript:void(0);" onclick="invitedecline(301)">Decline</a>
-						        </div>
-											</div>
-                            </div>                                    
-                        </ul>
+				<a id="note_off" class="dropdown-toggle" data-toggle="dropdown"  href="">&nbsp;</a>
 				                  </li>
                               </ul>
                               <div class="dropdown">
-               		              <form style="color:white;" class="navbar-form pull-right">Hello &nbsp
+               		              <form style="color:white;" class="navbar-form pull-right">Hello &nbsp;
                 <a class="dropdown-toggle " type="button" data-toggle="dropdown" href="#">one one</a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                       <!-- <li><a href="logOut.html">Settings</a></li> -->                    
+                      <li style="text-align: center"><a href="/preferences/changepasswd">Change Password</a></li>          
                       <li style="text-align: center"><a href="/user/logout">Log Out</a></li>          
                   </ul>
               </form>
@@ -133,7 +112,19 @@ function invitedecline(idinvite)
         </div>
       </div><script type="text/javascript">
 
-window.friends = {"7":{"name":"eight","email":"8@1.com"},"4":{"name":"five","email":"5@1.com"},"3":{"name":"four","email":"4@1.com"},"8":{"name":"nine","email":"9@1.com"},"2":{"name":"one","email":"1@1.com"},"6":{"name":"seven","email":"7@1.com"},"5":{"name":"six","email":"6@1.com"},"1":{"name":"three","email":"3@1.com"},"0":{"name":"two","email":"2@1.com"}};
+window.friends = {"0":{"name":"four one","email":"4@1.com"},"2":{"name":"nine","email":"9@1.com"},"1":{"name":"nine one","email":"9@1.com"}};
+var tmphash = new Object();
+
+$.each(window.friends, function(key, value){
+	if(value.id)
+	{
+		tmphash[value.id]=value.name;
+	}else{
+		tmphash[value.email]=value.name;
+	}
+});
+window.friendshash=tmphash;
+
 $(document).ready(function() {
 	
 	var date = new Date();
@@ -165,91 +156,31 @@ $(document).ready(function() {
 		unselectAuto: true,
 		events: [{
 title: '',
-hidden: 'Chinese New Year Celebration',
-hiddenactivity: '296',
-hiddentime: '09:30 AM',
-start: new Date(2013, 1, 6, 9, 30),
-end: new Date(2013, 1, 6, 14, 30),
-color: '#00abdc',
-allDay: false
-},
-{
-title: '',
-hidden: 'Greenbelt Tree Tots',
-hiddenactivity: '297',
-hiddentime: '09:45 AM',
-start: new Date(2013, 1, 6, 9, 45),
-end: new Date(2013, 1, 6, 10, 30),
-color: '#00abdc',
-allDay: false
-},
-{
-title: '',
-hidden: 'Greenbelt Tree Tots',
-hiddenactivity: '284',
-hiddentime: '09:45 AM',
-start: new Date(2013, 1, 6, 9, 45),
-end: new Date(2013, 1, 6, 10, 30),
-color: '#00abdc',
-allDay: false
-},
-{
-title: '',
-hidden: 'GRAND MORELOS DINER & BAKERY',
-hiddenactivity: '267',
+hidden: 'TESTING',
+hiddenactivity: '318',
 hiddentime: '12:00 AM',
-start: new Date(2013, 1, 13, 0, 0),
-end: new Date(2013, 1, 13, 0, 0),
+start: new Date(2013, 1, 26, 0, 0),
+end: new Date(2013, 1, 26, 0, 0),
 color: '#00abdc',
 allDay: false
 },
 {
 title: '',
-hidden: 'GRAND MORELOS DINER & BAKERY',
-hiddenactivity: '267',
+hidden: 'dfasf',
+hiddenactivity: '317',
 hiddentime: '12:00 AM',
-start: new Date(2013, 1, 13, 0, 0),
-end: new Date(2013, 1, 13, 0, 0),
+start: new Date(2013, 1, 27, 0, 0),
+end: new Date(2013, 1, 27, 0, 0),
 color: '#00abdc',
 allDay: false
 },
 {
 title: '',
-hidden: 'Valentines day',
-hiddenactivity: '300',
+hidden: 'testing2',
+hiddenactivity: '319',
 hiddentime: '12:00 AM',
-start: new Date(2013, 1, 14, 0, 0),
-end: new Date(2013, 1, 14, 0, 0),
-color: '#00abdc',
-allDay: false
-},
-{
-title: '',
-hidden: 'Valentines day3',
-hiddenactivity: '301',
-hiddentime: '12:00 AM',
-start: new Date(2013, 1, 14, 0, 0),
-end: new Date(2013, 1, 14, 0, 0),
-color: '#00abdc',
-allDay: false
-},
-{
-title: '',
-hidden: 'valentines',
-hiddenactivity: '299',
-hiddentime: '11:19 PM',
-start: new Date(2013, 1, 14, 23, 19),
-end: new Date(2013, 1, 14, 0, 0),
-color: '#00abdc',
-allDay: false
-},
-{
-title: '',
-hidden: 'valentines',
-hiddenactivity: '299',
-hiddentime: '11:19 PM',
-start: new Date(2013, 1, 14, 23, 19),
-end: new Date(2013, 1, 14, 0, 0),
+start: new Date(2013, 2, 28, 0, 0),
+end: new Date(2013, 2, 28, 0, 0),
 color: '#00abdc',
 allDay: false
 }
@@ -285,7 +216,9 @@ Underscore is stripping out img's for select options for some reason.
             <h3><%= event.summary %></h3>
             <dl class="dl-horizontal">
               <dt>Location:</dt>
-              <dd><%= event.location %>, <%= event.city %>, <%= event.state %></dd>
+              <dd><% if(event.location){ print(event.location+"<br> "); }  %> 
+					<% if(event.city){ print(event.city+", "); } %> 
+					<%= event.state %>&nbsp;</dd>
               <dt>Date:</dt>
               <dd><%= event.startdate %></dd>
               <dt>Time:</dt>
@@ -357,7 +290,8 @@ Underscore is stripping out img's for select options for some reason.
             <dl class="dl-horizontal">
               <dt>Location:</dt>
               <dd><% if(event.location){ print(event.location+"<br> "); }  %> 
-<% if(event.city){ print(event.city+", "); } %> <%= event.state %></dd>
+					<% if(event.city){ print(event.city+", "); } %> 
+					<%= event.state %>&nbsp;</dd>
               <dt>Date:</dt>
               <dd><%= event.startdate %></dd>
               <dt>Time:</dt>
@@ -367,11 +301,15 @@ Underscore is stripping out img's for select options for some reason.
             <p>
 <% if(event.description){ 
 	print(event.description+"<br><br>"); 
-event.description=event.description.replace(/'/g, "&#x27;");
-event.summary=event.summary.replace(/'/g, "&#x27;");
-}else{ print("&nbsp;"); } %>
+}else{ print("&nbsp;"); }
+/*event.description=event.description.replace(/'/g, "&#x27;");
+event.summary=event.summary.replace(/'/g, "&#x27;");*/ 
+var eventstr = JSON.stringify(event);
+eventstr = eventstr.replace(/'/g, "&#x27;");
+
+%>
 <% if(event.iduser==iduser){ %>
-<a href="javascript:void(0);" onclick='opencreateevent(<%=JSON.stringify(event)%>,1)' class="pull-right"> Edit<img src="/images/gtk-edit.png" ></a><br>
+<a href="javascript:void(0);" onclick='opencreateevent(<%=eventstr%>,1)' class="pull-right"> Edit<img src="/images/gtk-edit.png" ></a><br>
 <% } %>
 </p>        
           </div>
@@ -410,7 +348,7 @@ event.summary=event.summary.replace(/'/g, "&#x27;");
 				<div>
 				<% if(one.screenname){ 		%>
                     <img id="<%=one.iduser%>" rel="tooltip" data-placement="left" data-original-title="<%=one.firstname%> <%=one.lastname%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.screenname %>/picture" alt="thumbnail"> 
-      			<%  }else if(one.oauth_uid) { %> 
+      			<%  }else if(one.oauth_uid) { %>
                     <img id="<%=one.iduser%>" rel="tooltip" data-placement="left" data-original-title="<%=one.firstname%> <%=one.lastname%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail"> 
       			<%  }else { %> 
                     <img id="<%=one.iduser%>" rel="tooltip" data-placement="left" data-original-title="<%=one.firstname%> <%=one.lastname%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="/images/gnome_stock_person.png" alt="thumbnail"> 
@@ -424,7 +362,7 @@ event.summary=event.summary.replace(/'/g, "&#x27;");
 			<% _.each(invited, function(one) { %>
 				<div>
       			<%  if(one.oauth_uid) { %> 
-                    <img id="<%=one.idinvite%>invite" rel="tooltip" data-placement="left" data-original-title="<%=one.name%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail"> 
+                    <img id="<%=one.idinvite%>invite" rel="tooltip" data-placement="left" data-original-title="<%=friendshash[one.oauth_uid]%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail">
       			<%  }else { %> 
                     <img id="<%=one.idinvite%>invite" rel="tooltip" data-placement="left" data-original-title="<%=one.name%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="/images/gnome_stock_person.png" alt="thumbnail"> 
 				<%  } %>
@@ -457,13 +395,17 @@ event.summary=event.summary.replace(/'/g, "&#x27;");
 			<% _.each(bookmarks, function(one) { %>
 				<%   // Used for modal events creation. 
 				one.summary=one.destname;
+//				one.summary=one.destname.replace(/'/g, "&#x27;");
+//				one.destname=one.destname.replace(/'/g, "&#x27;");
 				one.city=one.county;
 				var onejson = JSON.stringify(one);
+				onejson=onejson.replace(/'/g, "&#x27;");
 				%>
                           <div class="eventbox"  id="<%=one.id%>pop" >
 <button type="button" class="close" onclick='deletebookmarks("<%=one.bookmarktype%>","<%=one.id%>")'>&times;</button>
-<a href="javascript:void(0);" onclick='opencreateevent(<%=onejson%>,1)' class="pull-right"> <img src="/images/gtk-save.png" width="19"></a>
-							<a href="javascript:void(0);" onclick='opencreateevent(<%=onejson%>,1)'><%=one.destname%></a><br>
+<a href="javascript:void(0);" onclick='opencreateevent(<%=onejson%>,1)'> <img src="/images/gtk-datebook.png" class="pull-right" width="25">
+</a>
+<a href="javascript:void(0);" onclick='opencreateevent(<%=onejson%>,1)'><%=one.destname%></a><br>
 							<% if(one.startdate){ 		%>
                             	<%=one.startdate%> <br>
 							<%  } %>
@@ -490,27 +432,26 @@ event.summary=event.summary.replace(/'/g, "&#x27;");
               <input class="squareCorners" type="text" placeholder="Event Date" name="startdate" value="<%=activity.startdate%>" id="datepicker3" style="width:516px;">             
               <input class="squareCorners" type="text" placeholder="Start Time (Optional)" name="starttime" value="<%=activity.starttime_f%>" id="timepicker3">
               <input class="squareCorners" type="text" placeholder="End Time (Optional)" name="endtime" value="<%=activity.endtime%>" id="timepicker2">
-      <div class="breakline_msg" style="margin:10px 0px 20px"></div>            		
-        
-        <div class="invitebox">  
-          <img class="note_tip" title="Your friends will receive an invitation via Facebook Notification" style="float:left;" src="/images/facebook_3d.png" alt="">  
+              <textarea  style=" width: 516px; border-radius: 0px;" rows="4"  id="description" type="text" placeholder="Details (Optional)"><%=activity.description%></textarea>
 
-          <img class="note_tip" title="Your friends will receive an invitation via Email" style="float:left;margin-right:10px;" src="/images/email_3d.png" alt="">
+              <div class="breakline_msg" style="margin:10px 0px 20px"></div>
 
-          <select data-placeholder="+ Invite to this event" class="chzn-select" multiple name="friendadd" id="friendadd"  style="width:300px; margin-left:10px; font-family:ubuntu;">
-  			            	    <option value="eight|8@1.com"> eight</option> 		
-        					            	    <option value="five|5@1.com"> five</option> 		
-        					            	    <option value="four|4@1.com"> four</option> 		
-        					            	    <option value="nine|9@1.com"> nine</option> 		
-        					            	    <option value="one|1@1.com"> one</option> 		
-        					            	    <option value="seven|7@1.com"> seven</option> 		
-        					            	    <option value="six|6@1.com"> six</option> 		
-        					            	    <option value="three|3@1.com"> three</option> 		
-        					            	    <option value="two|2@1.com"> two</option> 		
-        	</select><br>
-          <a id="add_button" data-target="#add_emailModal" style="cursor:pointer;" data-toggle="modal">Add Email</a>
-        </div>        
-              <textarea  style=" width: 516px; border-radius: 0px;" rows="4"  id="description" type="text" placeholder="Details"><%=activity.description%></textarea>
+              <div class="invitebox">  
+                        <img class="note_tip" title="Your friends will receive an invitation via Facebook Notification" style="float:left;" src="/images/facebook_3d.png" alt="">  
+
+                        <img class="note_tip" title="Your friends will receive an invitation via Email" style="float:left;margin-right:10px;" src="/images/email_3d.png" alt="">
+                        
+                        <p style="float:left;padding-top:7px;">Invite your friends using Facebook or Email</p>
+
+                        <a id="add_button" data-target="#add_emailModal" style="cursor:pointer;" data-toggle="modal">Add Email</a>
+              </div>
+
+        <select data-placeholder="+ Invite to this event" class="chzn-select" multiple name="friendadd" id="friendadd"  style="width:516px; margin-left:10px; font-family:ubuntu;">
+              <option value="four one|4@1.com"> four one</option>     
+              <option value="nine|9@1.com"> nine</option>     
+              <option value="nine one|9@1.com"> nine one</option>     
+        </select><br>
+
 		<input type="hidden" class="idbusiness" name="idbusiness" value="<%=activity.idbusiness%>">
 		<input type="hidden" class="idplace" name="idplace" value="<%=activity.idplace%>">
 		<input type="hidden" class="idactivity" name="idactivity" value="<%=activity.idactivity%>">
@@ -526,51 +467,27 @@ event.summary=event.summary.replace(/'/g, "&#x27;");
 
     <div id="emailModal" >
       <div class="modal-header">
-        <h4 style="text-align:center;">Add Email</h4>
+        <h4 style="text-align:center;">Add Friend Via Email</h4>
           <div class="breakline"></div>
       </div>
 <div id="emailerrormsg"></div>
       <div class="modal-body">
           <input class="squareCorners" type="text" id="emailfullname" value="" placeholder="Add Name"><span id='erremailname'></span>
           <input class="squareCorners" type="text" id="emailaddress" value="" placeholder="Add Email"><span id='erremailaddress'></span>
-          <button style="padding:4px 35px 4px 35px;" class="btn btn-blue" onclick="addemail()">Add Email</button>  
+          <button style="padding:4px 35px 4px 35px;" class="btn btn-blue" onclick="addemail()">Add Friend</button>  
           <button id="done_button" style="float:right;" class="btn btn-blue">Done</button>   
         <div class="friends_module">
 			          <div class=" alert Friends">
-            <button type="button" class="close" data-dismiss="alert" onclick='removeemail("8@1.com")'>&times;</button>
-            <p>eight<br>8@1.com</p>
-          </div>
-      		          <div class=" alert Friends">
-            <button type="button" class="close" data-dismiss="alert" onclick='removeemail("5@1.com")'>&times;</button>
-            <p>five<br>5@1.com</p>
-          </div>
-      		          <div class=" alert Friends">
             <button type="button" class="close" data-dismiss="alert" onclick='removeemail("4@1.com")'>&times;</button>
-            <p>four<br>4@1.com</p>
+            <p>four one<br>4@1.com</p>
           </div>
       		          <div class=" alert Friends">
             <button type="button" class="close" data-dismiss="alert" onclick='removeemail("9@1.com")'>&times;</button>
             <p>nine<br>9@1.com</p>
           </div>
       		          <div class=" alert Friends">
-            <button type="button" class="close" data-dismiss="alert" onclick='removeemail("1@1.com")'>&times;</button>
-            <p>one<br>1@1.com</p>
-          </div>
-      		          <div class=" alert Friends">
-            <button type="button" class="close" data-dismiss="alert" onclick='removeemail("7@1.com")'>&times;</button>
-            <p>seven<br>7@1.com</p>
-          </div>
-      		          <div class=" alert Friends">
-            <button type="button" class="close" data-dismiss="alert" onclick='removeemail("6@1.com")'>&times;</button>
-            <p>six<br>6@1.com</p>
-          </div>
-      		          <div class=" alert Friends">
-            <button type="button" class="close" data-dismiss="alert" onclick='removeemail("3@1.com")'>&times;</button>
-            <p>three<br>3@1.com</p>
-          </div>
-      		          <div class=" alert Friends">
-            <button type="button" class="close" data-dismiss="alert" onclick='removeemail("2@1.com")'>&times;</button>
-            <p>two<br>2@1.com</p>
+            <button type="button" class="close" data-dismiss="alert" onclick='removeemail("9@1.com")'>&times;</button>
+            <p>nine one<br>9@1.com</p>
           </div>
       		 
         </div>
@@ -588,7 +505,7 @@ event.summary=event.summary.replace(/'/g, "&#x27;");
       <div class="row">
         <div class="datebook span4">
 <!-- <input type="button" value="Create personal event" id="createevent" onclick="createpersonaleventform('/activity/createactivity')" > -->	
-        <button style="width:70%;float:left;" href="#CreateEvent" data-toggle="modal" role="button" class="btn btn-large btn-blue" type="submit" class="btn">Create Event!
+        <button style="width:70%;float:left;" href="javascript:void(0);" onclick='opencreateevent({},1)' data-toggle="modal" role="button" class="btn btn-large btn-blue" type="submit" class="btn">Create Event!
         </button>
         <button id="calendarButton" class="btn btn-large btn-blue" style="height: 100%;">&nbsp;
         </button>
@@ -613,184 +530,90 @@ event.summary=event.summary.replace(/'/g, "&#x27;");
 <li><a data-toggle="tab"  href="#bookmarkevents"  onclick="loadeventsbookmark('events')">Events</a></li>
 </ul>
 </li>
-          </ul>
+        </ul>
 
-<div class="tab-content">
+		<div class="tab-content">
             <div class="tab-pane active" id="home">
-<div class="customscroll">
-              <div class="EventListing">
-									<div class="eventbox">
+			<div class="customscroll">
+            <div class="EventListing">
+							<div class="eventbox">
                     <div class="event_datebox">
                       <div class="datewrap">
                       <span style="font-size:1.1em;line-height:1.35em;">Feb</span><br> 
-                      <span style="font-size:1.5em;">6</span><br> 
+                      <span style="font-size:1.5em;">26</span><br> 
+                      <span style="font-family:ubuntu;">TUE</span>
+                      </div>                      
+                    </div> 
+                    <div class="event_summary">
+                    			<a href="javascript:void(0);"
+										onclick="loadeventdetail(318)">
+									TESTING</a> 
+									<span id="id318"></span>									<br>
+										<br>
+									12:00 AM -
+									12:00 AM									</div>
+									</div>
+								<div class="eventbox">
+                    <div class="event_datebox">
+                      <div class="datewrap">
+                      <span style="font-size:1.1em;line-height:1.35em;">Feb</span><br> 
+                      <span style="font-size:1.5em;">27</span><br> 
                       <span style="font-family:ubuntu;">WED</span>
                       </div>                      
                     </div> 
-                                      
-  									<div class="event_summary">
-                      <a href="javascript:void(0);"
-    										onclick="loadeventdetail(296)">
-    									Chinese New Year Celebration</a> 
-    									<span id="id296"></span>									
-                      <br>
-    									Lost Battalion Hall Recreation Center 
-                    </div>
-                  </div>
-
-                  <div class="eventbox">
+                    <div class="event_summary">
+                    			<a href="javascript:void(0);"
+										onclick="loadeventdetail(317)">
+									dfasf</a> 
+									<span id="id317"></span>									<br>
+										<br>
+									12:00 AM -
+									12:00 AM									</div>
+									</div>
+								<div class="eventbox">
                     <div class="event_datebox">
                       <div class="datewrap">
-                      <span style="font-size:1.1em;line-height:1.35em;">Feb</span><br> 
-                      <span style="font-size:1.5em;">7</span><br> 
+                      <span style="font-size:1.1em;line-height:1.35em;">Mar</span><br> 
+                      <span style="font-size:1.5em;">28</span><br> 
                       <span style="font-family:ubuntu;">THU</span>
                       </div>                      
                     </div> 
-                                      
                     <div class="event_summary">
-                      <a href="javascript:void(0);"
-                        onclick="loadeventdetail(296)">
-                      Greenbelt Tree Tots</a> 
-                      <span id="id296"></span>                  
-                      <br>
-                      Greenbelt Nature Center (in Blood Root Valley)
-                    </div>
-                  </div>  
-                  
-                  <div class="eventbox">
-                    <div class="event_datebox">
-                      <div class="datewrap">
-                      <span style="font-size:1.1em;line-height:1.35em;">Feb</span><br> 
-                      <span style="font-size:1.5em;">6</span><br> 
-                      <span style="font-family:ubuntu;">WED</span>
-                      </div>                      
-                    </div> 
-                                      
-                    <div class="event_summary">
-                      <a href="javascript:void(0);"
-                        onclick="loadeventdetail(296)">
-                      Chinese New Year Celebration</a> 
-                      <span id="id296"></span>                  
-                      <br>
-                      Lost Battalion Hall Recreation Center 
-                    </div>
-                  </div>    
-
-                  <div class="eventbox">
-                    <div class="event_datebox">
-                      <div class="datewrap">
-                      <span style="font-size:1.1em;line-height:1.35em;">Feb</span><br> 
-                      <span style="font-size:1.5em;">10</span><br> 
-                      <span style="font-family:ubuntu;">SAT</span>
-                      </div>                      
-                    </div> 
-                                      
-                    <div class="event_summary">
-                      <a href="javascript:void(0);"
-                        onclick="loadeventdetail(296)">
-                      Greenbelt Tree Tots</a> 
-                      <span id="id296"></span>                  
-                      <br>
-                      Greenbelt Nature Center (in Blood Root Valley)
-                    </div>
-                  </div>  
-
-                  <div class="eventbox">
-                    <div class="event_datebox">
-                      <div class="datewrap">
-                      <span style="font-size:1.1em;line-height:1.35em;">Feb</span><br> 
-                      <span style="font-size:1.5em;">11</span><br> 
-                      <span style="font-family:ubuntu;">SUN</span>
-                      </div>                      
-                    </div> 
-                                      
-                    <div class="event_summary">
-                      <a href="javascript:void(0);"
-                        onclick="loadeventdetail(296)">
-                      Chinese New Year Celebration</a> 
-                      <span id="id296"></span>                  
-                      <br>
-                      Lost Battalion Hall Recreation Center 
-                    </div>
-                  </div>                  
-
-                  <div class="eventbox">
-									<a href="javascript:void(0);"
-										onclick="loadeventdetail(297)">
-									Greenbelt Tree Tots</a> 
-									<span id="id297"></span>									<br>
-									Wednesday February 6, 2013	<br>
-									Greenbelt Nature Center (in Blood Root Valley)									</div>
-																<div class="eventbox">
-									<a href="javascript:void(0);"
-										onclick="loadeventdetail(284)">
-									Greenbelt Tree Tots</a> 
-									<span id="id284"></span>									<br>
-									Wednesday February 6, 2013	<br>
-									Greenbelt Nature Center (in Blood Root Valley)									</div>
-																<div class="eventbox">
-									<a href="javascript:void(0);"
-										onclick="loadeventdetail(267)">
-									GRAND MORELOS DINER & BAKERY</a> 
-									<span id="id267"></span>									<br>
-									Wednesday February 13, 2013	<br>
-									727 GRAND STREET									</div>
-																<div class="eventbox">
-									<a href="javascript:void(0);"
-										onclick="loadeventdetail(267)">
-									GRAND MORELOS DINER & BAKERY</a> 
-									<span id="id267"></span>									<br>
-									Wednesday February 13, 2013	<br>
-									727 GRAND STREET									</div>
-																<div class="eventbox">
-									<a href="javascript:void(0);"
-										onclick="loadeventdetail(300)">
-									Valentines day</a> 
-									<span id="id300"></span>									<br>
-									Thursday February 14, 2013	<br>
-																		</div>
-																<div class="eventbox">
-									<a href="javascript:void(0);"
-										onclick="loadeventdetail(301)">
-									Valentines day3</a> 
-									<span id="id301"></span>									<br>
-									Thursday February 14, 2013	<br>
-																		</div>
-																<div class="eventbox">
-									<a href="javascript:void(0);"
-										onclick="loadeventdetail(299)">
-									valentines</a> 
-									<span id="id299"></span>									<br>
-									Thursday February 14, 2013	<br>
-									love bost									</div>
-																<div class="eventbox">
-									<a href="javascript:void(0);"
-										onclick="loadeventdetail(299)">
-									valentines</a> 
-									<span id="id299"></span>									<br>
-									Thursday February 14, 2013	<br>
-									love bost									</div>
-													
+                    			<a href="javascript:void(0);"
+										onclick="loadeventdetail(319)">
+									testing2</a> 
+									<span id="id319"></span>									<br>
+										<br>
+									12:00 AM -
+									12:00 AM									</div>
+									</div>
+										
 </div>
               </div>
             </div>
         <div class="tab-pane" id="bookmarkplace">
         <div class="BookmarkTitles">Bookmarked Places</div>
+			<div class="customscroll">
             <div class="yourBookmarks">
             Processing....
+            </div>   
             </div>   
           </div>
         <div class="tab-pane" id="bookmarkbusiness">
         <div class="BookmarkTitles">Bookmarked Dining</div>
+			<div class="customscroll">
             <div class="yourBookmarks">
             Processing....
+            </div>   
             </div>   
           </div>
         <div class="tab-pane" id="bookmarkevents">
         <div  class="BookmarkTitles">Bookmarked Events</div>
+			<div class="customscroll">
             <div class="yourBookmarks">
             Processing....
             </div>   
+          </div>
           </div>
         </div>        
 
@@ -834,7 +657,7 @@ Processing...</span>
     <p>  
       <a href="/about/termsofuse">Terms of Use</a>  |  
       <a href="/about/privacy">Privacy Policy</a> | 
-      <a href="/about/contactus">Contact Us</a>
+      <a href="/about/contactusform">Contact Us</a>
     </p>  
   </div>  
 
@@ -844,71 +667,46 @@ Processing...</span>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
         <h2 id="myModalLabel">Register with GatheringUP!</h2>
         
-              <div class="facebookbg">
-              <a href="" class="facebookurl" ><h3>
-        <img style="padding-right: 15px;"src="/images/facebook.png" alt="facebook">REGISTER WITH FACEBOOK</h3>
-        </a>
-        </div>
-        <div class="breakline"></div>
+<div style="width: 400px;" class="breakline"></div> 
       </div>
       <div id="RegistrationErrors"></div>
-        <div class="modal-body">
             <form  id="registerform" action="#" class="form-horizontal">
-              <div class="control-group">
-                <label class="control-label" for="inputFirstName">First Name</label>
-                <div class="controls">
-                  <input type="text" name="firstname" id="firstname" class="squareCorners" placeholder="First Name">
+              <div>
+                  <input type="text" name="firstname" id="firstname" class="form-large" placeholder="First Name" tabindex="41">
                   <b id="errfirstname"></b>
-                </div>
               </div>
-              <div class="control-group">
-                <label class="control-label" for="inputEmail">Last Name</label>
-                <div class="controls">
-                  <input type="text" name="lastname" id="lastname" class="squareCorners" placeholder="Last Name">
+              <div>
+                  <input type="text" name="lastname" id="lastname" class="form-large" placeholder="Last Name" tabindex="42">
                 <b id="errlastname"></b>
-                </div>
               </div>        
-                  <div class="control-group">
-                <label class="control-label" for="inputEmail">Email</label>
-                <div class="controls">
-                  <input type="text" name="email" id="regemail" class="squareCorners" placeholder="Email">
+                  <div>
+                  <input type="text" name="email" id="regemail" class="form-large" placeholder="Email" tabindex="43">
                   <b id="erremail"></b>
-                </div>
               </div>
-              <div class="control-group">
-                <label class="control-label" for="inputPassword">Create Password</label>
-                              <p class="helper">*At least one number & one capital letter</p> 
-                <div class="controls">
-                  <input type="password" name="password" id="regpassword" class="squareCorners" placeholder="Min 8 Characters">
+              <div>
+                  <input type="password" name="password" id="regpassword" class="form-large"  title="Must contain one number & 8 characters"  placeholder="Create Password" style="width:190px;float:left;" tabindex="44">
 <b id="errpassword"></b>
-                </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label" for="inputConfirmPassword">Confirm Password</label>
-                <div class="controls">
-                  <input type="password" name="passwordconf" id="regpasswordconf" class="squareCorners" placeholder="Confirm Password">
+                  <input type="password" name="passwordconf" id="regpasswordconf" class="form-large" placeholder="Re-type Password"  style="margin-left:20px; width:190px;float:left;"  tabindex="45">
 <b id="errpasswordconf"></b>
-                </div>
               </div>     
-              <div class="control-group">
-                <div class="controls">
-                  <div id="captcha"><img src="/captcha"></div>
-                </div>
-              </div>   
-              <div class="control-group">
-                <label class="control-label" for="inputConfirmPassword">Enter Above</label>
-                <div class="controls">
-                  <input type="password" name="norobotcode" id="robotdistorter" class="squareCorners" placeholder="Enter Above">
+               <div style="clear:both;" class="breakline"></div>  
+                  <div  style="float:left;margin-top: 3px;width:192px;" id="captcha"><img src="/captcha"></div>
+                  <div>
+                  <input type="password" name="norobotcode" id="robotdistorter" class="form-large" style="margin-left:20px; width:190px;float:left;"  placeholder="Enter Captcha"  tabindex="46">
                   <b id="errrobotdistorter"></b>
-                </div>
               </div>
-              <div class="control-group">
-                <div class="controls">
-                  <button type="button" value="Sign me up" class="btn btn-blue btn-large" onclick="register()">Register</button>
-                </div>
+               <div style="clear:both;" class="breakline"></div>  
+              <div>
+                  <button type="button" value="Sign me up" class="btn btn-blue btn-large"  style="width:405px;"  onclick="register()"  tabindex="47">Register</button>
               </div>
-            </form>
+            <img src="/images/divider.png" style="margin-bottom:10px;margin-top: 14px;" alt=""> 
+        <div class="facebookbg" >
+              <a href="" class="facebookurl" >
+        <img style="padding-right: 15px;" src="/images/facebook.png" alt="facebook">Sign In with Facebook
+        </a>
         </div>
+            </form>
+            
     </div>   
 
     <!--Sign Up Modal-->
@@ -919,7 +717,7 @@ Processing...</span>
       </div>
         <div class="breakline"></div>       
         <div class="modal-body">
-          <p >Don't have an account? &nbsp<a href="javascript:void(0);" onclick="registerpopup('')">Register Here!</a></p>
+          <p >Don't have an account? &nbsp;<a href="javascript:void(0);" onclick="registerpopup('')">Register Here!</a></p>
             <form  id="loginform" action="javascript:void(0);" class="form-horizontal">
             
             		<input type="hidden" id="redirect" name="redirect" value="">
@@ -942,27 +740,41 @@ Processing...</span>
                     <input id="poploginpasswd" name="password" style="width:256px;" type="password" class="squareCorners" placeholder="Password">
                 </div>
                 <div class="SignInField_m">
-                    <a style="cursor:pointer;" data-target="#forgotModal" data-toggle="modal">Forgot Your Password?</a>
+                    <a style="cursor:pointer;" data-toggle="modal" onclick="logintoforget()">Forgot Your Password?</a>
 <!--                     <label class="checkbox">
                     <input type="checkbox">Remember me
                     </label>   -->
-                        <button type="button"  onclick="login()" class="btn btn-blue btn-large" style="font-weight:bold;width:100%;margin-top:10px;">Sign In!</button>
+                        <button  onclick="login()" class="btn btn-blue btn-large" type="submit" style="font-weight:bold;width:100%;margin-top:10px;">Sign In!</button>
                       </div>
                   </form> 
                </div>
             </div> 
 
 <!--Forgot Password Modal-->
-    <div id="forgotModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="forgotModal" class="modal hide fade"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>        
         <h2 id="myModalLabel">Forgot Password</h2>
       </div>
       <div class="breakline"></div>
+      <form  id="forgotpasswordform" action="javascript:void(0);" class="form-horizontal">
       <div style="padding: 0px 35px 32px;" class="modal-body">
-        <h4>Enter you email address below to reset your password</h4>
-        <input style="padding-right:71px;" class="form-large" type="text" placeholder="Email Address">
-        <button style="padding:15px 33px 15px 33px;" type="submit" class="btn btn-blue btn-large">Reset Your Password!</button>
+        <h4>Enter your email address below to reset your password</h4>
+        <input class="form-large" type="text" id="forgotemail" placeholder="Email Address" value="">
+        <button style="padding:15px 33px 15px 33px; width: 100%;" type="submit" class="btn btn-blue btn-large" onclick="forgotpassword()">Reset Your Password!</button>
+      </div>
+      </form>
+    </div>    
+    
+<!-- Announcements Modal-->
+    <div id="announcementModal" class="modal hide fade"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>        
+        <h2 id="announcementLabel">Notification</h2>
+      </div>
+      <div class="breakline"></div>
+      <div style="padding: 0px 35px 32px;" class="modal-body">
+        <h4>Enter your email address below to reset your password</h4>
       </div>
     </div>    
 
@@ -971,7 +783,6 @@ Processing...</span>
 <!-- Placed at the end of the document so the pages load faster -->
 <!--     <script src="js/jquery.js"></script> -->
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/bootstrap-tooltip.js"></script>
 <!--     <script src="/js/bootstrap-transition.js"></script>
     <script src="/js/bootstrap-alert.js"></script>
     <script src="/js/bootstrap-modal.js"></script>
@@ -987,22 +798,11 @@ Processing...</span>
  -->
 <!--Carousel Javascript-->    
     <script type="text/javascript"> 
-	$('.dropdown-toggle ul.dropdown-menu form.form-horizontal, div.SignInField').click(function(e) {
-		e.stopPropagation();
-	});
+
     
       $('.carousel').carousel({
         interval: 5000
       });
     </script>
-
-<!--Tooltip in Create Events Javascript-->    
-
-    <script>
-      $(document).ready(function() {
-          $(".note_tip").tooltip();              
-      });
-   </script>
-
   </body>
 </html>

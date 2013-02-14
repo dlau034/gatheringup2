@@ -4,16 +4,12 @@
 	font-size: 1.2em;
 	position: relative;
 	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-bottom: 15px;
   display: inline-block;
   zoom: 1;
   *display: inline;
 }
 
-.box_style {
-
-
-}
 
 .chzn-container .chzn-drop {
   background: #fff;
