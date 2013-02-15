@@ -65,7 +65,7 @@ textarea {
 }
 
 .nav > li > a:hover { 
-  background-color: #999;
+  background-color: #00ABDC;
 }
 
 .nav-pills > .active > a, .nav-pills > .active > a:hover {
@@ -98,7 +98,9 @@ textarea {
 .btn_go {
   background-color: white;
   color: #00abdc;
+  border-style: none;
   font-size: 0.9em;
+  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
   padding: 10px 57px 12px 13px;
   background-image: url("/images/go_blue.png");
   background-repeat: no-repeat;
@@ -127,7 +129,7 @@ textarea {
 }
 
 
-.home_select {
+#home_select {
   -webkit-appearance: none;
   border: 0 none;
   border-radius: 0 0 0 0;
@@ -139,7 +141,7 @@ textarea {
   padding: 10px 15px 10px 15px;
 }
 
-.home_select:focus { 
+#home_select:focus { 
   /*background-color: red;*/
   outline: none;
 }
@@ -1036,7 +1038,7 @@ html, body {
   }
 }*/
 
-@media (max-height:649px) {
+@media (max-height:700px) {
   .carousel {
      margin-top: -40px;
   }
@@ -1269,8 +1271,6 @@ margin-left: 25px;
         margin-left: 20px;
 }
 
-}
-
 .choose_file {
   height: 30px;
   width: 100px;
@@ -1435,12 +1435,6 @@ div.ui-datepicker-header {
 /*  text-align: center;
   width: 95%;*/
 }
-#Your_bookmark{
-  color: #FFFFFF;
-  border-radius: 0px;
-/*  text-align: center;
-  width: 95%;*/
-}
 .pill_width {
   padding:0px;
   margin:0px;
@@ -1484,6 +1478,7 @@ background-color: #4D4D4D;
 }
 
 
+
 .fc-border-separate {
   background-color: white;
 }
@@ -1502,13 +1497,6 @@ background-color: #4D4D4D;
   margin-left: -160px;
   background-color: #f9f9f9;
 }
-
-/*Responsive Override
-
-  .offset1 {
-    /*margin-left: 130px;*/
-    margin-left: 80px;
-  }
 
 
 .dl-horizontal dd {
@@ -1561,6 +1549,11 @@ background-color: #4D4D4D;
   margin-left: 10px;
 }
 
+#note_on{
+  background-color: inherit;
+  
+}
+
 #note_off {
   background-image: url("/images/notification_off.png");
   background-repeat: no-repeat;
@@ -1568,6 +1561,7 @@ background-color: #4D4D4D;
   text-indent: -9px;
   margin-left: 10px;
 }
+
 #note_off:hover {
   background-color: inherit;
   cursor: default;
@@ -1723,4 +1717,7 @@ div#emailerrormsg {
   min-height: 72px;
 }
 
+.fb_featurette {
+  background-color: red;
+}
 

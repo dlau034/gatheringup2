@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
     <title>Gathering UP</title>
-	    <meta name="viewport" content="width=device-width, initial-scale=0.6">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -38,21 +38,20 @@
  
 <link rel="Stylesheet" type="text/css" href="/css/chosen.css" />
 
-<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="/js/jquery-ui-1.8.21.custom.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgWlD8brKo2WBwz8HkaWT5unU58aurUIk&sensor=true"  type="text/javascript"></script>
 
 <script type="text/javascript" src="/js/underscore-min.js"></script>
 <script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
-<!-- <script type="text/javascript" src="/js/jquery-ui-timepicker-addon.js"></script>
-<script type="text/javascript" src="/js/chosen.jquery.js"></script>
-<script type="text/javascript" src="/js/gatheringup-event.js"></script> -->
+<script type="text/javascript" src="/js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="/js/gatheringup-event.js"></script>
 <script type="text/javascript" src="/js/gatheringup-dining.js"></script>
 <script type="text/javascript" src="/js/gatheringup-registration.js"></script>
 
 </head>
 
-<body onload="initialize()">
+<body onload="initialize()" style="background-image: url(/images/bg_grey.jpg);">
   <div class="wrapper"> <!-- Wrapper -->       
 <!-- Header + Navbar -->
 
@@ -73,6 +72,7 @@ function invitedecline(idinvite)
 	}
 	$invites=$("#note_on>b").html($invites);
 }
+
 </script>
       <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="top-stripe"></div>
@@ -83,29 +83,44 @@ function invitedecline(idinvite)
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="/">Gathering UP</a>
+            <a class="brand" href="/index.html">GatheringUP</a>
               <div class="nav-collapse collapse">
                 <ul class="nav">
-                
-                  <li><a class="header-active" href="/Dining">Dining</a></li>
-                  <li><a  href="/Places">Places</a></li>
-                  <li><a  href="/Events">Events</a></li>
-                                 <li><a  href="/datebook">Datebook</a></li>
-                  <li>
-				<a id="note_off" class="dropdown-toggle" data-toggle="dropdown"  href="">&nbsp;</a>
-				                  </li>
+                  <li><a class="active" href="/Dining.html">Dining</a></li>
+                  <li><a href="/Places.html">Places</a></li>
+                  <li><a href="/Events.html">Events</a></li>
+                                 <li><a href="javascript:void(0);" onclick="loginpopup('/datebook')">Datebook</a></li>
+				<li><a id="note_off" class="dropdown-toggle" data-toggle="dropdown"  href="">&nbsp;</a></li>
                               </ul>
-                              <div class="dropdown">
-               		              <form style="color:white;" class="navbar-form pull-right">Hello &nbsp;
-                <a class="dropdown-toggle " type="button" data-toggle="dropdown" href="#">one one</a>
-                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                      <!-- <li><a href="logOut.html">Settings</a></li> -->                    
-                      <li style="text-align: center"><a href="/preferences/changepasswd">Change Password</a></li>          
-                      <li style="text-align: center"><a href="/user/logout">Log Out</a></li>          
-                  </ul>
+                             <form class="navbar-form pull-right form-horizontal"  id="loginsideform" action="javascript:void(0);" >
+                <a href="#myModal" type="button" class="btn-menu" data-toggle="modal">Register</a>
+                <a class="dropdown-toggle btn-menu" data-toggle="dropdown" href="javascript:void(0);">Sign In</a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <div id="SideDropLoginErrors"></div>
+                      <div class="SignInField">
+                      <div class="facebookbg">
+                        <a href="" class="facebookurl">
+                          <img style="height:30px;width:auto;padding-right:5px;"src="/images/facebook.png" alt="facebook">Sign In with Facebook
+                        </a>
+                        </div>
+                      </div>
+                      <li class="divider"></li>
+                      <div class="SignInField">
+                        <input id='droploginemail' name='email' type="text" class="squareCorners" placeholder="Email">
+                      </div>
+                      <div class="SignInField">
+                        <input id='droploginpassword' name='password' type="password" class="squareCorners" placeholder="Password">
+                      </div>
+                      <div class="SignInField">
+                        <a style="cursor:pointer;" data-target="#forgotModal" data-toggle="modal">Forgot Your Password?</a>
+                        <label class="checkbox">
+                          <input type="checkbox">Remember me
+                        </label>
+                        <button type="submit" class="btn btn-blue pull-right" style="font-weight:bold;" onclick="loginsidedrop()">Sign In!</button>
+                      </div>
+              
+                </ul>
               </form>
-              </div>
-               		
                              </div><!--/.nav-collapse -->
           </div>
         </div>
@@ -122,7 +137,6 @@ function invitedecline(idinvite)
 <img src="/images/food_placeholder.jpg">
 <%}%>
               </div> 
-<% if(item.count) {%><%=item.count+" ."%> <% } %>
               <b>
  <a href="javascript:void(0);" onclick="restaurantcenter(<%= item.latitude%>,<%= item.longitude%>)">
 <%= item.destname %></a>
@@ -136,40 +150,27 @@ Tel: <%= item.phone %><br>
             </div>
             <div class="actions">
 
-	<a href="javascript:void(0);" onclick="togglebusiness('<%= item.idbusiness%>')">
-<span id="<%= item.idbusiness%>">
-<% if(bookmarks[item.idbusiness]){ %>
-<img src="/images/gtk-bookmark-on.png">
-<% }else{ %>
-<img src="/images/gtk-bookmark.png">
-<% } %>
-</span>
-Bookmark</a>
-<a  style="padding-left:10px" href="/datebook?business=<%= item.idbusiness%>"> <img src="/images/gtk-datebook.png">Datebook</a>
-<img class="add_image_btn" src="/images/image_add_text.png" alt="">              
-<form action="#" class="choose_file"  id="<%= item.idbusiness%>Form" method="post" accept-charset="utf-8" enctype="multipart/form-data" >
-<input type="file" name="userfile" size="10" id="<%= item.idbusiness%>imagename" onchange="uploadimage(<%= item.idbusiness%>)" />
-</form>
+	<a href="javascript:void(0);" onclick="diningbookmarklogin('<%= item.idbusiness%>');"><img src="/images/gtk-bookmark.png">Bookmark</a>
+<a href="javascript:void(0);" onclick="loginpopup('/datebook?business=<%= item.idbusiness%>')"> <img src="/images/gtk-datebook.png">Datebook</a>
+<a href="javascript:void(0);" onclick="loginpopup('/dining')"><img class="add_image_btn" src="/images/image_add_text.png" alt=""></a>
 	            </div>   
           </div> 
 <%} %>
 </script>
 <script type="text/javascript">
 //var bookmarks={};
-var bookmarks = {"2238382":1,"2241935":1,"2235635":1,"2242211":1,"2242108":1,"2236370":1};
+var bookmarks = {};
 		
 </script>
 
 
 <!-- Sidemenu -->
       <div class="container"> <!-- Container -->
-        <div class="leftbox">
+        <div class="leftbox">  
               <h2>Food Search</h2>
               <div class="foodSearch">
               
-<form  method="post"  action="javascript:void(0);"  >
-<input type="text" name="search" class="SearchForm"  id="search" placeholder="Restaurant Search">
-
+<input name="search" class="SearchForm" id="search" placeholder="Restaurant Search" type="text">
 <select data-placeholder="Category" class="chzn-select" multiple  id="categoryraw" tabindex="1">
                 <option value="515">Afghan</option> 		
                 <option value="516">African</option> 		
@@ -325,7 +326,7 @@ var bookmarks = {"2238382":1,"2241935":1,"2235635":1,"2242211":1,"2242108":1,"22
                 <option value="613">Vietnamese</option> 		
                 <option value="258">Wineries</option> 		
 </select>
-<select data-placeholder="NYC neighborhood" class="chzn-select box_style" multiple id="neighborhoodraw" tabindex="2">
+<select data-placeholder="Neighborhood" class="chzn-select box_style" multiple   id="neighborhoodraw" tabindex="2">
                 <option value="11">Baychester, Bronx</option> 		
                 <option value="14">Bedford Park, Bronx</option> 		
                 <option value="35">Belmont, Bronx</option> 		
@@ -626,16 +627,14 @@ var bookmarks = {"2238382":1,"2241935":1,"2235635":1,"2242211":1,"2242108":1,"22
                 <option value="288">Willowbrook, Staten Island</option> 		
                 <option value="219">Woodrow, Staten Island</option> 		
 </select>
-<button type="submit" style="width:88%;" onclick="formSubmit(1)"  class="btn btn-large btn-blue btn-search"  class="btn" >Search
-</button>
-</form>
+<input type="button" style="width:88%;" onclick="formSubmit(1)"  class="btn btn-large btn-blue btn-search"  class="btn"  value="Search">
 <!-- <img src="/images/350_lightgrey.gif" id="ajaxSpinnerImage" title="working..." style="display: none; margin-bottom:0px; padding-bottom:0px"> -->
 
               </div>
               <div class="feelLuck">
-<form  method="post"  action="javascript:void(0);"  >
+                <form>
                   <fieldset>
-<select data-placeholder="NYC neighborhood" class="chzn-select" multiple style="width:90%;"  id="neighborhoodraw2" tabindex="3">
+<select data-placeholder="Choose a neighborhood" class="chzn-select" multiple style="width:90%;"  id="neighborhoodraw2" tabindex="2">
                 <option value="11">Baychester, Bronx</option> 		
                 <option value="14">Bedford Park, Bronx</option> 		
                 <option value="35">Belmont, Bronx</option> 		
@@ -936,7 +935,7 @@ var bookmarks = {"2238382":1,"2241935":1,"2235635":1,"2242211":1,"2242108":1,"22
                 <option value="288">Willowbrook, Staten Island</option> 		
                 <option value="219">Woodrow, Staten Island</option> 		
 </select>
-<input  type="button" class="btn btn-large btn-blue btn-search"  class="btn" onclick="randomrestaurant()" style="width:88%" value="I feel Lucky">
+<input type="button" class="btn btn-large btn-blue btn-search"  class="btn" onclick="randomrestaurant()" style="width:88%;margin-bottom:15px;" value="I feel Lucky">
 <!-- <img src="/images/350_lightgrey.gif" id="ajaxSpinnerImage2" title="working..." style="display: none; margin-bottom:0px; padding-bottom:0px"> -->
 
 <!--  <input class="SearchForm" type="text" placeholder="Neighbourhood">
@@ -944,47 +943,49 @@ var bookmarks = {"2238382":1,"2241935":1,"2235635":1,"2242211":1,"2242108":1,"22
                      -->
                   </fieldset>
                   </form>
-<a style="margin-top:10px;" href="http://www.nyc.gov/html/dcp/html/neighbor/neigh.shtml" target="_blank">NYC Neighborhood map</a><br>
-				</div>
-			</div>
+<a href="http://www.nyc.gov/html/dcp/html/neighbor/neigh.shtml" target="_blank">NYC Neighborhood Map</a><br>
+
+
+</div> 
+</div> 
+
+
+
+
+
+
 
         <div class="sideBar span5">
           <h2>What's Around Here?</h2>
- <div class="customscroll"> 
+      <div class="customscroll">          
+ 
       <div id="resultview" class="result_Box"> <!-- Result Box-->  
       <div id="businesssearchresults">
 
 
           <div class="boxwrap">
             <div class="solidbox"> 
-              <div class="thumbnail"  id="2236074output">
+              <div class="thumbnail"  id="2240709output">
               <img src="/images/food_placeholder.jpg">              </div> 
 <script type="text/javascript">
-document.write(window.searchcount+". ");
-setgmapmarker(40.62158500000000, -73.90518800000000, "IL POSTO");
+setgmapmarker(40.71128300000000, -73.94754600000000, "BUSHWICK COUNTRY CLUB");
 </script>
               <b>
-                  <a href="javascript:void(0);" onclick="restaurantcenter(40.62158500000000, -73.90518800000000)">
-IL POSTO</a>
+                  <a href="javascript:void(0);" onclick="restaurantcenter(40.71128300000000, -73.94754600000000)">
+BUSHWICK COUNTRY CLUB</a>
 </b>
 <br>
-7409 AVENUE U<br>
+618 GRAND STREET<br>
 BROOKLYN, NY<br>
-Tel: 7182414317<br>
+Tel: 7183882114<br>
 <p class="food_type">
-Italian</p>
+American (New)</p>
             </div>
             <div class="actions">
 
-	<a href="javascript:void(0);" onclick="togglebusiness('2236074')">
-<span id="2236074">
-<img src="/images/gtk-bookmark.png"></span>
-Bookmark</a>
-<a  style="padding-left:10px" href="/datebook?business=2236074"> <img src="/images/gtk-datebook.png">Datebook</a>
-<img class="add_image_btn" src="/images/image_add_text.png" alt="">              
-<form action="#" class="choose_file"  id="2236074Form" method="post" accept-charset="utf-8" enctype="multipart/form-data" >
-<input type="file" name="userfile" size="10" id="2236074imagename" onchange="uploadimage(2236074)" />
-</form>
+	<a href="javascript:void(0);" onclick="diningbookmarklogin('2240709');"><img src="/images/gtk-bookmark.png">Bookmark</a>
+<a href="javascript:void(0);" onclick="loginpopup('/datebook?business=2240709')"> <img style="padding-left:10px" src="/images/gtk-datebook.png">Datebook</a>
+<a href="javascript:void(0);" onclick="loginpopup('/dining')"><img class="add_image_btn" src="/images/image_add_text.png" alt=""></a>
 	            </div>   
           </div> 
 
@@ -992,34 +993,195 @@ Bookmark</a>
 
           <div class="boxwrap">
             <div class="solidbox"> 
-              <div class="thumbnail"  id="2237079output">
+              <div class="thumbnail"  id="2241173output">
               <img src="/images/food_placeholder.jpg">              </div> 
 <script type="text/javascript">
-document.write(window.searchcount+". ");
-setgmapmarker(40.62977100000000, -73.94400200000000, "DYNASTY");
+setgmapmarker(40.61169100000000, -74.13234300000000, "MEZCULEROS  MEXICAN RESTAURANT");
 </script>
               <b>
-                  <a href="javascript:void(0);" onclick="restaurantcenter(40.62977100000000, -73.94400200000000)">
-DYNASTY</a>
+                  <a href="javascript:void(0);" onclick="restaurantcenter(40.61169100000000, -74.13234300000000)">
+MEZCULEROS  MEXICAN RESTAURANT</a>
 </b>
 <br>
-1669 FLATBUSH AVENUE<br>
-BROOKLYN, NY<br>
-Tel: 7183386060<br>
+20 BRADLEY AVE<br>
+STATEN ISLAND, NY<br>
+Tel: 7184944547<br>
+<p class="food_type">
+Mexican</p>
+            </div>
+            <div class="actions">
+
+	<a href="javascript:void(0);" onclick="diningbookmarklogin('2241173');"><img src="/images/gtk-bookmark.png">Bookmark</a>
+<a href="javascript:void(0);" onclick="loginpopup('/datebook?business=2241173')"> <img style="padding-left:10px" src="/images/gtk-datebook.png">Datebook</a>
+<a href="javascript:void(0);" onclick="loginpopup('/dining')"><img class="add_image_btn" src="/images/image_add_text.png" alt=""></a>
+	            </div>   
+          </div> 
+
+
+
+          <div class="boxwrap">
+            <div class="solidbox"> 
+              <div class="thumbnail"  id="2242714output">
+              <img src="/images/food_placeholder.jpg">              </div> 
+<script type="text/javascript">
+setgmapmarker(40.85867000000000, -73.90357900000000, "ELSA LA REINA DEL CHICHARRON 3");
+</script>
+              <b>
+                  <a href="javascript:void(0);" onclick="restaurantcenter(40.85867000000000, -73.90357900000000)">
+ELSA LA REINA DEL CHICHARRON 3</a>
+</b>
+<br>
+1A EAST  183 STREET<br>
+BRONX, NY<br>
+Tel: 7182957383<br>
+<p class="food_type">
+Cuban, Latin American, Dominican, Haitian, Puerto Rican, Trinidadian, Colombian, Salvadoran, Venezuelan</p>
+            </div>
+            <div class="actions">
+
+	<a href="javascript:void(0);" onclick="diningbookmarklogin('2242714');"><img src="/images/gtk-bookmark.png">Bookmark</a>
+<a href="javascript:void(0);" onclick="loginpopup('/datebook?business=2242714')"> <img style="padding-left:10px" src="/images/gtk-datebook.png">Datebook</a>
+<a href="javascript:void(0);" onclick="loginpopup('/dining')"><img class="add_image_btn" src="/images/image_add_text.png" alt=""></a>
+	            </div>   
+          </div> 
+
+
+
+          <div class="boxwrap">
+            <div class="solidbox"> 
+              <div class="thumbnail"  id="2244668output">
+              <img src="/images/food_placeholder.jpg">              </div> 
+<script type="text/javascript">
+setgmapmarker(40.74075300000000, -73.98774700000000, "SOPHIE'S CUBAN CUISINE");
+</script>
+              <b>
+                  <a href="javascript:void(0);" onclick="restaurantcenter(40.74075300000000, -73.98774700000000)">
+SOPHIE'S CUBAN CUISINE</a>
+</b>
+<br>
+28 EAST 23 STREET<br>
+MANHATTAN, NY<br>
+Tel: 2122608884<br>
+<p class="food_type">
+Cuban, Latin American, Dominican, Haitian, Puerto Rican, Trinidadian, Colombian, Salvadoran, Venezuelan</p>
+            </div>
+            <div class="actions">
+
+	<a href="javascript:void(0);" onclick="diningbookmarklogin('2244668');"><img src="/images/gtk-bookmark.png">Bookmark</a>
+<a href="javascript:void(0);" onclick="loginpopup('/datebook?business=2244668')"> <img style="padding-left:10px" src="/images/gtk-datebook.png">Datebook</a>
+<a href="javascript:void(0);" onclick="loginpopup('/dining')"><img class="add_image_btn" src="/images/image_add_text.png" alt=""></a>
+	            </div>   
+          </div> 
+
+
+
+          <div class="boxwrap">
+            <div class="solidbox"> 
+              <div class="thumbnail"  id="2249269output">
+              <img src="/images/food_placeholder.jpg">              </div> 
+<script type="text/javascript">
+setgmapmarker(40.74551400000000, -73.90420900000000, "COLOMBIA FAMA BAKERY");
+</script>
+              <b>
+                  <a href="javascript:void(0);" onclick="restaurantcenter(40.74551400000000, -73.90420900000000)">
+COLOMBIA FAMA BAKERY</a>
+</b>
+<br>
+60-17 ROOSEVELT AVENUE<br>
+QUEENS, NY<br>
+Tel: 7184761675<br>
+<p class="food_type">
+Cuban, Latin American, Dominican, Haitian, Puerto Rican, Trinidadian, Colombian, Salvadoran, Venezuelan</p>
+            </div>
+            <div class="actions">
+
+	<a href="javascript:void(0);" onclick="diningbookmarklogin('2249269');"><img src="/images/gtk-bookmark.png">Bookmark</a>
+<a href="javascript:void(0);" onclick="loginpopup('/datebook?business=2249269')"> <img style="padding-left:10px" src="/images/gtk-datebook.png">Datebook</a>
+<a href="javascript:void(0);" onclick="loginpopup('/dining')"><img class="add_image_btn" src="/images/image_add_text.png" alt=""></a>
+	            </div>   
+          </div> 
+
+
+
+          <div class="boxwrap">
+            <div class="solidbox"> 
+              <div class="thumbnail"  id="2250231output">
+              <img src="/images/food_placeholder.jpg">              </div> 
+<script type="text/javascript">
+setgmapmarker(40.76114700000000, -73.90917000000000, "SHILLELAGH TAVERN");
+</script>
+              <b>
+                  <a href="javascript:void(0);" onclick="restaurantcenter(40.76114700000000, -73.90917000000000)">
+SHILLELAGH TAVERN</a>
+</b>
+<br>
+47-22 30 AVENUE<br>
+QUEENS, NY<br>
+Tel: 7187289028<br>
+<p class="food_type">
+American (New)</p>
+            </div>
+            <div class="actions">
+
+	<a href="javascript:void(0);" onclick="diningbookmarklogin('2250231');"><img src="/images/gtk-bookmark.png">Bookmark</a>
+<a href="javascript:void(0);" onclick="loginpopup('/datebook?business=2250231')"> <img style="padding-left:10px" src="/images/gtk-datebook.png">Datebook</a>
+<a href="javascript:void(0);" onclick="loginpopup('/dining')"><img class="add_image_btn" src="/images/image_add_text.png" alt=""></a>
+	            </div>   
+          </div> 
+
+
+
+          <div class="boxwrap">
+            <div class="solidbox"> 
+              <div class="thumbnail"  id="2255853output">
+              <img src="/images/food_placeholder.jpg">              </div> 
+<script type="text/javascript">
+setgmapmarker(40.73455400000000, -73.87461200000000, "BOULEVARD PIZZERIA");
+</script>
+              <b>
+                  <a href="javascript:void(0);" onclick="restaurantcenter(40.73455400000000, -73.87461200000000)">
+BOULEVARD PIZZERIA</a>
+</b>
+<br>
+8904       QUEENS BOULEVARD                                  <br>
+QUEENS, NY<br>
+Tel: 7186723300<br>
+<p class="food_type">
+Pizza</p>
+            </div>
+            <div class="actions">
+
+	<a href="javascript:void(0);" onclick="diningbookmarklogin('2255853');"><img src="/images/gtk-bookmark.png">Bookmark</a>
+<a href="javascript:void(0);" onclick="loginpopup('/datebook?business=2255853')"> <img style="padding-left:10px" src="/images/gtk-datebook.png">Datebook</a>
+<a href="javascript:void(0);" onclick="loginpopup('/dining')"><img class="add_image_btn" src="/images/image_add_text.png" alt=""></a>
+	            </div>   
+          </div> 
+
+
+
+          <div class="boxwrap">
+            <div class="solidbox"> 
+              <div class="thumbnail"  id="2255995output">
+              <img src="/images/food_placeholder.jpg">              </div> 
+<script type="text/javascript">
+setgmapmarker(40.76209800000000, -73.82887000000000, "LITTLE SHEEP MONGOLIAN HOT POT");
+</script>
+              <b>
+                  <a href="javascript:void(0);" onclick="restaurantcenter(40.76209800000000, -73.82887000000000)">
+LITTLE SHEEP MONGOLIAN HOT POT</a>
+</b>
+<br>
+13659      37 AVENUE                                         <br>
+QUEENS, NY<br>
+Tel: 7187628881<br>
 <p class="food_type">
 Chinese</p>
             </div>
             <div class="actions">
 
-	<a href="javascript:void(0);" onclick="togglebusiness('2237079')">
-<span id="2237079">
-<img src="/images/gtk-bookmark.png"></span>
-Bookmark</a>
-<a  style="padding-left:10px" href="/datebook?business=2237079"> <img src="/images/gtk-datebook.png">Datebook</a>
-<img class="add_image_btn" src="/images/image_add_text.png" alt="">              
-<form action="#" class="choose_file"  id="2237079Form" method="post" accept-charset="utf-8" enctype="multipart/form-data" >
-<input type="file" name="userfile" size="10" id="2237079imagename" onchange="uploadimage(2237079)" />
-</form>
+	<a href="javascript:void(0);" onclick="diningbookmarklogin('2255995');"><img src="/images/gtk-bookmark.png">Bookmark</a>
+<a href="javascript:void(0);" onclick="loginpopup('/datebook?business=2255995')"> <img style="padding-left:10px" src="/images/gtk-datebook.png">Datebook</a>
+<a href="javascript:void(0);" onclick="loginpopup('/dining')"><img class="add_image_btn" src="/images/image_add_text.png" alt=""></a>
 	            </div>   
           </div> 
 
@@ -1027,292 +1189,70 @@ Bookmark</a>
 
           <div class="boxwrap">
             <div class="solidbox"> 
-              <div class="thumbnail"  id="2245791output">
+              <div class="thumbnail"  id="2256958output">
               <img src="/images/food_placeholder.jpg">              </div> 
 <script type="text/javascript">
-document.write(window.searchcount+". ");
-setgmapmarker(40.64667000000000, -74.00867300000000, "JUGUERIA Y TAQUERIA, EL COMAL");
+setgmapmarker(40.68779300000000, -73.83364700000000, "CATERINA'S PIZZA");
 </script>
               <b>
-                  <a href="javascript:void(0);" onclick="restaurantcenter(40.64667000000000, -74.00867300000000)">
-JUGUERIA Y TAQUERIA, EL COMAL</a>
+                  <a href="javascript:void(0);" onclick="restaurantcenter(40.68779300000000, -73.83364700000000)">
+CATERINA'S PIZZA</a>
 </b>
 <br>
-4711 5 AVENUE<br>
-BROOKLYN, NY<br>
-Tel: 7184383060<br>
-<p class="food_type">
-Cuban, Latin American, Dominican, Haitian, Puerto Rican, Trinidadian, Colombian, Salvadoran, Venezuelan</p>
-            </div>
-            <div class="actions">
-
-	<a href="javascript:void(0);" onclick="togglebusiness('2245791')">
-<span id="2245791">
-<img src="/images/gtk-bookmark.png"></span>
-Bookmark</a>
-<a  style="padding-left:10px" href="/datebook?business=2245791"> <img src="/images/gtk-datebook.png">Datebook</a>
-<img class="add_image_btn" src="/images/image_add_text.png" alt="">              
-<form action="#" class="choose_file"  id="2245791Form" method="post" accept-charset="utf-8" enctype="multipart/form-data" >
-<input type="file" name="userfile" size="10" id="2245791imagename" onchange="uploadimage(2245791)" />
-</form>
-	            </div>   
-          </div> 
-
-
-
-          <div class="boxwrap">
-            <div class="solidbox"> 
-              <div class="thumbnail"  id="2246247output">
-              <img src="/images/food_placeholder.jpg">              </div> 
-<script type="text/javascript">
-document.write(window.searchcount+". ");
-setgmapmarker(40.72952800000000, -73.81516500000000, "KISSENA DOMINICAN DINER");
-</script>
-              <b>
-                  <a href="javascript:void(0);" onclick="restaurantcenter(40.72952800000000, -73.81516500000000)">
-KISSENA DOMINICAN DINER</a>
-</b>
-<br>
-71-02 KISSENA BOULEVARD<br>
+110-11     101 AVENUE                                        <br>
 QUEENS, NY<br>
-Tel: 7187938270<br>
+Tel: 7184411137<br>
+<p class="food_type">
+Pizza</p>
+            </div>
+            <div class="actions">
+
+	<a href="javascript:void(0);" onclick="diningbookmarklogin('2256958');"><img src="/images/gtk-bookmark.png">Bookmark</a>
+<a href="javascript:void(0);" onclick="loginpopup('/datebook?business=2256958')"> <img style="padding-left:10px" src="/images/gtk-datebook.png">Datebook</a>
+<a href="javascript:void(0);" onclick="loginpopup('/dining')"><img class="add_image_btn" src="/images/image_add_text.png" alt=""></a>
+	            </div>   
+          </div> 
+
+
+
+          <div class="boxwrap">
+            <div class="solidbox"> 
+              <div class="thumbnail"  id="2257583output">
+              <img src="/images/food_placeholder.jpg">              </div> 
+<script type="text/javascript">
+setgmapmarker(40.60074800000000, -73.75407300000000, "EL NUEVO AMBIENTE RESTAURANT");
+</script>
+              <b>
+                  <a href="javascript:void(0);" onclick="restaurantcenter(40.60074800000000, -73.75407300000000)">
+EL NUEVO AMBIENTE RESTAURANT</a>
+</b>
+<br>
+2009       NEW HAVEN AVE<br>
+QUEENS, NY<br>
+Tel: 7183276326<br>
 <p class="food_type">
 Cuban, Latin American, Dominican, Haitian, Puerto Rican, Trinidadian, Colombian, Salvadoran, Venezuelan</p>
             </div>
             <div class="actions">
 
-	<a href="javascript:void(0);" onclick="togglebusiness('2246247')">
-<span id="2246247">
-<img src="/images/gtk-bookmark.png"></span>
-Bookmark</a>
-<a  style="padding-left:10px" href="/datebook?business=2246247"> <img src="/images/gtk-datebook.png">Datebook</a>
-<img class="add_image_btn" src="/images/image_add_text.png" alt="">              
-<form action="#" class="choose_file"  id="2246247Form" method="post" accept-charset="utf-8" enctype="multipart/form-data" >
-<input type="file" name="userfile" size="10" id="2246247imagename" onchange="uploadimage(2246247)" />
-</form>
-	            </div>   
-          </div> 
-
-
-
-          <div class="boxwrap">
-            <div class="solidbox"> 
-              <div class="thumbnail"  id="2246902output">
-              <img src="/images/food_placeholder.jpg">              </div> 
-<script type="text/javascript">
-document.write(window.searchcount+". ");
-setgmapmarker(40.88067700000000, -73.88333400000000, "EL PRESIDENTE # 2 RESTAURANT");
-</script>
-              <b>
-                  <a href="javascript:void(0);" onclick="restaurantcenter(40.88067700000000, -73.88333400000000)">
-EL PRESIDENTE # 2 RESTAURANT</a>
-</b>
-<br>
-4-10       EAST  208 STREET                                  <br>
-BRONX, NY<br>
-Tel: 7186553545<br>
-<p class="food_type">
-Cuban, Latin American, Dominican, Haitian, Puerto Rican, Trinidadian, Colombian, Salvadoran, Venezuelan</p>
-            </div>
-            <div class="actions">
-
-	<a href="javascript:void(0);" onclick="togglebusiness('2246902')">
-<span id="2246902">
-<img src="/images/gtk-bookmark.png"></span>
-Bookmark</a>
-<a  style="padding-left:10px" href="/datebook?business=2246902"> <img src="/images/gtk-datebook.png">Datebook</a>
-<img class="add_image_btn" src="/images/image_add_text.png" alt="">              
-<form action="#" class="choose_file"  id="2246902Form" method="post" accept-charset="utf-8" enctype="multipart/form-data" >
-<input type="file" name="userfile" size="10" id="2246902imagename" onchange="uploadimage(2246902)" />
-</form>
-	            </div>   
-          </div> 
-
-
-
-          <div class="boxwrap">
-            <div class="solidbox"> 
-              <div class="thumbnail"  id="2248863output">
-              <img src="/images/food_placeholder.jpg">              </div> 
-<script type="text/javascript">
-document.write(window.searchcount+". ");
-setgmapmarker(40.82098100000000, -73.89315500000000, "GEORGINA RESTAURANT");
-</script>
-              <b>
-                  <a href="javascript:void(0);" onclick="restaurantcenter(40.82098100000000, -73.89315500000000)">
-GEORGINA RESTAURANT</a>
-</b>
-<br>
-1003 EAST 163 STREET<br>
-BRONX, NY<br>
-Tel: 7183286257<br>
-<p class="food_type">
-Cuban, Latin American, Dominican, Haitian, Puerto Rican, Trinidadian, Colombian, Salvadoran, Venezuelan</p>
-            </div>
-            <div class="actions">
-
-	<a href="javascript:void(0);" onclick="togglebusiness('2248863')">
-<span id="2248863">
-<img src="/images/gtk-bookmark.png"></span>
-Bookmark</a>
-<a  style="padding-left:10px" href="/datebook?business=2248863"> <img src="/images/gtk-datebook.png">Datebook</a>
-<img class="add_image_btn" src="/images/image_add_text.png" alt="">              
-<form action="#" class="choose_file"  id="2248863Form" method="post" accept-charset="utf-8" enctype="multipart/form-data" >
-<input type="file" name="userfile" size="10" id="2248863imagename" onchange="uploadimage(2248863)" />
-</form>
-	            </div>   
-          </div> 
-
-
-
-          <div class="boxwrap">
-            <div class="solidbox"> 
-              <div class="thumbnail"  id="2249213output">
-              <img src="/images/food_placeholder.jpg">              </div> 
-<script type="text/javascript">
-document.write(window.searchcount+". ");
-setgmapmarker(40.73802900000000, -73.98801900000000, "STARBUCKS COFFEE");
-</script>
-              <b>
-                  <a href="javascript:void(0);" onclick="restaurantcenter(40.73802900000000, -73.98801900000000)">
-STARBUCKS COFFEE</a>
-</b>
-<br>
-240 PARK AVENUE SOUTH<br>
-MANHATTAN, NY<br>
-Tel: 2123751416<br>
-<p class="food_type">
-Coffee & Tea, Tea Rooms, Cafes</p>
-            </div>
-            <div class="actions">
-
-	<a href="javascript:void(0);" onclick="togglebusiness('2249213')">
-<span id="2249213">
-<img src="/images/gtk-bookmark.png"></span>
-Bookmark</a>
-<a  style="padding-left:10px" href="/datebook?business=2249213"> <img src="/images/gtk-datebook.png">Datebook</a>
-<img class="add_image_btn" src="/images/image_add_text.png" alt="">              
-<form action="#" class="choose_file"  id="2249213Form" method="post" accept-charset="utf-8" enctype="multipart/form-data" >
-<input type="file" name="userfile" size="10" id="2249213imagename" onchange="uploadimage(2249213)" />
-</form>
-	            </div>   
-          </div> 
-
-
-
-          <div class="boxwrap">
-            <div class="solidbox"> 
-              <div class="thumbnail"  id="2252247output">
-              <img src="/images/food_placeholder.jpg">              </div> 
-<script type="text/javascript">
-document.write(window.searchcount+". ");
-setgmapmarker(40.75184800000000, -73.97367000000000, "AMAZE ASIAN");
-</script>
-              <b>
-                  <a href="javascript:void(0);" onclick="restaurantcenter(40.75184800000000, -73.97367000000000)">
-AMAZE ASIAN</a>
-</b>
-<br>
-694 3 AVENUE<br>
-MANHATTAN, NY<br>
-Tel: 2129865555<br>
-<p class="food_type">
-Chinese, Japanese</p>
-            </div>
-            <div class="actions">
-
-	<a href="javascript:void(0);" onclick="togglebusiness('2252247')">
-<span id="2252247">
-<img src="/images/gtk-bookmark.png"></span>
-Bookmark</a>
-<a  style="padding-left:10px" href="/datebook?business=2252247"> <img src="/images/gtk-datebook.png">Datebook</a>
-<img class="add_image_btn" src="/images/image_add_text.png" alt="">              
-<form action="#" class="choose_file"  id="2252247Form" method="post" accept-charset="utf-8" enctype="multipart/form-data" >
-<input type="file" name="userfile" size="10" id="2252247imagename" onchange="uploadimage(2252247)" />
-</form>
-	            </div>   
-          </div> 
-
-
-
-          <div class="boxwrap">
-            <div class="solidbox"> 
-              <div class="thumbnail"  id="2253874output">
-              <img src="/images/food_placeholder.jpg">              </div> 
-<script type="text/javascript">
-document.write(window.searchcount+". ");
-setgmapmarker(40.86347900000000, -73.86740400000000, "CHEPITO'S PIZZA");
-</script>
-              <b>
-                  <a href="javascript:void(0);" onclick="restaurantcenter(40.86347900000000, -73.86740400000000)">
-CHEPITO'S PIZZA</a>
-</b>
-<br>
-2504 WHITE PLAINS ROAD<br>
-BRONX, NY<br>
-Tel: 3478436006<br>
-<p class="food_type">
-Italian, Pizza</p>
-            </div>
-            <div class="actions">
-
-	<a href="javascript:void(0);" onclick="togglebusiness('2253874')">
-<span id="2253874">
-<img src="/images/gtk-bookmark.png"></span>
-Bookmark</a>
-<a  style="padding-left:10px" href="/datebook?business=2253874"> <img src="/images/gtk-datebook.png">Datebook</a>
-<img class="add_image_btn" src="/images/image_add_text.png" alt="">              
-<form action="#" class="choose_file"  id="2253874Form" method="post" accept-charset="utf-8" enctype="multipart/form-data" >
-<input type="file" name="userfile" size="10" id="2253874imagename" onchange="uploadimage(2253874)" />
-</form>
-	            </div>   
-          </div> 
-
-
-
-          <div class="boxwrap">
-            <div class="solidbox"> 
-              <div class="thumbnail"  id="2255373output">
-              <img src="/images/food_placeholder.jpg">              </div> 
-<script type="text/javascript">
-document.write(window.searchcount+". ");
-setgmapmarker(40.82792600000000, -73.90417900000000, "DE JESUS RESTAURANT");
-</script>
-              <b>
-                  <a href="javascript:void(0);" onclick="restaurantcenter(40.82792600000000, -73.90417900000000)">
-DE JESUS RESTAURANT</a>
-</b>
-<br>
-1133 BOSTON ROAD<br>
-BRONX, NY<br>
-Tel: 6468075678<br>
-<p class="food_type">
-Cuban, Latin American, Dominican, Haitian, Puerto Rican, Trinidadian, Colombian, Salvadoran, Venezuelan</p>
-            </div>
-            <div class="actions">
-
-	<a href="javascript:void(0);" onclick="togglebusiness('2255373')">
-<span id="2255373">
-<img src="/images/gtk-bookmark.png"></span>
-Bookmark</a>
-<a  style="padding-left:10px" href="/datebook?business=2255373"> <img src="/images/gtk-datebook.png">Datebook</a>
-<img class="add_image_btn" src="/images/image_add_text.png" alt="">              
-<form action="#" class="choose_file"  id="2255373Form" method="post" accept-charset="utf-8" enctype="multipart/form-data" >
-<input type="file" name="userfile" size="10" id="2255373imagename" onchange="uploadimage(2255373)" />
-</form>
+	<a href="javascript:void(0);" onclick="diningbookmarklogin('2257583');"><img src="/images/gtk-bookmark.png">Bookmark</a>
+<a href="javascript:void(0);" onclick="loginpopup('/datebook?business=2257583')"> <img style="padding-left:10px" src="/images/gtk-datebook.png">Datebook</a>
+<a href="javascript:void(0);" onclick="loginpopup('/dining')"><img class="add_image_btn" src="/images/image_add_text.png" alt=""></a>
 	            </div>   
           </div> 
 
 </div>
-</div>
     </div>
     </div>
+    </div>
+
            <div class= "Mapbox"> 
-<div id="map_canvas"  class="img-polaroid" style="min-height: 776px;position:absolute;"></div>
+                <div id="map_canvas"  style="min-height: 812px; position:absolute;" class="img-polaroid"></div>
           </div>
+
       </div>
     </div>
-  <div id="spaceholder"></div>
+  <div class="spaceholder"></div>
 </div> <!--Wrapper End--> 
 
 <script type="text/javascript">
@@ -1326,9 +1266,9 @@ $(".chzn-select").chosen();
       <a href="http://Facebook.com">Follow Us on Facebook</a><br>
     </p> 
     <p>  
-      <a href="/about/termsofuse">Terms of Use</a>  |  
-      <a href="/about/privacy">Privacy Policy</a> | 
-      <a href="/about/contactusform">Contact Us</a>
+      <a href="terms.html">Terms of Use</a>  |  
+      <a href="Privacy.html">Privacy Policy</a> | 
+      <a href="Contact.html">Contact Us</a>
     </p>  
   </div>  
 
@@ -1338,46 +1278,71 @@ $(".chzn-select").chosen();
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
         <h2 id="myModalLabel">Register with GatheringUP!</h2>
         
-<div style="width: 400px;" class="breakline"></div> 
-      </div>
-		<div style="padding-top: 2px;" class="modal-body">
-            <form  id="registerform" action="#">
-      <div id="RegistrationErrors"  class="form-large"  style="width:402px;" ></div>
-              <div>
-                  <input type="text" name="firstname" id="firstname" class="form-large"  style="width:402px;" placeholder="First Name" tabindex="41">
-                  <b id="errfirstname"  style="position: absolute;"></b>
-              </div>
-              <div>
-                  <input type="text" name="lastname" id="lastname" class="form-large"  style="width:402px;" placeholder="Last Name" tabindex="42">
-                <b id="errlastname" style="position: absolute;"></b>
-              </div>        
-                  <div>
-                  <input type="text" name="email" id="regemail" class="form-large"  style="width:402px;" placeholder="Email" tabindex="43">
-                  <b id="erremail" style="position: absolute;"></b>
-              </div>
-              <div>
-                  <input type="password" name="password" id="regpassword" class="form-large"  title="Must contain one number & 8 characters"  placeholder="Create Password" style="width:190px;float:left;" tabindex="44">
-<b id="errpassword" style="position: absolute;"></b>
-                  <input type="password" name="passwordconf" id="regpasswordconf" class="form-large" placeholder="Re-type Password"  style="margin-left:20px; width:190px;float:left;"  tabindex="45">
-<b id="errpasswordconf" style="position: absolute;"></b>
-              </div>     
-               <div style="clear:both;" class="breakline"></div>  
-                  <div  style="float:left;margin-top: 3px;width:192px;" id="captcha"><img src="/captcha"></div>
-                  <div>
-                  <input type="password" name="norobotcode" id="robotdistorter" class="form-large" style="margin-left:20px; width:190px;float:left;"  placeholder="Enter Captcha"  tabindex="46">
-                  <b id="errrobotdistorter" style="position: absolute;"></b>
-              </div>
-               <div style="clear:both;" class="breakline"></div>  
-                  <button type="button" value="Sign me up" class="btn btn-blue btn-large"  style="width:405px;"  onclick="register()"  tabindex="47">Register</button>
-            <img src="/images/divider.png" style="margin-bottom:10px;margin-top: 14px;" alt=""> 
-        <div  style="width:388px;height: 65px;">
-        	<div class="facebookbg2" >
-              <a href=""  id="fb_register" class="facebookurl"  >Sign In with Facebook        </a>
-              </div>
+              <div class="facebookbg">
+              <a href="" class="facebookurl" ><h3>
+        <img style="padding-left:10px"  style="padding-right: 15px;"src="/images/facebook.png" alt="facebook">REGISTER WITH FACEBOOK</h3>
+        </a>
         </div>
+        <div class="breakline"></div>
+      </div>
+      <div id="RegistrationErrors"></div>
+        <div class="modal-body">
+            <form  id="registerform" action="#" class="form-horizontal">
+              <div class="control-group">
+                <label class="control-label" for="inputFirstName">First Name</label>
+                <div class="controls">
+                  <input type="text" name="firstname" id="firstname" class="squareCorners" placeholder="First Name">
+                  <b id="errfirstname"></b>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputEmail">Last Name</label>
+                <div class="controls">
+                  <input type="text" name="lastname" id="lastname" class="squareCorners" placeholder="Last Name">
+                <b id="errlastname"></b>
+                </div>
+              </div>        
+                  <div class="control-group">
+                <label class="control-label" for="inputEmail">Email</label>
+                <div class="controls">
+                  <input type="text" name="email" id="regemail" class="squareCorners" placeholder="Email">
+                  <b id="erremail"></b>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputPassword">Create Password</label>
+                              <p class="helper">*At least one number & one capital letter</p> 
+                <div class="controls">
+                  <input type="password" name="password" id="regpassword" class="squareCorners" placeholder="Min 8 Characters">
+<b id="errpassword"></b>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputConfirmPassword">Confirm Password</label>
+                <div class="controls">
+                  <input type="password" name="passwordconf" id="regpasswordconf" class="squareCorners" placeholder="Confirm Password">
+<b id="errpasswordconf"></b>
+                </div>
+              </div>     
+              <div class="control-group">
+                <div class="controls">
+                  <div id="captcha"><img src="/captcha"></div>
+                </div>
+              </div>   
+              <div class="control-group">
+                <label class="control-label" for="inputConfirmPassword">Enter Above</label>
+                <div class="controls">
+                  <input type="password" name="norobotcode" id="robotdistorter" class="squareCorners" placeholder="Enter Above">
+                  <b id="errrobotdistorter"></b>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="controls">
+                  <button type="button" value="Sign me up" class="btn btn-blue btn-large" onclick="register()">Register</button>
+                </div>
+              </div>
             </form>
-            
-    </div>   
+        </div>
     </div>   
 
     <!--Sign Up Modal-->
@@ -1386,16 +1351,23 @@ $(".chzn-select").chosen();
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
         <h2 id="myModalLabel">Sign In!</h2>
       </div>
-        <div style="width:89%;"  class="breakline"></div>       
-        <div style="padding-top: 0px;"  class="modal-body">
-          <p >Don't have an account? &nbsp;<a href="javascript:void(0);" onclick="registerpopup('')">Register Here!</a></p>
-            <form  id="loginform" action="javascript:void(0);" class="form-horizontal">
+        <div class="breakline"></div>       
+        <div class="modal-body">
+          <p >Don't have an account? &nbsp<a href="javascript:void(0);" onclick="registerpopup('')">Register Here!</a></p>
+            <form  id="loginform" action="#" class="form-horizontal">
             
             		<input type="hidden" id="redirect" name="redirect" value="">
 					<input type="hidden" class="bbookmark" name="bbookmark" value="">
 					<input type="hidden" class="pbookmark" name="pbookmark" value="">
 					<input type="hidden" class="ebookmark" name="ebookmark" value="">
-
+              <div class="SignInField_m">
+              <div class="facebookbg">
+              <a href="" class="facebookurl" >
+                    <img style="height:30px;width:auto;padding-right:5px;" src="/images/facebook.png" alt="facebook">Sign In with Facebook
+                 </a>
+              </div>
+        <div style="margin-top:20px;" class="breakline"></div>                 
+              </div>
             	<div id="LoginErrors"></div>
                 <div class="SignInField_m">
                     <input id="poploginemail" name="email" style="width:256px;" type="text" class="squareCorners" placeholder="Email">
@@ -1404,49 +1376,27 @@ $(".chzn-select").chosen();
                     <input id="poploginpasswd" name="password" style="width:256px;" type="password" class="squareCorners" placeholder="Password">
                 </div>
                 <div class="SignInField_m">
-                    <a style="cursor:pointer;" data-toggle="modal" onclick="logintoforget()">Forgot Your Password?</a>
-<!--                     <label class="checkbox">
+                    <a style="cursor:pointer;" data-target="#forgotModal" data-toggle="modal">Forgot Your Password?</a>
+                    <label class="checkbox">
                     <input type="checkbox">Remember me
-                    </label>   -->
-                        <button  onclick="login()" class="btn btn-blue btn-large" type="submit" style="font-weight:bold;width:100%;margin-top:10px;">Sign In!</button>
+                    </label>
+                        <button type="button"  onclick="login()" class="btn btn-blue btn-large" style="font-weight:bold;width:100%;margin-top:10px;">Sign In!</button>
                       </div>
-
-                <div style="margin-bottom:14px;" class="breakline"></div> 
-
-              <div class="facebookbg">
-              <a href="" class="facebookurl" >
-                    <img style="height:30px;width:auto;padding-right:35px;" src="/images/facebook.png" alt="facebook">Sign In with Facebook
-                 </a>
-              </div>
                   </form> 
                </div>
             </div> 
 
 <!--Forgot Password Modal-->
-    <div id="forgotModal" class="modal hide fade"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="forgotModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>        
         <h2 id="myModalLabel">Forgot Password</h2>
       </div>
       <div class="breakline"></div>
-      <form  id="forgotpasswordform" action="javascript:void(0);" class="form-horizontal">
       <div style="padding: 0px 35px 32px;" class="modal-body">
-        <h4>Enter your email address below to reset your password</h4>
-        <input class="form-large" type="text" id="forgotemail" placeholder="Email Address" value="">
-        <button style="padding:15px 33px 15px 33px; width: 100%;" type="submit" class="btn btn-blue btn-large" onclick="forgotpassword()">Reset Your Password!</button>
-      </div>
-      </form>
-    </div>    
-    
-<!-- Announcements Modal-->
-    <div id="announcementModal" class="modal hide fade"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>        
-        <h2 id="announcementLabel">Notification</h2>
-      </div>
-      <div class="breakline"></div>
-      <div style="padding: 0px 35px 32px;" class="modal-body">
-        <h4>Enter your email address below to reset your password</h4>
+        <h4>Enter you email address below to reset your password</h4>
+        <input style="padding-right:71px;" class="form-large" type="text" placeholder="Email Address">
+        <button style="padding:15px 33px 15px 33px;" type="submit" class="btn btn-blue btn-large">Reset Your Password!</button>
       </div>
     </div>    
 
@@ -1470,7 +1420,9 @@ $(".chzn-select").chosen();
  -->
 <!--Carousel Javascript-->    
     <script type="text/javascript"> 
-
+	$('.dropdown-toggle ul.dropdown-menu form.form-horizontal, div.SignInField').click(function(e) {
+		e.stopPropagation();
+	});
     
       $('.carousel').carousel({
         interval: 5000
