@@ -3,7 +3,7 @@
   background-image: url("/images/broadway-image.jpg");
   height: 400px;
   border-bottom: 12px solid #e71b75;
-  box-shadow: 0px 0px 5px black; 
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.7); 
 }
 
 .head_mod {
