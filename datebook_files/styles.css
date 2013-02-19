@@ -48,10 +48,6 @@ textarea {
   font-family: "ubuntu";
 }
 
-input {
-  font-family: ubuntu;
-  color: #555;
-}
 
 .customscroll ::-webkit-scrollbar{width:9px;height:9px;}
 .customscroll ::-webkit-scrollbar-button:start:decrement,.customscroll ::-webkit-scrollbar-button:end:increment{display:block;height:0;background-color:transparent;}
@@ -105,7 +101,7 @@ input {
   border-style: none;
   font-size: 0.9em;
   font-family: "Ubuntu", Helvetica, Arial, sans-serif;
-  padding: 20px 57px 20px 13px;
+  padding: 10px 57px 12px 13px;
   background-image: url("/images/go_blue.png");
   background-repeat: no-repeat;
   background-position: 65px center;
@@ -398,10 +394,7 @@ div.eventbody a©144 {
 }
 
 div.feelLuck > a {
-  position: absolute;
-  margin-left: 45px;
-  display: block;
-  margin-top: 9px;
+  margin-top: 10px!important;
 }
 
 .placeSearch {
@@ -550,13 +543,8 @@ div.feelLuck > a {
 
 .facebookurl {
   color: white;
-  font-weight: 700;
+  /*font-weight: bold;*/
 } 
-
-a.facebookurl:hover {
-  color: 
-}
-
 
 #RegistrationErrors{
   color: red;
@@ -653,7 +641,7 @@ a.facebookurl:hover {
   background-image: url("/images/facebook.png");
   background-size: 21px;
   background-position-x: 6px;
-  /*background-position-y: center;*/
+  background-position-y: center;
   background-repeat: no-repeat;
 }
 
@@ -1000,10 +988,9 @@ textarea.form-large {
 
 
 .footer {
-  font-weight: 100;
   text-align: center;
   position: relative;
-  padding: 20px 0px;
+  padding: 10px 5px;
   border-bottom:5px solid #E71B75;
   background-color: #1b1b1b;
   background-image: -moz-linear-gradient(top, #222222, #111111);
@@ -1012,7 +999,7 @@ textarea.form-large {
   background-image: -o-linear-gradient(top, #222222, #111111);
   background-image: linear-gradient(to bottom, #222222, #111111);
   background-repeat: repeat-x;
-  color: #999;
+  color: white;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
 }
 
@@ -1197,7 +1184,7 @@ box-shadow: 0px 0px 30px rgba(0,0,0,0.35);
 /* HomePage Bottom Info */
 
 .TitleInfo_bm {
-  height: 150px;
+  height: 200px;
   margin-top: 80px;
   background-image: url("/images/bg_green.jpg");
   /*border-top: 2px white solid;*/
@@ -1281,7 +1268,7 @@ margin-left: 25px;
   /*background-image: url("/images/image_add_text.png");*/
   /*text-indent: -173px;*/
   float:left;
-  cursor: pointer;  
+  cursor: pointer;
   overflow: hidden;
   position: absolute;
   top: -1px;

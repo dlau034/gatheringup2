@@ -2,15 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Gathering UP</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>GatheringUp</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=0.6">
+    <meta name="description" content="Finding and Organizing Activities in New York City, such as Dining, Places and Events, is now Easy when you use GatheringUp's Datebook.">
+    <meta name="keywords" content="GatheringUp, Gathering Up, New York City, Organize, Friends, Events, Dining, Place, Food, Drink">
 
 <!-- Le styles -->
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/css/styles.css" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="/css/base/minified/jquery-ui.min.css"/>
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -25,15 +26,39 @@
     <link rel="shortcut icon" href="/images/favicon.ico">
     <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500' rel='stylesheet' type='text/css'>
+    
 <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="/js/gatheringup-registration.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui-1.8.21.custom.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="/js/gatheringup-registration-min.js"></script>
+<script type="text/javascript" src="/js/gatheringup-about-min.js"></script>
 
   </head>
-    <body style="background-image: url(/images/bg_grey.jpg);">
+    <body>
   
       <div class="wrapper"> <!-- Wrapper -->   
   
   <!-- Header + Navbar -->
+
+<script type="text/javascript">
+<!--
+
+//-->
+function invitedecline(idinvite)
+{
+	$.get("/invitation/decline?idinvite="+idinvite);
+	$("#"+idinvite+"invl").remove();
+	$("#"+idinvite+"inv").remove();
+	$("#"+idinvite+"invn").remove();
+	$invites=$("#note_on>b").html();
+	$invites=$invites-1;
+	if($invites<=0){
+		$("#note_on").attr('id',"note_off");
+	}
+	$invites=$("#note_on>b").html($invites);
+}
+
+</script>
       <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="top-stripe"></div>
         <div class="navbar-inner">
@@ -46,67 +71,83 @@
             <a class="brand" href="/">Gathering UP</a>
               <div class="nav-collapse collapse">
                 <ul class="nav">
-                  <li><a href="/Dining.html">Dining</a></li>
-                  <li><a href="/Places.html">Places</a></li>
-                  <li><a href="/Events.html">Events</a></li>
-                                 <li><a href="javascript:void(0);" onclick="loginpopup('/datebook')">Datebook</a></li>
+                
+                  <li><a  href="/dining">Dining</a></li>
+                  <li><a  href="/places">Places</a></li>
+                  <li><a  href="/events">Events</a></li>
+                              		<li><a href="javascript:void(0);" onclick="loginpopup('/datebook')">Datebook</a></li>
+					<li><a id="note_off" class="dropdown-toggle" data-toggle="dropdown"  href="">&nbsp;</a></li>
                               </ul>
-                             <form class="navbar-form pull-right form-horizontal"  id="loginsideform" action="javascript:void(0);" >
-                <a href="#myModal" type="button" class="btn-menu" data-toggle="modal">Register</a>
+                             <form class="navbar-form pull-right form-horizontal"  method="post" id="loginsideform" action="javascript:void(0);"  autocomplete="on" >
+                <a href="javascript:void(0);" type="button" class="btn-menu" data-toggle="modal" onclick="registerpopup()">Register</a>
                 <a class="dropdown-toggle btn-menu" data-toggle="dropdown" href="javascript:void(0);">Sign In</a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <div id="SideDropLoginErrors"></div>
-                      <div class="SignInField">
+                	<li><div id="SideDropLoginErrors"></div></li>
+                    <li><div class="SignInField">
                       <div class="facebookbg">
                         <a href="" class="facebookurl">
-                          <img style="height:30px;width:auto;padding-right:17px;"src="/images/facebook.png" alt="facebook">Sign In with Facebook
+                          <img style="height:30px;width:auto;padding-right:5px;" src="/images/facebook.png" alt="facebook">Sign In with Facebook
                         </a>
                         </div>
-                      </div>
+                      </div></li>
                       <li class="divider"></li>
-                      <div class="SignInField">
-                        <input id='droploginemail' name='email' type="text" class="squareCorners" placeholder="Email">
-                      </div>
-                      <div class="SignInField">
-                        <input id='droploginpassword' name='password' type="password" class="squareCorners" placeholder="Password">
-                      </div>
-                      <div class="SignInField">
-                        <a style="cursor:pointer;" data-target="#forgotModal" data-toggle="modal">Forgot Your Password?</a>
-                        <label class="checkbox">
+                      <li><div class="SignInField">
+                        <input type="text" id='droploginemail' name='email' class="squareCorners" placeholder="Email" value="" tabindex="51">
+                      </div></li>
+                      <li><div class="SignInField">
+                        <input id='droploginpassword' name='password' type="password" class="squareCorners" placeholder="Password" tabindex="52">
+                      </div></li>
+                      <li><div class="SignInField">
+                        <a style="cursor:pointer;" data-toggle="modal"  onclick="logintoforget()">Forgot Your Password?</a>
+<!--                         <label class="checkbox">
                           <input type="checkbox">Remember me
-                        </label>
-                        <button type="submit" class="btn btn-blue pull-right" style="font-weight:bold;" onclick="loginsidedrop()">Sign In!</button>
-                      </div>
+                        </label> -->
+                        <button type="submit" class="btn btn-blue pull-right" style="font-weight:bold;" onclick="loginsidedrop()" tabindex="53">Sign In!</button>
+                      </div></li>
               
                 </ul>
               </form>
                              </div><!--/.nav-collapse -->
           </div>
         </div>
+      </div>
+<script type="text/javascript">
+function selecteventgo()
+{
+	selected = $("#home_select").val();
 
-      </div><!-- Slider --> 
-
+	if(selected==='Events'){
+		window.location='/events';
+	}else if(selected==='Dining'){
+		window.location='/dining';
+	}else if(selected==='Places'){
+		window.location='/places';
+	}
+			
+}
+</script>
   
       <div id="myCarousel" class="carousel slide">
- 
-        <div class="carousel-inner">
           <div class="titleinfo">
             <div class="container">
               <div class="TitleText">
+                <form accept-charset="UTF-8" id="selecteventform"  action="javascript:void(0);" method="POST" style="white-space: nowrap">
                 <h1>Gather Up For 
-                  <select class="home_select">
+                  <select id="home_select">
                     <option>Events</option>
                     <option>Dining</option>
                     <option>Places</option>
                   </select>              
                   in New York City 
-                   <a href="" class="btn_go">Go</a>       
+                   <input type="submit" class="btn_go" onclick="selecteventgo()" value="Go">       
                 </h1>
+                   </form>
 
               </div>
             </div> 
           </div> 
 
+        <div class="carousel-inner">
           <!-- Title Search Bar --> 
 
 
@@ -114,17 +155,17 @@
             <img src="/images/new_york_city.jpg" alt="">
             <div class="container">
               <div class="carousel-caption">
-                <h1>GatheringUP</h1> 
-                <p class="large">makes finding and organizing events simple!</p>                
+                <h1>GatheringUp</h1> 
+                <p class="large">Finding and organizing events made easy!</p>                
               </div>
             </div>
           </div>
-          <div class="item ">
+          <div class="item">
             <img src="/images/brooklyn_bridge.jpg" alt="">
             <div class="container">
               <div class="carousel-caption">
-                <h1>Experiences</h1> 
-                <p class="large">Are best shared among friends, so why not invite them?</p>                   
+                <h1>Events</h1> 
+                <p class="large">Experiences are best shared among friends, so why not invite them?</p>                   
 
               </div>
             </div>
@@ -134,15 +175,15 @@
             <div class="container">
               <div class="carousel-caption">
 
-                <h1>New York & Beyond</h1>
-                <p class="large">GatheringUP has great destinations at your fingertips</p>                  
+                <h1>Simple</h1>
+                <p class="large">Organizing is hassle-free when you use Datebook.</p>                  
 
               </div>
             </div>
           </div>
         </div>
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev"> &lsaquo;</a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next"> &rsaquo;</a>
       
     </div>
 
@@ -153,7 +194,7 @@
       <div class="row">
         <div class="span1"></div>
         <div class="span2  catogories">
-          <a href="http://gatheringup.com/dining">          
+          <a href="/dining">          
           <img src="/images/dining_icon.png" class="img-circle catogeries">
           <h2 style="text-align:center;">Dining</h2>
           </a>
@@ -161,14 +202,14 @@
           </p>
         </div>
         <div class="span2  catogories">
-          <a href="http://gatheringup.com/places">
+          <a href="/places">
           <img src="/images/places_icon.png" class="img-circle catogeries">
           <h2  style="text-align:center;">Places</h2>
           </a>
 
        </div>  
         <div class="span2 catogories">
-          <a href="http://gatheringup.com/events">          
+          <a href="/events">          
           <img src="/images/event_icon.png" class="img-circle catogeries">
           <h2 style="text-align:center;">Events</h2>
         </a>
@@ -178,7 +219,8 @@
                   
         </div>     
         <div class="span3 catogories" >
-          <a href="http://gatheringup.com/datebook">             
+                     <a href="javascript:void(0);" onclick="loginpopup('/datebook')">
+                     
           <img src="/images/datebook_icon_lg.png" class="img-circle catogeries_dining">
           <h2 style="font-size:2.7em;margin-top:30px;">Datebook</h2>
         </a>
@@ -198,42 +240,41 @@
 
       <div class="featurette">
         <img class="featurette-image pull-right" src="/images/event_screen.png">
-        <h2 class="featurette-heading"><span class="muted">Find Free </span> <a href="events.html">Events</a></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor 
-fringilla. Vestibulum id ligula porta felis euismod semper. Praesent 
-commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, 
-tellus ac cursus commodo.</p>
+        <h2 class="featurette-heading"><span class="muted">Attend </span> <a href="events">Events</a></h2>
+        <p class="lead">There is always something happening in New York City.  
+        With hundreds of events and more added each week, you can find your next event here. </p>
       </div>
 
       <hr class="featurette-divider">
 
       <div class="featurette">
         <img class="featurette-image pull-left" src="/images/place_screen.png">
-        <h2 class="featurette-heading"><span class="muted">Discover</span> <a href="places.html">Places</a> <span class="muted">in your Neighborhood</span> </h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor 
-fringilla. Vestibulum id ligula porta felis euismod semper. Praesent 
-commodo cursus magna.</p>
+        <h2 class="featurette-heading"><span class="muted">Discover</span> <a href="places">Places</a> <span class="muted"></span> </h2>
+        <p class="lead">Whether you are exploring the city, taking a weekend trip, or a long vacation, 
+        GatheringUp has the place for you.
+        </p>
       </div>
 
       <hr class="featurette-divider">
 
       <div class="featurette">
         <img class="featurette-image pull-right" src="/images/dining_screen.png">        
-        <h2 class="featurette-heading"><span class="muted">Gather Up and Go</span> <a href="dining.html">Dining</a></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor 
-fringilla. Vestibulum id ligula porta felis euismod semper. Praesent 
-commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, 
-tellus ac cursus commodo.</p>
+        <h2 class="featurette-heading"><span class="muted">Fine</span> <a href="dining">Dining</a></h2>
+        <p class="lead">New York City is the most diverse city in the world. You don't have to leave the
+        city to try exotic food. Find your restaurant here.</p>
       </div>
 
       <hr class="featurette-divider">
 
       <div class="featurette">
         <img class="featurette-image pull-left" src="/images/datebook_screen.png">
-        <h2 class="featurette-heading"><span class="muted">at with</span> <a href="datebook.html">Datebook</a><span class="muted"></span> </h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor 
-fringilla. Vestibulum id ligula porta felis euismod semper. Praesent 
-commodo cursus magna.</p>
+        <h2 class="featurette-heading"><span class="muted">Plan</span> 
+                     <a href="javascript:void(0);" onclick="loginpopup('/datebook')">
+                     
+        Datebook</a> </h2>
+        <p class="lead">Remember the last time you made arrangements with your busy friends?
+        It doesn't have to be that difficult.  Gather your friends on Datebook and
+        discuss the event in one place.  No more mass emails!</p>
       </div>
 
 
@@ -247,41 +288,29 @@ commodo cursus magna.</p>
     <div class="container">         
       <div class="row">
         <div class="span3 catogories">
-          <a href="http://gatheringup.com/dining">          
+          <a href="/dining">          
           <img src="/images/dining_icon.png" class="img-circle catogeries">
           <h2>Dining</h2>
           </a>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce 
-dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut 
-fermentum massa justo sit amet risus.  
-          </p>
         </div>
         <div class="span3 catogories">
-          <a href="http://gatheringup.com/places">
+          <a href="/places">
           <img src="/images/places_icon.png" class="img-circle catogeries">
           <h2>Places</h2>
           </a>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce 
-dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut 
-fermentum massa justo sit amet risus.</p>
        </div>
         <div class="span3 catogories">
-          <a href="http://gatheringup.com/events">          
+          <a href="/events">          
           <img src="/images/event_icon.png" class="img-circle catogeries">
           <h2>Events</h2>
         </a>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis 
-in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. 
-Fusce dapibus, tellus ac cursus </p>
         </div>
         <div class="span3 catogories">
-          <a href="http://gatheringup.com/datebook">             
+                     <a href="javascript:void(0);" onclick="loginpopup('/datebook')">
+                     
           <img src="/images/datebook_icon.png" class="img-circle catogeries">
           <h2>Datebook</h2>
         </a>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis 
-in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. 
-Fusce dapibus, tellus ac cursus commodo</p>
         </div>
       </div>
     </div> <!-- Container End -->
@@ -291,22 +320,22 @@ Fusce dapibus, tellus ac cursus commodo</p>
       <div class="TitleInfo_bm">
         <div class="container">
           <div class="TitleText_bm">
-            <h2>"Organising your social calendar <br> has never been this straight forward."</h2>
-            <small>- a local new yorker</small>
+            <h2>Finding and organizing events made easy.</h2>
+            <small></small>
           </div>
         </div> 
-      </div>       
+      </div>
 <!-- Footer -->
   <div class="footer">
-    <p>Copyright Gathering Up Ltd. All rights reserved. Proudly made in New York City!</p>  
+    <p>Copyright Gathering Up Ltd 2013. All rights reserved.</p>
+    <p>Design + Built by <a href="http://techkinesis.com">Techkinesis</a>. Proudly Made in <a href="http://nytm.org/made-in-nyc">NYC</a></p>
     <p>
       <a href="http://twitter.com">Follow Us on Twitter</a> | 
-      <a href="http://Facebook.com">Follow Us on Facebook</a><br>
-    </p> 
-    <p>  
+      <a href="http://Facebook.com">Follow Us on Facebook</a>  | 
+      <a href="/about">About Us</a>  |  
       <a href="/about/termsofuse">Terms of Use</a>  |  
       <a href="/about/privacy">Privacy Policy</a> | 
-      <a href="/about/contactus">Contact Us</a>
+      <a href="/about/contactusform">Contact Us</a>
     </p>  
   </div>  
 
@@ -315,68 +344,47 @@ Fusce dapibus, tellus ac cursus commodo</p>
       <div class="modal-header registerModal">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
         <h2 id="myModalLabel">Register with GatheringUP!</h2>
-          <div style="width: 400px;" class="breakline"></div> 
-          <!-- <h4>Create your account to explore Gathering UP</h4> -->
+        
+<div style="width: 400px;" class="breakline"></div> 
       </div>
-      
-      <div id="RegistrationErrors"></div>
-        <div style="padding-top: 2px;" class="modal-body">
-
-            <form id="registerform" action="#">
-
-<!--               <div id="fb_register" class="facebookbg">
-                <img style="padding-right: 15px;"src="/images/facebook.png" alt="facebook">Sign In with Facebook
-              </div> -->
-                  
-              
-              <div>    
-                <input type="text" name="firstname" id="firstname" class="form-large" style="width:402px;" placeholder="First Name">
-                  <b style="position: absolute;" id="errfirstname"></b>
-              </div> 
-              
-              <div>                      
-              <input type="text" name="lastname" id="lastname" class="form-large" style="width:402px;" placeholder="Last Name">
-                <b style="position: absolute;" id="errlastname"></b>
-              </div>
-              
-              <div>                   
-              <input type="text" name="email" id="regemail" class="form-large" style="width:402px;" placeholder="Email">
-                <b style="position: absolute;" id="erremail"></b>
-              </div>
-
+		<div style="padding-top: 2px;" class="modal-body">
+            <form  id="registerform" action="#">
+      <div id="RegistrationErrors"  class="form-large"  style="width:402px;" ></div>
               <div>
-              <input type="password" name="password" id="regpassword2" title="Must contain one number & 8 characters" class="form-large" style="width:190px;float:left;" placeholder="Create Password">
-
-                <b style="position: absolute;" id="errpassword"></b>
+                  <input type="text" name="firstname" id="firstname" class="form-large"  style="width:402px;" placeholder="First Name" tabindex="41">
+                  <b id="errfirstname"  style="position: absolute;"></b>
               </div>
-
               <div>
-              <input type="password" name="passwordconf" id="regpasswordconf" class="form-large" style="margin-left:20px; width:190px;float:left;" placeholder="Retype Password">
-                <b style="position: absolute;" id="errpasswordconf"></b>
+                  <input type="text" name="lastname" id="lastname" class="form-large"  style="width:402px;" placeholder="Last Name" tabindex="42">
+                <b id="errlastname" style="position: absolute;"></b>
+              </div>        
+                  <div>
+                  <input type="text" name="email" id="regemail" class="form-large"  style="width:402px;" placeholder="Email" tabindex="43">
+                  <b id="erremail" style="position: absolute;"></b>
               </div>
-
-          <div style="clear:both;" class="breakline"></div> 
-
-              <div style="float:left;margin-top: 3px;width:192px;" id="captcha"><img src="/images/captcha.jpeg"></div>
-              
               <div>
-              <input type="password" name="norobotcode" id="robotdistorter" class="form-large" style="margin-left:20px; width:190px;float:left;" placeholder="Enter Captcha">
-                <b style="position: absolute;" id="errrobotdistorter"></b>
+                  <input type="password" name="password" id="regpassword" class="form-large"  title="Must contain one number & 8 characters"  placeholder="Create Password" style="width:190px;float:left;" tabindex="44">
+<b id="errpassword" style="position: absolute;"></b>
+                  <input type="password" name="passwordconf" id="regpasswordconf" class="form-large" placeholder="Re-type Password"  style="margin-left:20px; width:190px;float:left;"  tabindex="45">
+<b id="errpasswordconf" style="position: absolute;"></b>
+              </div>     
+               <div style="clear:both;" class="breakline"></div>  
+                  <div  style="float:left;margin-top: 3px;width:192px;" id="captcha"><img src="/captcha"></div>
+                  <div>
+                  <input type="text" name="norobotcode" id="robotdistorter" class="form-large" style="margin-left:20px; width:190px;float:left;"  placeholder="Enter Captcha"  tabindex="46">
+                  <b id="errrobotdistorter" style="position: absolute;"></b>
               </div>
-
-          <div style="clear:both;" class="breakline"></div>               
-
-              <button type="button" style="width:405px;" value="Sign me up" class="btn btn-blue btn-large" onclick="register()">Register</button>
-            
-              <img src="/images/divider.png" style="margin-bottom:10px;margin-top: 14px;" alt="">    
-              <div style="width:388px;height: 65px;">
-                <a class="facebookbg" alt="facebook" id="fb_register" href="">Sign In with Facebook</a> 
-              </div>              
+               <div style="clear:both;" class="breakline"></div>  
+                  <button type="button" value="Sign me up" class="btn btn-blue btn-large"  style="width:405px;"  onclick="register()"  tabindex="47">Register</button>
+            <img src="/images/divider.png" style="margin-bottom:10px;margin-top: 14px;" alt=""> 
+        <div  style="width:388px;height: 65px;">
+        	<div class="facebookbg2" >
+              <a href=""  id="fb_register" class="facebookurl"  >Sign In with Facebook        </a>
               </div>
-            </div>
-          </form>
-          <div class="breakline"></div>                  
         </div>
+            </form>
+            
+    </div>   
     </div>   
 
     <!--Sign Up Modal-->
@@ -385,17 +393,17 @@ Fusce dapibus, tellus ac cursus commodo</p>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
         <h2 id="myModalLabel">Sign In!</h2>
       </div>
-        <div style="width:89%;" class="breakline"></div>       
-        <div style="padding-top: 0px;" class="modal-body">
-          <p >Don't have an account? &nbsp<a href="javascript:void(0);" onclick="registerpopup('')">Register Here!</a></p>
-          <form  id="loginform" action="javascript:void(0);" class="form-horizontal">
+        <div style="width:89%;"  class="breakline"></div>       
+        <div style="padding-top: 0px;"  class="modal-body">
+          <p >Don't have an account? &nbsp;<a href="javascript:void(0);" onclick="registerpopup('')">Register Here!</a></p>
+            <form  id="loginform" action="javascript:void(0);" class="form-horizontal">
             
-          <input type="hidden" id="redirect" name="redirect" value="">
-          <input type="hidden" class="bbookmark" name="bbookmark" value="">
-          <input type="hidden" class="pbookmark" name="pbookmark" value="">
-          <input type="hidden" class="ebookmark" name="ebookmark" value="">
+            		<input type="hidden" id="redirect" name="redirect" value="">
+					<input type="hidden" class="bbookmark" name="bbookmark" value="">
+					<input type="hidden" class="pbookmark" name="pbookmark" value="">
+					<input type="hidden" class="ebookmark" name="ebookmark" value="">
 
-              <div id="LoginErrors"></div>
+            	<div id="LoginErrors"></div>
                 <div class="SignInField_m">
                     <input id="poploginemail" name="email" style="width:256px;" type="text" class="squareCorners" placeholder="Email">
                 </div>
@@ -403,69 +411,62 @@ Fusce dapibus, tellus ac cursus commodo</p>
                     <input id="poploginpasswd" name="password" style="width:256px;" type="password" class="squareCorners" placeholder="Password">
                 </div>
                 <div class="SignInField_m">
-                    <a style="cursor:pointer;" data-target="#forgotModal" data-toggle="modal">Forgot Your Password?</a>
+                    <a style="cursor:pointer;" data-toggle="modal" onclick="logintoforget()">Forgot Your Password?</a>
 <!--                     <label class="checkbox">
                     <input type="checkbox">Remember me
                     </label>   -->
-                    <button type="button"   type="submit" onclick="login()" class="btn btn-blue btn-large" style="font-weight:bold;width:100%;margin-top:10px;">Sign In!</button>
-                </div>
+                        <button  onclick="login()" class="btn btn-blue btn-large" type="submit" style="font-weight:bold;width:100%;margin-top:10px;">Sign In!</button>
+                      </div>
+
                 <div style="margin-bottom:14px;" class="breakline"></div> 
-                <div class="facebookbg">
-                    <a href="" class="facebookurl" >
-                      <img style="height:30px;width:auto;padding-right:35px;" src="/images/facebook.png" alt="facebook">Sign In with Facebook
-                    </a>
-                </div>                      
-                </form> 
+
+              <div class="facebookbg">
+              <a href="" class="facebookurl" >
+                    <img style="height:30px;width:auto;padding-right:35px;" src="/images/facebook.png" alt="facebook">Sign In with Facebook
+                 </a>
+              </div>
+                  </form> 
                </div>
             </div> 
 
 <!--Forgot Password Modal-->
-    <div id="forgotModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="forgotModal" class="modal hide fade"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>        
         <h2 id="myModalLabel">Forgot Password</h2>
       </div>
       <div class="breakline"></div>
+      <form  id="forgotpasswordform" action="javascript:void(0);" class="form-horizontal">
       <div style="padding: 0px 35px 32px;" class="modal-body">
-        <h4>Enter you email address below to reset your password</h4>
-        <input class="form-large" type="text" placeholder="Email Address">
-        <button style="padding:15px 33px 15px 33px;" type="submit" class="btn btn-blue btn-large">Reset Your Password!</button>
+        <h4>Enter your email address below to reset your password</h4>
+        <input class="form-large" type="text" id="forgotemail" placeholder="Email Address" value="">
+        <button style="padding:15px 33px 15px 33px; width: 100%;" type="submit" class="btn btn-blue btn-large" onclick="forgotpassword()">Reset Your Password!</button>
+      </div>
+      </form>
+    </div>    
+    
+<!-- Announcements Modal-->
+    <div id="announcementModal" class="modal hide fade"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>        
+        <h2 id="announcementLabel">Notification</h2>
+      </div>
+      <div class="breakline"></div>
+      <div style="padding: 0px 35px 32px;" class="modal-body">
+        <h4>Enter your email address below to reset your password</h4>
       </div>
     </div>    
 
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<!--     <script src="js/jquery.js"></script> -->
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/bootstrap-tooltip.js"></script>
-<!--     <script src="/js/bootstrap-transition.js"></script>
-    <script src="/js/bootstrap-alert.js"></script>
-    <script src="/js/bootstrap-modal.js"></script>
-    <script src="/js/bootstrap-dropdown.js"></script>
-    <script src="/js/bootstrap-scrollspy.js"></script>
-    <script src="/js/bootstrap-tab.js"></script>
-    
-    <script src="/js/bootstrap-popover.js"></script>
-    <script src="/js/bootstrap-button.js"></script>
-    <script src="/js/bootstrap-collapse.js"></script>
-    <script src="/js/bootstrap-carousel.js"></script>
-    <script src="/js/bootstrap-typeahead.js"></script>
- -->
 <!--Carousel Javascript-->    
     <script type="text/javascript"> 
-  $('.dropdown-toggle ul.dropdown-menu form.form-horizontal, div.SignInField').click(function(e) {
-    e.stopPropagation();
-  });
+
     
       $('.carousel').carousel({
         interval: 5000
-      });
-    </script>
-
-    <script>
-      $(document).ready(function() {
-          $("#regpassword2").tooltip();              
       });
     </script>
   </body>
