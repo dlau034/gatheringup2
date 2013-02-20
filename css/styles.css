@@ -97,6 +97,7 @@ input {
   overflow-x:hidden;
   width: 100px;
   height: 100%;
+  padding-right: 10px;
 }
 
 .btn_go {
@@ -557,7 +558,6 @@ div.feelLuck > a {
 a.facebookurl:hover {
   color: 
 }
-
 
 #RegistrationErrors{
   color: red;
@@ -1126,6 +1126,11 @@ html, body {
   line-height: 1.25;
   color: #fff;
   text-shadow: 0 1px 1px rgba(0,0,0,.4);
+  font-size: 4.5em;
+  font-family: arvo;
+  font-weight: 400;
+  margin-bottom: 10px;
+  text-shadow:0px 0px 18px #333;
 }
 .carousel-caption .btn {
   margin-top: 10px;
