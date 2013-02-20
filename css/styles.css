@@ -105,13 +105,14 @@ input {
   border-style: none;
   font-size: 0.9em;
   font-family: "Ubuntu", Helvetica, Arial, sans-serif;
-  padding: 20px 57px 20px 13px;
   background-image: url("/images/go_blue.png");
   background-repeat: no-repeat;
-  background-position: 65px center;
-  text-shadow: none;  
+  background-position: 60px center;
   font-weight: 400;
   margin-left: 10px;
+  height: 60px;
+  text-indent: -40px;
+  width: 110px !important;
 }
 
 .btn_go:hover {
@@ -1101,13 +1102,13 @@ html, body {
   position: absolute;
   top: 0;
   left: 0;
-  min-width: 100%;
+  min-width: 1800px;
   height: 600px;
 }
 
-@media (max-width:1299px) {
+@media (min-width:1799px) {
   .carousel img {
-    min-width: 1300px;
+    min-width: 100%;
   }    
 }
 
