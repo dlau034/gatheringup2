@@ -1148,7 +1148,6 @@ eventstr = eventstr.replace(/'/g, "&#x27;");
 <!--Side Bar Info-->    
 
     <div id="emailModal" >
-    <button type="button" id="done_button" class="close">x</button>
       <div class="modal-header">
         <h4 style="text-align:center;">Add Friend Via Email</h4>
           <div class="breakline"></div>
@@ -1157,8 +1156,8 @@ eventstr = eventstr.replace(/'/g, "&#x27;");
       <div class="modal-body">
           <input class="squareCorners" type="text" id="emailfullname" value="" placeholder="Add Name"><span id='erremailname'></span>
           <input class="squareCorners" type="text" id="emailaddress" value="" placeholder="Add Email"><span id='erremailaddress'></span>
-          <button style="width:100%;" class="btn btn-blue" onclick="addemail()">Add Friend</button>  
-          <!-- <button id="done_button" style="float:right;" class="btn btn-blue">Done</button> -->   
+          <button style="padding:4px 35px 4px 35px;" class="btn btn-blue" onclick="addemail()">Add Friend</button>  
+          <button id="done_button" style="float:right;" class="btn btn-blue">Done</button>   
         <div class="friends_module">
 			 
         </div>
@@ -2023,9 +2022,7 @@ Processing...</span>
           <div class="breakline"></div>
       </div>
 <div id="emailerrormsg"></div>
-       <button type="button" id="done_button" class="close" data-dismiss="modal" aria-hidden="true">x</button>   
       <div class="modal-body">
-   
           <input class="squareCorners" id="emailfullname" placeholder="Add Name" type="text"><span id="erremailname"></span>
           <input class="squareCorners" id="emailaddress" placeholder="Add Email" type="text"><span id="erremailaddress"></span>
           <button style="padding:4px 35px 4px 35px;" class="btn btn-blue" onclick="addemail()">Add Friend</button>  

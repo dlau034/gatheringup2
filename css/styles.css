@@ -627,8 +627,10 @@ a.facebookurl:hover {
   border-radius: 0px;
   border-top: 0px;
   box-shadow: none;
-  position: inherit;
-  z-index: -1;
+  /*position: inherit;*/
+  position: absolute;
+  bottom: 5px;
+
 }
 
 .modal {
@@ -977,6 +979,7 @@ textarea.form-large {
   padding:10px; 
   font-size: 1.2em;
   border-radius: 0px;
+  width: 480px;
 }
 
 #submit_img {
