@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>GatheringUP - Homepage</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">  
+    <meta name="description" content="Finding and Organizing Activities in New York City, such as Dining, Places and Events, is now Easy when you use GatheringUp's Datebook. Gathering Up made Simple. Gathering Up made Simple.">
+    <meta name="keywords" content="GatheringUp, Gathering Up, New York City, Organize, Friends, Events, Dining, Place, Food, Drink">
+
+	<link rel="stylesheet" href="GatheringUP2_files/bootstrap.css">
+  <link rel="stylesheet" href="GatheringUP2_files/bootstrap-responsive.css">
+	<link rel="stylesheet" href="GatheringUP2_files/bootstrap-mobile.css">
+	<link rel="stylesheet" href="GatheringUP2_files/styles2.css">
+  <link rel="stylesheet" href="GatheringUP2_files/icomoon.css">  
+  
+    <script src="GatheringUP2_files/ga.js" async="" type="text/javascript"></script><script src="GatheringUP2_files/jquery-1.js"></script>    
+  <script src="GatheringUP2_files/jquery-ui-1.js"></script>   
+  <script src="GatheringUP2_files/jquery.js"></script>
+  <script>
+
+  // $(document).ready(function(){
+  //   $('#module_wrap').masonry({
+  //     itemSelector: '.module_unit',
+  //     columnWidth: 0,
+  //     isFitWidth: true,       
+  //     isAnimated: true   
+  //   });    
+  // });
+
+    $(document).ready(function(){
+        var $container = $('#module_wrap');
+        $container.imagesLoaded(function(){
+            $container.masonry({
+              itemSelector: '.module_unit',
+              columnWidth: 0,
+              isFitWidth: true,       
+              isAnimated: true              
+            });
+        });       
+    });
+  </script>
+  <script type="text/javascript" src="GatheringUP2_files/script.js"></script>
+
+	<!-- Google Font -->
+
+     <link href="GatheringUP2_files/css_002.css" rel="stylesheet" type="text/css">
+     <link href="GatheringUP2_files/css_003.css" rel="stylesheet" type="text/css">   	
+     <link href="GatheringUP2_files/css.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="GatheringUP2_files/gatheringup-registration.js"></script>
+<script type="text/javascript" src="GatheringUP2_files/gatheringup-about.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38678718-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  </head>
+    <body>
+  <!-- Header + Navbar -->
+
+
+    <!-- Navigations Unit -->
+
+    <div class="navbar navbar_container">
+      <div class="navbar-inner nav_bar_style navbar-fixed-top">
+        <div class="container">
+
+          <!-- Controls the mobile menu button -->
+
+         <a class="btn btn-navbar btn-mini-menu" data-toggle="collapse" data-target=".nav-collapse"> 
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+
+          <!-- Change Out the Logo -->          
+
+          <a class="brand" href="http://dev.gatheringup.com/">GatheringUP</a> 
+
+          <!-- Elements inside will disappear when mobile -->          
+            <div id="collapse_content" class="nav-collapse collapse"> 
+                <ul id="nav_items_group" class="nav">
+                    <!--<li class="active nav_active"><a href="#">Modules</a></li> -->
+                  <li><a href="http://dev.gatheringup.com/localize">What's Around</a></li>                      
+                  </ul>
+                  <form id="header_search_wrap" class="navbar-search">
+                    <input autocomplete="off" id="header_search" class="span4 search-query ui-autocomplete-input" placeholder="Search In and Around Central Park" type="text"><span class="ui-helper-hidden-accessible" aria-live="polite" role="status"></span>
+                    <input value="Go" type="submit">
+                  </form>
+
+                               <ul id="nav_cta" class="nav pull-right">
+                  <li><a class="btn_nav_cta" href="javascript:void(0);" data-toggle="modal" onclick="registerpopup()">Register</a></li>            
+                  <li>
+                      <a class="btn_nav_cta dropdown-toggle" href="#" id="style_dp_text" data-toggle="dropdown">
+                        Sign In
+                        <b class="icon-chevron-down icon-white"></b>
+                      </a>
+                      <div id="signin_box" class="dropdown-menu">
+                        <form class="clearfix" id="signin_content" method="post" action="login" accept-charset="UTF-8">
+                        <span id="logindropdownspan">
+                          <button class="btn btn_facebookdp btn-facebook"><span aria-hidden="true" class="icon-datebookfacebook"></span>Sign in with Facebook</button>  
+
+                          <div class="dividline"></div>  
+                          <input class="input_dp" placeholder="Username" id="droploginemail" name="username" type="text">
+                          <input class="input_dp" placeholder="Password" id="droploginpassword" name="password" type="text">
+                          <div id="forgotpw"><a onclick="logintoforget()">Forgot Password</a></div>
+                          <button class="btn btn-green clearfix" onclick="loginsidedrop()">Sign in</button>
+                          </span>
+                        </form>
+                      </div>                
+                  </li>             
+                </ul>            
+               
+
+            </div>
+         </div>
+      </div>
+    </div>    
+    <!-- Featured Unit -->
+    
+    <div class="featured_unit">
+      <div class="container-module">
+        <div id="featured_title">
+          <h1>Central Park Rocks.</h1>
+        </div>
+      </div>
+      <div class="container-module">
+        <div class="featured_text">
+          <p>
+Spring is finally here and there is no place better to spend your free time than in Central Park.  
+Get inspired by reading stories about how others are spending their time 
+around Central Park.  Then create a story of your own and share it with the community.
+          </p>
+        </div>
+      </div>
+    </div>    
+
+
+
+    <!-- Filter Unit -->          
+
+      <div class="filter_bar">
+        <div class="container-module">
+          <div id="filter_cat">
+            <h2>Discover your Perfect &nbsp;</h2>
+            <select name="Catagories" id="">
+              <option selected="selected">Everybody</option>  
+              <option>Kids Friendly</option>  
+              <option>Social</option>  
+              <option>Active</option>  
+              <option>Romantic</option>  
+            </select>
+            <h2>&nbsp; Outing In New York City</h2>
+          </div>
+        </div>
+      </div>     
+<div class="navbar">
+  <div class="navbar-inner btn-filter-bg">
+     <div class="btn-group btn-full">
+      <!-- <button class="btn btn-filter">Latest Outings</button> -->
+      <!-- <button class="btn btn-filter">Most Popular</button> -->
+      <!-- <button class="btn btn-filter">Editor's Pick</button>     -->
+      <button class="btn btn-filter">Create Your Perfect Outing!</button>
+    </div>   
+    
+
+
+  
+  </div>
+</div>
+    <!-- Pagination -->
+  
+  <div class="container-module">
+    <div class="pagination pagination-right " id="page1">
+      <ul>
+        <li class="disabled"><a href="#">‹</a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">›</a></li>
+      </ul>
+    </div>
+  </div>    
+
+
+    <!-- Module Unit -->
+
+      <div class="masonry" style="position: relative; height: 2721px; width: 1011px;" id="module_wrap">
+
+      <div style="position: absolute; top: 0px; left: 0px;" class="module_unit masonry-brick">
+        
+        <img src="GatheringUP2_files/family.jpg" alt="">
+        <div class="module_text">
+          <a href="http://dev.gatheringup.com/Perfect_outing.html"><h5>Big Day Out In  Out In Central Park Central Park</h5></a>
+          <h6>by David Lau</h6>
+          <div class="dividline"></div>
+          <p>Lorem ipsum dolor sit amet, consect adipisicing elit. Eaque
+ consect adipisicing elit. Eaque inventore eos aliquid ipsum dolor sit 
+amet sit amet ...</p>
+          <!-- <div class="dividline"></div> -->
+        </div>
+        <div class="module_tag">
+            <button class="btn btn-mini disabled cat_tag">Active</button>
+            <button class="btn btn-mini disabled cat_tag">Social</button>
+            <button class="btn btn-mini disabled cat_tag">Everybody</button>
+        </div>   
+      </div>
+
+      <div style="position: absolute; top: 0px; left: 337px;" class="module_unit masonry-brick">
+        <img src="GatheringUP2_files/bench.jpg" alt="">
+        <div class="module_text">
+          <a href=""><h5>Big Day Out In  Out In Central Park</h5></a>
+          <h6>by David Lau</h6>
+          <div class="dividline"></div>
+          <p>Lorem ipsum dolor sit amet, consect adipisicing 
+elit.consect adipisicing elit. Eaque consect adipisicing elit. Eaque 
+consect adipisicing elit. Eaque consect adipisicing elit. Eaque  Eaque 
+inventore eos aliquid ipsum dolor sit amet ipsum dolor sit amet ipsum 
+dolor sit amet ...</p>
+        </div>
+        <div class="module_tag">
+            <button class="btn btn-mini disabled cat_tag">Active</button>
+            <button class="btn btn-mini disabled cat_tag">Social</button>
+            <button class="btn btn-mini disabled cat_tag">Everybody</button>
+        </div>          
+      </div>
+        
+
+      <div style="position: absolute; top: 0px; left: 674px;" class="module_unit masonry-brick">
+        <img src="GatheringUP2_files/bridge.jpg" alt="">
+        <div class="module_text">
+          <a href=""><h5>Big Day Out In  Out In Central Park Central Park</h5></a>
+          <h6>by David Lau</h6>
+          <div class="dividline"></div>
+          <p>Lorem ipsum dolor sit amet, consect adipisicing . Veniam 
+perferendis harum nisi aliquid explicabo aperiam elit. Eaque inventore 
+eos aliquid ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit 
+amet sit amet ipsum dolor sit amet  ...</p>
+        </div>
+        <div class="module_tag">
+            <button class="btn btn-mini disabled cat_tag">Active</button>
+            <button class="btn btn-mini disabled cat_tag">Social</button>
+            <button class="btn btn-mini disabled cat_tag">Everybody</button>
+        </div>             
+      </div>
+
+      <div style="position: absolute; top: 507px; left: 674px;" class="module_unit masonry-brick">
+        <img src="GatheringUP2_files/flower.jpg" alt="">
+        <div class="module_text">
+          <a href=""><h5>Big Day Out In  Out In Central Park Central Park</h5></a>
+          <h6>by David Lau</h6>
+          <div class="dividline"></div>
+          <p>Lorem ipsum dolor sit amet, consect adipisicing elit. Eaque
+ inventore eos aliquid ipsum dolor sit amet ipsum dolor sit amet ipsum 
+dolor sit amet ...</p>
+        </div>
+        <div class="module_tag">
+            <button class="btn btn-mini disabled cat_tag">Active</button>
+            <button class="btn btn-mini disabled cat_tag">Social</button>
+            <button class="btn btn-mini disabled cat_tag">Everybody</button>
+        </div>           
+      </div>
+                  
+      <div style="position: absolute; top: 685px; left: 337px;" class="module_unit masonry-brick">
+        <img src="GatheringUP2_files/biking.jpg" alt="">
+        <div class="module_text">
+          <a href=""><h5>Big Day Out In  Out In Central Park Central Park</h5></a>
+          <h6>by David Lau</h6>
+          <div class="dividline"></div>
+          <p>Lorem ipsum dolor sit amet, consect adipisicing elit. 
+Veniam perferendis harum nisi aliquid explicabo aperiam . Veniam 
+perferendis harum nisi aliquid explicabo aperiam . Eaque inventore eos 
+aliquid ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet 
+...</p>
+        </div>
+        <div class="module_tag">
+            <button class="btn btn-mini disabled cat_tag">Active</button>
+            <button class="btn btn-mini disabled cat_tag">Social</button>
+            <button class="btn btn-mini disabled cat_tag">Everybody</button>
+        </div>          
+      </div>
+
+   
+      
+      <div style="position: absolute; top: 713px; left: 0px;" class="module_unit masonry-brick">
+        <img src="GatheringUP2_files/family.jpg" alt="">
+        <div class="module_text">
+          <a href=""><h5>Big Day Out In  Out In Central Park Central Park</h5></a>
+          <h6>by David Lau</h6>
+          <div class="dividline"></div>
+          <p>Lorem ipsum dolor sit amet, consect adipisicing elit. Eaque
+ . Veniam perferendis harum nisi aliquid explicabo aperiam . Veniam 
+perferendis harum nisi aliquid explicabo aperiam inventore eos aliquid 
+ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ...</p>
+        </div>
+        <div class="module_tag">
+            <button class="btn btn-mini disabled cat_tag">Active</button>
+            <button class="btn btn-mini disabled cat_tag">Social</button>
+            <button class="btn btn-mini disabled cat_tag">Everybody</button>
+        </div>          
+      </div>
+
+      <div style="position: absolute; top: 1212px; left: 674px;" class="module_unit masonry-brick">
+        <img src="GatheringUP2_files/bridge.jpg" alt="">
+        <div class="module_text">
+          <a href=""><h5>Big Day Out In  Out In Central Park Central Park</h5></a>
+          <h6>by David Lau</h6>
+          <div class="dividline"></div>
+          <p>Lorem ipsum dolor sit amet, consect adipisicing elit. 
+Eaque. Veniam perferendis harum nisi aliquid explicabo aperiam  
+inventore eos aliquid ipsum dolor sit amet ipsum dolor sit amet ipsum 
+dolor sit amet ...</p>
+        </div>
+        <div class="module_tag">
+            <button class="btn btn-mini disabled cat_tag">Active</button>
+            <button class="btn btn-mini disabled cat_tag">Social</button>
+            <button class="btn btn-mini disabled cat_tag">Everybody</button>
+        </div>          
+      </div>
+
+      <div style="position: absolute; top: 1328px; left: 337px;" class="module_unit masonry-brick">
+        <img src="GatheringUP2_files/biking.jpg" alt="">
+        <div class="module_text">
+          <a href=""><h5>Big Day Out In  Out In Central Park Central Park</h5></a>
+          <h6>by David Lau</h6>
+          <div class="dividline"></div>
+          <p>Lorem ipsum dolor sit amet, consect adipisicing 
+elit.consect adipisicing elit. Eaque consect adipisicing elit. Eaque  
+Eaque inventore eos aliquid ipsum dolor sit amet ipsum dolor sit amet 
+ipsum dolor sit amet ...</p>
+        </div>
+        <div class="module_tag">
+            <button class="btn btn-mini disabled cat_tag">Active</button>
+            <button class="btn btn-mini disabled cat_tag">Social</button>
+            <button class="btn btn-mini disabled cat_tag">Everybody</button>
+        </div>          
+      </div>
+
+      <div style="position: absolute; top: 1459px; left: 0px;" class="module_unit masonry-brick">
+        <img src="GatheringUP2_files/bridge.jpg" alt="">
+        <div class="module_text">
+          <a href=""><h5>Big Day Out In  Out In Central Park Central Park</h5></a>
+          <h6>by David Lau</h6>
+          <div class="dividline"></div>
+          <p>Lorem ipsum dolor sit amet, consect adipisicing elit. 
+consect adipisicing elit. Eaque consect adipisicing elit. Eaque consect 
+adipisicing elit. Eaque consect adipisicing elit. Eaque consect 
+adipisicing elit. Eaque consect adipisicing elit. Eaque consect 
+adipisicing elit. Eaque Eaque inventore eos aliquid ipsum dolor sit amet
+ ipsum dolor sit amet ipsum dolor sit amet ...</p>
+        </div>
+        <div class="module_tag">
+            <button class="btn btn-mini disabled cat_tag">Active</button>
+            <button class="btn btn-mini disabled cat_tag">Social</button>
+            <button class="btn btn-mini disabled cat_tag">Everybody</button>
+        </div>          
+      </div>
+                  
+      <div style="position: absolute; top: 1703px; left: 674px;" class="module_unit masonry-brick">
+        <img src="GatheringUP2_files/bench.jpg" alt="">
+        <div class="module_text">
+          <a href=""><h5>Big Day Out In  Out In Central Park Central Park</h5></a>
+          <h6>by David Lau</h6>
+          <div class="dividline"></div>
+          <p>Lorem ipsum dolor sit amet, consect adipisicing elit. 
+consect adipisicing elit. Eaque consect adipisicing elit. Eaque consect 
+adipisicing elit. Eaque Eaque inventore eos aliquid ipsum dolor sit amet
+ ipsum dolor sit amet ipsum dolor sit amet ...</p>
+        </div>
+        <div class="module_tag">
+            <button class="btn btn-mini disabled cat_tag">Active</button>
+            <button class="btn btn-mini disabled cat_tag">Social</button>
+            <button class="btn btn-mini disabled cat_tag">Everybody</button>
+        </div>          
+      </div>
+      
+      <div style="position: absolute; top: 1955px; left: 337px;" class="module_unit masonry-brick">
+        <img src="GatheringUP2_files/family.jpg" alt="">
+        <div class="module_text">
+          <a href=""><h5>Big Day Out In  Out In Central Park Central Park</h5></a>
+          <h6>by David Lau</h6>
+          <div class="dividline"></div>
+          <p>Lorem ipsum dolor sit amet, consect adipisicing 
+elit.consect adipisicing elit. Eaque  Eaque inventore eos aliquid ipsum 
+dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ...</p>
+        </div>
+        <div class="module_tag">
+            <button class="btn btn-mini disabled cat_tag">Active</button>
+            <button class="btn btn-mini disabled cat_tag">Social</button>
+            <button class="btn btn-mini disabled cat_tag">Everybody</button>
+        </div>          
+      </div>      
+
+      <div style="position: absolute; top: 1999px; left: 0px;" class="module_unit masonry-brick">
+        <img src="GatheringUP2_files/flower.jpg" alt="">
+        <div class="module_text">
+          <a href=""><h5>Big Day Out In  Out In Central Park Central Park</h5></a>
+          <h6>by David Lau</h6>
+          <div class="dividline"></div>
+          <p>Lorem ipsum dolor sit amet, consect adipisicing elit. 
+consect adipisicing elit. Eaque consect adipisicing elit. Eaque Eaque 
+inventore eos aliquid ipsum dolor sit amet ipsum dolor sit amet ipsum 
+dolor sit amet ...</p>
+        </div>
+        <div class="module_tag">
+            <button class="btn btn-mini disabled cat_tag">Active</button>
+            <button class="btn btn-mini disabled cat_tag">Social</button>
+            <button class="btn btn-mini disabled cat_tag">Everybody</button>
+        </div>          
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="container-module">
+      <div class="pagination pagination-right" id="page2">
+        <ul>
+          <li class="disabled"><a href="#">‹</a></li>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">›</a></li>
+        </ul>
+      </div>
+    </div>          
+<!-- Footer -->
+  <div class="footer">
+    <p>Copyright Gathering Up Ltd 2013. All rights reserved.</p>
+    <p>Design + Built by <a href="http://techkinesis.com/">Techkinesis</a>. Proudly Made in NYC</p>
+    <p>
+      <a href="http://facebook.com/gatheringup">Follow Us on Facebook</a>  | 
+      <a href="http://dev.gatheringup.com/about">About Us</a>  |  
+      <a href="http://dev.gatheringup.com/about/termsofuse">Terms of Use</a>  |  
+      <a href="http://dev.gatheringup.com/about/privacy">Privacy Policy</a> | 
+      <a href="http://dev.gatheringup.com/about/contactusform">Contact Us</a>
+    </p>  
+  </div>  
+
+<!--Register Modal-->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header registerModal">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h2 id="myModalLabel">Register with GatheringUP!</h2>
+        
+<div style="width: 400px;" class="breakline"></div> 
+      </div>
+		<div style="padding-top: 2px;" class="modal-body">
+            <form id="registerform" action="#">
+      <div id="RegistrationErrors" class="form-large" style="width:402px;"></div>
+              <div>
+                  <input name="firstname" id="firstname" class="form-large" style="width:402px;" placeholder="First Name" tabindex="41" type="text">
+                  <b id="errfirstname" style="position: absolute;"></b>
+              </div>
+              <div>
+                  <input name="lastname" id="lastname" class="form-large" style="width:402px;" placeholder="Last Name" tabindex="42" type="text">
+                <b id="errlastname" style="position: absolute;"></b>
+              </div>        
+                  <div>
+                  <input name="email" id="regemail" class="form-large" style="width:402px;" placeholder="Email" tabindex="43" type="text">
+                  <b id="erremail" style="position: absolute;"></b>
+              </div>
+              <div>
+                  <input data-original-title="Must contain one number &amp; eight characters" name="password" id="regpassword" class="form-large" title="" placeholder="Create Password" style="width:190px;float:left;" tabindex="44" type="password">
+<b id="errpassword" style="position: absolute;"></b>
+                  <input name="passwordconf" id="regpasswordconf" class="form-large" placeholder="Re-type Password" style="margin-left:20px; width:190px;float:left;" tabindex="45" type="password">
+<b id="errpasswordconf" style="position: absolute;"></b>
+              </div>     
+               <div style="clear:both;" class="breakline"></div>  
+                  <div style="float:left;margin-top: 3px;width:192px;" id="captcha"><img src="GatheringUP2_files/captcha.jpg"></div>
+                  <div>
+                  <input name="norobotcode" id="robotdistorter" class="form-large" style="margin-left:20px; width:190px;float:left;" placeholder="Enter Captcha" tabindex="46" type="text">
+                  <b id="errrobotdistorter" style="position: absolute;"></b>
+              </div>
+               <div style="clear:both;" class="breakline"></div>  
+                  <button type="button" value="Sign me up" class="btn btn-blue btn-large" style="width:405px;" onclick="register()" tabindex="47">Register</button>
+            <img src="GatheringUP2_files/divider.png" style="margin-bottom:10px;margin-top: 14px;" alt=""> 
+        <div style="width:388px;height: 65px;">
+        	<div class="facebookbg2">
+              <a href="https://www.facebook.com/dialog/oauth?client_id=444845832200364&amp;redirect_uri=http%3A%2F%2Fwww.gatheringup.com%2Fuser%2Ffacebook&amp;state=656738c16b232a1e160d73e842fdf772" id="fb_register" class="facebookurl">Sign In with Facebook        </a>
+              </div>
+        </div>
+            </form>
+            
+    </div>   
+    </div>   
+
+    <!--Sign Up Modal-->
+    <div id="Signin_Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header registerModal">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h2 id="myModalLabel">Sign In!</h2>
+      </div>
+        <div style="width:89%;" class="breakline"></div>       
+        <div style="padding-top: 0px;" class="modal-body">
+          <p>Don't have an account? &nbsp;<a href="javascript:void(0);" onclick="registerpopup('')">Register Here!</a></p>
+            <form id="loginform" action="javascript:void(0);" class="form-horizontal">
+            
+            		<input id="redirect" name="redirect" value="" type="hidden">
+					<input class="bbookmark" name="bbookmark" value="" type="hidden">
+					<input class="pbookmark" name="pbookmark" value="" type="hidden">
+					<input class="ebookmark" name="ebookmark" value="" type="hidden">
+
+            	<div id="LoginErrors"></div>
+                <div class="SignInField_m">
+                    <input id="poploginemail" name="email" style="width:256px;" class="squareCorners" placeholder="Email" type="text">
+                </div>
+                <div class="SignInField_m">
+                    <input id="poploginpasswd" name="password" style="width:256px;" class="squareCorners" placeholder="Password" type="password">
+                </div>
+                <div class="SignInField_m">
+                    <a style="cursor:pointer;" data-toggle="modal" onclick="logintoforget()">Forgot Your Password?</a>
+<!--                     <label class="checkbox">
+                    <input type="checkbox">Remember me
+                    </label>   -->
+                        <button onclick="login()" class="btn btn-blue btn-large" type="submit" style="font-weight:bold;width:100%;margin-top:10px;">Sign In!</button>
+                      </div>
+
+                <div style="margin-bottom:14px;" class="breakline"></div> 
+
+              <div class="facebookbg">
+              <a href="https://www.facebook.com/dialog/oauth?client_id=444845832200364&amp;redirect_uri=http%3A%2F%2Fwww.gatheringup.com%2Fuser%2Ffacebook&amp;state=656738c16b232a1e160d73e842fdf772" class="facebookurl">
+                    <img style="height:30px;width:auto;padding-right:35px;" src="GatheringUP2_files/facebook.png" alt="facebook">Sign In with Facebook
+                 </a>
+              </div>
+                  </form> 
+               </div>
+            </div> 
+
+<!--Forgot Password Modal-->
+    <div id="forgotModal" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>        
+        <h2 id="myModalLabel">Forgot Password</h2>
+      </div>
+      <div class="breakline"></div>
+      <form id="forgotpasswordform" action="javascript:void(0);" class="form-horizontal">
+      <div style="padding: 0px 35px 32px;" class="modal-body">
+        <h4>Enter your email address below to reset your password</h4>
+        <input class="form-large" id="forgotemail" placeholder="Email Address" type="text">
+        <button style="padding:15px 33px 15px 33px; width: 100%;" type="submit" class="btn btn-blue btn-large" onclick="forgotpassword()">Reset Your Password!</button>
+      </div>
+      </form>
+    </div>    
+    
+<!-- Announcements Modal-->
+    <div id="announcementModal" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>        
+        <h2 id="announcementLabel">Notification</h2>
+      </div>
+      <div class="breakline"></div>
+      <div style="padding: 0px 35px 32px;" class="modal-body">
+        <h4>Enter your email address below to reset your password</h4>
+      </div>
+    </div>    
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+    <script src="GatheringUP2_files/bootstrap.js"></script>
+<!--Carousel Javascript-->    
+    <script type="text/javascript"> 
+
+    
+      $(function(){
+    	  $("#regpassword").tooltip();
+      });
+    </script>
+  
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all"></ul></body></html>

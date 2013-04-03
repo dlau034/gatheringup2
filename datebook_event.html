@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title>GatheringUp -  Gathering Up made Simple.</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=0.6">
+    <meta name="description" content="Finding and Organizing Activities in New York City, such as Dining, Places and Events, is now Easy when you use GatheringUp's Datebook.  Gathering Up made Simple.">
+    <meta name="keywords" content="Datebook, Organize, GatheringUp, Gathering Up, New York City, Friends, Events, Dining, Place, Food, Drink">
+
+<!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+        <style type="text/css">
+          body {
+            padding-top: 60px;
+          }
+
+        </style>        
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/base/minified/jquery-ui.min.css" />
+<link rel="Stylesheet" type="text/css" href="/css/chosen.css" />
+<link rel="Stylesheet" type="text/css" href="/css/home.css" />
+    <link href="css/styles.css" rel="stylesheet">
+
+<!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500' rel='stylesheet' type='text/css'>
+ 
+<link rel="Stylesheet" type="text/css" href="/css/timepicker.css" />
+<link rel="Stylesheet" type="text/css" href="/css/fullcalendar.css" />
+
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-1.8.21.custom.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-timepicker-addon.js"></script>
+<script type='text/javascript' src='/js/fullcalendar.min.js'></script>
+
+<script type="text/javascript" src="/js/underscore-min.js"></script>
+<script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="/js/gatheringup-home-min.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38678718-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body>
+
+    <div class="wrapper"> <!-- Wrapper -->   
+<!-- Header + Navbar -->
+
+<script type="text/javascript">
+<!--
+
+//-->
+function invitedecline(idinvite)
+{
+	$.get("/invitation/decline?idinvite="+idinvite);
+	$("#"+idinvite+"invl").remove();
+	$("#"+idinvite+"inv").remove();
+	$("#"+idinvite+"invn").remove();
+	$invites=$("#note_on>b").html();
+	$invites=$invites-1;
+	if($invites<=0){
+		$("#note_on").attr('id',"note_off");
+	}
+	$invites=$("#note_on>b").html($invites);
+}
+
+</script>
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="top-stripe"></div>
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/">Gathering UP</a>
+              <div class="nav-collapse collapse">
+                <ul class="nav">
+                
+                  <li><a  href="/dining">Dining</a></li>
+                  <li><a  href="/places">Places</a></li>
+                  <li><a  href="/events">Events</a></li>
+                                 <li><a class="header-active" href="/datebook">Datebook</a></li>
+					                  		<li>
+                  												<a id="note_off" class="dropdown-toggle" data-toggle="dropdown"  href="">&nbsp;</a>
+											                  	</li>
+                              </ul>
+                              <div class="dropdown">
+               		              <form style="color:white;" class="navbar-form pull-right">Hello &nbsp;
+                <a class="dropdown-toggle " type="button" data-toggle="dropdown" href="#">David Lau</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                      <!-- <li><a href="logOut.html">Settings</a></li> -->                    
+                      <li style="text-align: center"><a href="/preferences/changepasswd">Change Password</a></li>          
+                      <li style="text-align: center"><a href="/user/logout">Log Out</a></li>          
+                  </ul>
+              </form>
+              </div>
+               		
+                             </div><!--/.nav-collapse -->
+          </div>
+        </div>
+      </div><script type="text/javascript">
+
+window.friends = {"45":{"name":"A Drawing Board","id":"530338615"},"155":{"name":"Aaron Paterson","id":"655427568"},"52":{"name":"Aaron Spence","id":"544005672"},"209":{"name":"Adrian Lo","id":"697515111"},"302":{"name":"Aidar Dulati","id":"1252583186"},"331":{"name":"Akira Akaho","id":"1663426283"},"269":{"name":"Alan Lee","id":"878965506"},"192":{"name":"Alastair Mckenzie","id":"682871735"},"286":{"name":"Alex Liang","id":"901995231"},"119":{"name":"Alexander Joseph Prasetya","id":"607123237"},"30":{"name":"Alexander Shi","id":"509682079"},"330":{"name":"Alexandra-Jayeun Lee","id":"1634810070"},"264":{"name":"Alvin To","id":"830085354"},"105":{"name":"Amanda Dickson","id":"600270563"},"117":{"name":"Amanda Lee","id":"606651018"},"34":{"name":"Amy Feng","id":"512975718"},"344":{"name":"Andrew Shaw","id":"100000785596562"},"72":{"name":"Andrew Tang","id":"573170330"},"29":{"name":"Andy Ong","id":"509197602"},"327":{"name":"Andy Tseng","id":"1579279159"},"220":{"name":"Andy Wu","id":"719040262"},"49":{"name":"Angie Pranish","id":"538330244"},"44":{"name":"Angus Yeh","id":"529660999"},"127":{"name":"Anh Doe","id":"620233125"},"351":{"name":"Anisha Bhattacharya","id":"100002097961523"},"142":{"name":"Anita Dobson","id":"638207752"},"182":{"name":"Anna Tokareva","id":"677332226"},"152":{"name":"Annabel Smart","id":"651326859"},"161":{"name":"Anne Kei","id":"663027118"},"246":{"name":"Anthea Du","id":"768233041"},"265":{"name":"Archie T. Ecture","id":"833680611"},"143":{"name":"Archiplan Auckland","id":"639068752"},"129":{"name":"Ashleigh Ngan","id":"621764737"},"98":{"name":"Ashley Jihyun Lim","id":"596556234"},"346":{"name":"Auckland Architecture","id":"100001158105360"},"354":{"name":"Aus Al-majmuei","id":"100002298037071"},"301":{"name":"Babette Vavaboom","id":"1213789606"},"226":{"name":"Barbara Lau","id":"729463873"},"358":{"name":"Becky Palmer","id":"100004003827010"},"38":{"name":"Bella Anderson","id":"516393206"},"263":{"name":"Bess Ashby","id":"828620315"},"281":{"name":"Bevan Tse","id":"900855018"},"132":{"name":"Bill Blue","id":"624967337"},"116":{"name":"Billy Cheung","id":"606300065"},"213":{"name":"Bobby Shen","id":"701634433"},"21":{"name":"Borijan Milic","id":"502729129"},"6":{"name":"Bowen Pan","id":"217700148"},"11":{"name":"Brad Bonnington","id":"217700597"},"46":{"name":"Brad Featherstone","id":"531012886"},"298":{"name":"Brandon Yang","id":"1157062896"},"100":{"name":"Brian 'Baz' Cheng","id":"598364154"},"2":{"name":"Callum Christopher","id":"21105912"},"170":{"name":"Cameron Harrison","id":"668850267"},"266":{"name":"Candice Rose Mason","id":"834059936"},"40":{"name":"Carina Crescent","id":"518428270"},"205":{"name":"Carmen Fu","id":"695521059"},"120":{"name":"Caroline Fergusson","id":"609267924"},"237":{"name":"Cecilia Yeung","id":"748208451"},"63":{"name":"Chad Reed","id":"563111655"},"206":{"name":"Chang Liu","id":"696715359"},"357":{"name":"Chaz Chai","id":"100002877996822"},"355":{"name":"Che Ly","id":"100002434009575"},"332":{"name":"Chel Salinas","id":"100000154146876"},"110":{"name":"Chelsea Zgierski-Boreyko","id":"601191497"},"94":{"name":"Chien-Lin Wu","id":"591598318"},"139":{"name":"Clai Wong","id":"631816082"},"201":{"name":"Claire Hamilton","id":"686440167"},"90":{"name":"Clio Chiu","id":"588620416"},"20":{"name":"Crystal Ly","id":"502545864"},"350":{"name":"Cynthia Suththananthathas","id":"100001896298455"},"340":{"name":"Dagan Lin","id":"100000489313233"},"59":{"name":"Damien Zarb","id":"551015634"},"274":{"name":"Dan Liu","id":"899920227"},"325":{"name":"Dan Lowery","id":"1527579329"},"103":{"name":"Dan TheProducer Shirazi","id":"600155695"},"303":{"name":"Daniel Chan","id":"1265418203"},"313":{"name":"Daniel Spitzer","id":"1409558559"},"215":{"name":"Daniel Zhu","id":"708255588"},"130":{"name":"Daphne Lee","id":"621815286"},"113":{"name":"David Main","id":"601640092"},"87":{"name":"David Tat","id":"587853173"},"89":{"name":"Deborah Ruth","id":"588500409"},"272":{"name":"Devashish Sharma","id":"893110153"},"125":{"name":"Dhaval Dharamsi","id":"617076605"},"13":{"name":"Dipra Ray","id":"217700745"},"36":{"name":"Dorothy Ng","id":"513161323"},"58":{"name":"Duen Bhumiwat","id":"549558379"},"193":{"name":"Eddy Lau","id":"683450085"},"183":{"name":"Edw\u00ecn Yu","id":"678555305"},"322":{"name":"EeLaine Yeoh","id":"1505015152"},"162":{"name":"Elisapeta Heta","id":"663128315"},"291":{"name":"Elizabeth Tjahjana","id":"1024686887"},"25":{"name":"Ellen Ashenden","id":"506271512"},"186":{"name":"Emily Cheang","id":"680431958"},"239":{"name":"Emily Lay","id":"750638311"},"166":{"name":"Erik Chamonte","id":"667250081"},"134":{"name":"Esha Shah","id":"626001184"},"240":{"name":"Eshan Gupta","id":"751017930"},"73":{"name":"Eugene ISack","id":"574172805"},"27":{"name":"Eva Cheung","id":"507346852"},"329":{"name":"Febian Tan","id":"1620255393"},"158":{"name":"Felice Burrows","id":"660665703"},"179":{"name":"Feri Tan","id":"673249951"},"26":{"name":"Fiona Rodrigues","id":"507325842"},"95":{"name":"Francisca Siew","id":"595092348"},"156":{"name":"Fraser Moore","id":"659325032"},"7":{"name":"Gabrielle Chin","id":"217700183"},"328":{"name":"Gerard Gruiters","id":"1590832154"},"137":{"name":"Gian Harton","id":"631030032"},"196":{"name":"Gina Gahee Kim","id":"684687916"},"221":{"name":"Gina Wang","id":"721876339"},"238":{"name":"Gopika Gnanakumar","id":"749721354"},"324":{"name":"Grace Astalia","id":"1513782141"},"359":{"name":"Gregory Gibbons","id":"100004428491141"},"309":{"name":"Harry Zhao","id":"1349510573"},"268":{"name":"Hasie Leung","id":"875780366"},"320":{"name":"Hayden McCallum","id":"1496467228"},"214":{"name":"Hayley Bongiovanni","id":"707506773"},"172":{"name":"Hayley Fisher","id":"669775350"},"32":{"name":"Heidi Leung","id":"512907194"},"149":{"name":"Helen Liu","id":"648078462"},"88":{"name":"Helen Pan","id":"588398262"},"306":{"name":"Hock Choo","id":"1320381848"},"178":{"name":"Ian Scott","id":"671346164"},"106":{"name":"Ibrahim Ikram","id":"600987142"},"136":{"name":"Isabella Seakins","id":"628581038"},"339":{"name":"Jack Payne","id":"100000426486611"},"282":{"name":"Jack Qian","id":"901015363"},"297":{"name":"Jae Hong","id":"1150338442"},"251":{"name":"Jae Jang","id":"775435216"},"284":{"name":"Jai Park","id":"901785186"},"104":{"name":"James Egen","id":"600175612"},"304":{"name":"James Wilson","id":"1269909158"},"80":{"name":"James Wong Kein Peng","id":"581890415"},"225":{"name":"Jane Lucky","id":"725895108"},"84":{"name":"Janet Yuen","id":"585613244"},"71":{"name":"Janey Lu","id":"573055508"},"111":{"name":"Janice Au","id":"601307232"},"93":{"name":"Jasmin Kaur","id":"589536280"},"181":{"name":"Jasmine Pang","id":"675813466"},"235":{"name":"Jason Yap","id":"744161768"},"77":{"name":"Jayesh Patel","id":"578351010"},"227":{"name":"Jenni Liang","id":"729733586"},"154":{"name":"Jenny Cho","id":"655159545"},"292":{"name":"Jeremy Chapman","id":"1031437575"},"259":{"name":"Jess Lu","id":"796077836"},"101":{"name":"Jesse Byrt","id":"598407772"},"278":{"name":"Jessica Gopalan","id":"900555636"},"229":{"name":"Jessica Li","id":"731157153"},"138":{"name":"Jessica Park","id":"631680925"},"333":{"name":"Jiae Erin Lee","id":"100000171554963"},"271":{"name":"Jimmy Tan","id":"879780117"},"164":{"name":"Jin Akagi","id":"663640886"},"197":{"name":"Jiyae Park","id":"684723717"},"249":{"name":"Joann Shum","id":"770919107"},"97":{"name":"Joanna Wong","id":"595440952"},"189":{"name":"Johanna Bilkey","id":"681925690"},"267":{"name":"John F Baker","id":"834412177"},"222":{"name":"Johnny Liu","id":"722092643"},"293":{"name":"Jon Nutting","id":"1051708105"},"3":{"name":"Jonathan Hooper","id":"23701654"},"79":{"name":"Jong Keun Tony Ryu","id":"581610086"},"42":{"name":"Jordan Wang","id":"522295791"},"242":{"name":"Joyce Yue","id":"751854388"},"288":{"name":"Judy Tan","id":"902330130"},"250":{"name":"Julia Chan","id":"772154456"},"208":{"name":"Julie Tse","id":"697465437"},"270":{"name":"Jun-ho Park","id":"879735234"},"257":{"name":"Justin Xie","id":"786632914"},"347":{"name":"Kanese Lui","id":"100001339912277"},"191":{"name":"Karen Yung","id":"682030832"},"114":{"name":"Kartik Wali","id":"602605603"},"188":{"name":"Kate Andrew","id":"681131455"},"92":{"name":"Kate Beilby","id":"588887516"},"210":{"name":"Katelyn Ma","id":"699031899"},"65":{"name":"Katie Skudder","id":"566561685"},"133":{"name":"Kaushik Rao","id":"625812516"},"108":{"name":"Kavita Pattery","id":"601080477"},"55":{"name":"Kay Feng","id":"546545131"},"168":{"name":"Kaye Chen","id":"667460537"},"66":{"name":"Keikei Lam","id":"566693442"},"54":{"name":"Kelly O Sullivan","id":"545622482"},"62":{"name":"Kenneth Su","id":"560278016"},"342":{"name":"Kent van Velden","id":"100000647335870"},"145":{"name":"Kevin Ha","id":"644543454"},"126":{"name":"Kevin Mach","id":"619755514"},"285":{"name":"Kevin Son","id":"901850108"},"276":{"name":"Kevin Tang","id":"900480391"},"241":{"name":"Kim Huynh","id":"751468766"},"232":{"name":"Kirwin Tan","id":"735598688"},"253":{"name":"Kitty Lin","id":"779470316"},"211":{"name":"Koni Lui","id":"699995844"},"287":{"name":"Lanny Lin","id":"902280643"},"141":{"name":"Laury Van Der Linden","id":"636150890"},"353":{"name":"Lee  Mi-Ji","id":"100002225393906"},"82":{"name":"Leighton Noakes","id":"584926274"},"307":{"name":"Leong Kim Choo","id":"1327931957"},"356":{"name":"Li Ling","id":"100002577902764"},"218":{"name":"Lili Sakalia","id":"717760736"},"236":{"name":"Lily Wong","id":"747894847"},"337":{"name":"Lin Ma","id":"100000373383983"},"160":{"name":"Linda Wen","id":"662555996"},"261":{"name":"Linh Su","id":"812425007"},"341":{"name":"Louise Goodwin","id":"100000530176677"},"305":{"name":"Lucia Park","id":"1302797839"},"202":{"name":"Luke Timmins","id":"694459892"},"243":{"name":"Lydia Qu","id":"765919370"},"14":{"name":"Lynn Lai","id":"217700762"},"345":{"name":"Lynn Lai","id":"100001033794900"},"85":{"name":"Maha Albadrawi","id":"586430189"},"83":{"name":"Mana Kealoha","id":"585285766"},"295":{"name":"Mandy Huang","id":"1098879339"},"343":{"name":"Marc Lithgow","id":"100000669912571"},"316":{"name":"Marcus Sin","id":"1455737865"},"67":{"name":"Maria Chen","id":"569230762"},"16":{"name":"Marie-Claire Henderson","id":"217700828"},"199":{"name":"Marion Rose","id":"685316052"},"296":{"name":"Mark Davis","id":"1106942898"},"323":{"name":"Mark Durden","id":"1509985739"},"5":{"name":"Mark Schmidt","id":"217700125"},"244":{"name":"Martin Leung-Wai","id":"765952078"},"18":{"name":"Masakazu Morozumi","id":"500627571"},"326":{"name":"Matthew Gross","id":"1532767370"},"41":{"name":"Matthew Le Grice","id":"521684209"},"223":{"name":"Mavis Shih","id":"722357135"},"74":{"name":"Melissa Bennett","id":"574534225"},"35":{"name":"Melody Shiue","id":"512992184"},"165":{"name":"Mianoke Youngblood","id":"665189705"},"180":{"name":"Michael Chan","id":"673716628"},"153":{"name":"Michael John Conway Ware","id":"651337390"},"157":{"name":"Michael Kao","id":"659506304"},"51":{"name":"Michael Shi","id":"543026655"},"349":{"name":"Michal Karminski","id":"100001439152462"},"131":{"name":"Michelle \u062a Tan","id":"624607933"},"50":{"name":"Miguel Machado","id":"541072353"},"255":{"name":"Mikhil Varma","id":"784091382"},"204":{"name":"Mina Kim","id":"694819275"},"321":{"name":"Minesh Patel","id":"1501067167"},"43":{"name":"Minka Ip","id":"523970507"},"53":{"name":"Misung Kim","id":"544598963"},"147":{"name":"Mitchell Round","id":"646584936"},"310":{"name":"Modos Auckland","id":"1350668782"},"190":{"name":"Mush Mush","id":"681926158"},"315":{"name":"Nacho Choza de Juan","id":"1446811170"},"290":{"name":"Nam Do","id":"1023973004"},"260":{"name":"Natasha Krishnadas","id":"799100356"},"254":{"name":"Natasha Tasker-Keirle","id":"780834960"},"124":{"name":"Neeharika Walthati","id":"615046336"},"39":{"name":"Neha Chaudhari","id":"517333602"},"81":{"name":"Nhien Thi Thuy Nguyen","id":"583877735"},"96":{"name":"Nick Sayes","id":"595106963"},"312":{"name":"Nick White","id":"1365278802"},"61":{"name":"Nirbhay Jawale","id":"555029820"},"194":{"name":"Nirupa George","id":"684077243"},"258":{"name":"Norman Tam","id":"794770620"},"15":{"name":"Olivia Caughey","id":"217700780"},"217":{"name":"Owen Huang","id":"715052100"},"212":{"name":"Panin Thum-Umnauysuk","id":"700453312"},"140":{"name":"Patrick Loo","id":"634415356"},"248":{"name":"Pene Lister","id":"769805362"},"135":{"name":"Peter Lee","id":"626510004"},"275":{"name":"Peter Quach","id":"900460004"},"163":{"name":"Philip Guan","id":"663463083"},"123":{"name":"Piwi Shackell","id":"611785351"},"10":{"name":"Pritisha Unka","id":"217700583"},"69":{"name":"Rach Yang Yang","id":"572180134"},"231":{"name":"Rachel Siow","id":"732530768"},"228":{"name":"Rachel Soakell","id":"731145213"},"234":{"name":"Rahman Hussain","id":"741545382"},"317":{"name":"Rainy Zhu","id":"1469276413"},"203":{"name":"Raj Kutty","id":"694608723"},"151":{"name":"Rani Chegudi","id":"650810086"},"233":{"name":"Raymond Lowe","id":"737282016"},"318":{"name":"Rebecca Hood","id":"1470015322"},"252":{"name":"Robert Dziekan","id":"776954932"},"109":{"name":"Rohit Patel","id":"601125366"},"334":{"name":"Rois Tang","id":"100000179982535"},"12":{"name":"Rucha Sarma","id":"217700742"},"56":{"name":"Runcong Cen","id":"548920533"},"60":{"name":"Ruth Lai","id":"554422675"},"31":{"name":"Ryan Peeters","id":"512729476"},"150":{"name":"Sachin Thakur","id":"650310855"},"86":{"name":"Samantha Zhen","id":"586860920"},"171":{"name":"Sandeep Waghulde","id":"669670787"},"348":{"name":"Sandy Son","id":"100001358960684"},"107":{"name":"Sanjeev Krishna","id":"601045113"},"64":{"name":"Sankalp Dave","id":"563153505"},"102":{"name":"Santhiya Veejian","id":"599964216"},"75":{"name":"Sarah Benikowsky","id":"575548961"},"115":{"name":"Sarah Liu","id":"602610259"},"335":{"name":"Sarah Mcilwaine","id":"100000335063571"},"308":{"name":"Sarah Yunhee Lee","id":"1346982717"},"230":{"name":"Sarosh Mulla","id":"731586908"},"148":{"name":"Saryu Sharma","id":"646801691"},"112":{"name":"Sasha Willins","id":"601619553"},"207":{"name":"Sean Bian","id":"697406292"},"121":{"name":"Sean Tan","id":"609699298"},"195":{"name":"Sean Taylor","id":"684581643"},"70":{"name":"Shantanu Lal","id":"572931586"},"319":{"name":"Sharan Ghadiyar","id":"1474242176"},"4":{"name":"Shinji Kim","id":"122606145"},"279":{"name":"Shiva Gopalan","id":"900645693"},"224":{"name":"Shivani Balraj","id":"724296897"},"23":{"name":"Shwetha Nair","id":"505580572"},"314":{"name":"Sione Havili Mau","id":"1430193198"},"184":{"name":"Snowy Wright","id":"679268941"},"9":{"name":"Sommer Tsai","id":"217700265"},"280":{"name":"Sonam Arora","id":"900725416"},"294":{"name":"Stephanie Joondeph","id":"1081980640"},"28":{"name":"Stephanie Kunau","id":"507625834"},"33":{"name":"Stephanie Winquist","id":"512940918"},"176":{"name":"Stephen Joel Riki Williams","id":"670540407"},"256":{"name":"Stephen Mach","id":"785053452"},"300":{"name":"Steven Wulf","id":"1197950476"},"247":{"name":"Steven Yuen","id":"768369627"},"122":{"name":"Sunny Wong","id":"609842863"},"24":{"name":"Suraj Samtani","id":"506154033"},"277":{"name":"TC Liu","id":"900485439"},"144":{"name":"Tan Shu Ping","id":"639200446"},"299":{"name":"Tatiana Zimina","id":"1171625661"},"19":{"name":"Taufeeq Humayun Makani","id":"501354543"},"198":{"name":"Tejas Salway","id":"685260076"},"47":{"name":"Therese Fo'ou","id":"533360859"},"262":{"name":"Tim Jiang","id":"814650499"},"48":{"name":"Tim Solomon","id":"534339104"},"78":{"name":"Tom Ho","id":"580201202"},"22":{"name":"Tom Owen","id":"503749554"},"219":{"name":"Tony Chien","id":"717775243"},"311":{"name":"Tracy Ruan","id":"1360520409"},"177":{"name":"Trevor Ke","id":"670761581"},"175":{"name":"Uddhav Naik","id":"670250701"},"91":{"name":"Varun Bhai","id":"588853200"},"283":{"name":"Vedrana Krivokuca","id":"901635273"},"99":{"name":"Victor Eng","id":"597911340"},"146":{"name":"Viddhi Gadhvi","id":"644773288"},"68":{"name":"Vishi Veerappan","id":"571516567"},"169":{"name":"Wayne Lin","id":"668156834"},"352":{"name":"WebSoul Graphic WebDesign","id":"100002191542469"},"185":{"name":"Webber Logan","id":"680328956"},"57":{"name":"Wei Lun Ha","id":"549542097"},"245":{"name":"Wendy Yeung","id":"768083155"},"289":{"name":"Wenyuan Kuang","id":"1014611928"},"17":{"name":"William Samuels","id":"220000525"},"174":{"name":"Winnie Wang","id":"669961786"},"1":{"name":"Xander Honkala","id":"2260434"},"159":{"name":"Xiaolei Rei Chen","id":"662145498"},"273":{"name":"Yangting Yang","id":"899120005"},"336":{"name":"Yeojin Jung","id":"100000366462162"},"216":{"name":"Yi Huang Loh","id":"711160303"},"37":{"name":"Yi Lin Yoong","id":"514200695"},"8":{"name":"Yihong Shi","id":"217700190"},"167":{"name":"YingFei Yew","id":"667405708"},"76":{"name":"Yingy Xie","id":"575576197"},"118":{"name":"Yolunda Hickman","id":"606793972"},"338":{"name":"Yui Okamura","id":"100000411611831"},"187":{"name":"Yvonne Mak","id":"680930823"},"128":{"name":"Zainab Kajiji","id":"620455455"},"173":{"name":"Zeyn Shah","id":"669835231"},"0":{"name":"kenneth","email":"ken@ke.com"},"200":{"name":"\u6eab\u5929\u742a","id":"685371431"}};
+var tmphash = new Object();
+
+$.each(window.friends, function(key, value){
+	if(value.id)
+	{
+		tmphash[value.id]=value.name;
+	}else{
+		tmphash[value.email]=value.name;
+	}
+});
+window.friendshash=tmphash;
+
+$(document).ready(function() {
+	
+	var date = new Date();
+	var d = date.getDate();
+	var m = date.getMonth();
+	var y = date.getFullYear();
+	
+	$('#calendar').fullCalendar({
+		eventClick: function(event){
+			loadeventdetail(event.hiddenactivity);
+		},
+		eventMouseover: function(event, jsEvent, view ) { 
+			if(event.start.getDay()>=4){
+				$(this).popover({title: event.hiddentime, trigger: 'hover', placement:'left', content: event.hidden}); 
+			}else{
+				$(this).popover({title: event.hiddentime, trigger: 'hover', content: event.hidden}); 
+			}
+		},
+		header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,agendaWeek,agendaDay'
+		},
+		editable: false, 
+		selectable: true,
+		timeFormat: 'h:mm TT',
+		unselectAuto: true,
+		events: [{
+title: '',
+hidden: 'SUSHI OF GARI',
+hiddenactivity: '152',
+hiddentime: '02:00 PM',
+start: new Date(2013, 3, 10, 14, 0),
+end: new Date(2013, 3, 10, 0, 0),
+color: '#00abdc',
+allDay: false
+}
+		]
+	});
+	
+});
+</script>
+
+<!--
+Underscore is stripping out img's for select options for some reason.
+<img src="/images/gnome_stock_person.png" height="20"> 
+					<img src="http://graph.facebook.com/<%=one.id %>/picture" height="20">-->
+<style type="text/css">
+
+  .namespanel {
+  border-left: 1px solid white;
+  -moz-box-shadow: -1px 0px 0px #e5e5e5; /* Firefox 3.6 and earlier */
+  -webkit-box-shadow: -1px 0px 0px #e5e5e5; /* Safari and Chrome */
+  box-shadow: -1px 0px 0px #e5e5e5;
+  margin-bottom: 10px;
+}
+
+.attendstatus {
+  margin-left: 11px;
+  text-align: center;
+}
+
+</style>
+<script type="text/html" id='invitedetails'>
+<div class="span6">
+          <div class="event_info">
+            <h3><%= event.summary %></h3>
+            <dl class="dl-horizontal">
+              <dt>Location:</dt>
+              <dd><% if(event.location){ print(event.location+"<br> "); }  %> 
+					<% if(event.city){ print(event.city+", "); } %> 
+					<%= event.state %>&nbsp;</dd>
+              <dt>Date:</dt>
+              <dd><%= event.startdate %></dd>
+              <dt>Time:</dt>
+              <dd><%= event.starttime_f %> - <%= event.endtime %>
+</dd>
+            </dl>
+            <p><% if(event.description){ print(event.description); } %>
+
+          </div>
+          <div class="blue_bar"></div><h2>
+								<a href="/invitation/accept?idinvite=<%=event.idinvite%>">Accept Invitation</a> | 
+								<a href="/invitation/decline?idinvite=<%=event.idinvite%>">Decline</a></h2>
+
+          <div class="message_area" name="<%=event.idactivity%>">
+			<% _.each(messages, function(one) { %>
+                <div class="message_entry" style="min-height: 72px;">
+				<% if(one.screenname){ 		%>
+                    <img class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.screenname %>/picture" alt="thumbnail"> 
+      			<%  }else if(one.oauth_uid) { %> 
+                    <img class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail"> 
+      			<%  }else { %> 
+                    <img class="img-polaroid thumbnail_profile" src="/images/gnome_stock_person.png" alt="thumbnail"> 
+				<%  } %>
+                    <div class="text_entry">
+                    <h4><%= one.firstname %> <%= one.lastname %></h4>
+                    <p><%= one.message %> </p>
+                    </div> 
+                </div>
+                    <div class="breakline_msg"></div>  
+			<% }); %>
+          </div>  
+</div>
+          <div class="span1">
+            <div class="namespanel">
+            <h5 class="attendstatus">Attending</h5>              
+            <div class="attend"> 
+			<% _.each(members, function(one) { %>
+				<div>
+				<% if(one.screenname){ 		%>
+                    <img id="<%=one.iduser%>" rel="tooltip" data-placement="left" data-original-title="<%=one.firstname%> <%=one.lastname%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.screenname %>/picture" alt="thumbnail"> 
+      			<%  }else if(one.oauth_uid) { %> 
+                    <img id="<%=one.iduser%>" rel="tooltip" data-placement="left" data-original-title="<%=one.firstname%> <%=one.lastname%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail"> 
+      			<%  }else { %> 
+                    <img id="<%=one.iduser%>" rel="tooltip" data-placement="left" data-original-title="<%=one.firstname%> <%=one.lastname%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="/images/gnome_stock_person.png" alt="thumbnail"> 
+				<%  } %>
+				</div>
+			<% }); %>
+            </div>   
+
+              <h5 class="attendstatus">Pending</h5>            
+            <div class="pending">
+			<% _.each(invited, function(one) { %>
+				<div>
+      			<%  if(one.oauth_uid) { %> 
+                    <img id="<%=one.idinvite%>invite" rel="tooltip" data-placement="left" data-original-title="<%=one.name%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail"> 
+      			<%  }else { %> 
+                    <img id="<%=one.idinvite%>invite" rel="tooltip" data-placement="left" data-original-title="<%=one.name%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="/images/gnome_stock_person.png" alt="thumbnail"> 
+				<%  } %>
+				</div>
+			<% }); %>
+            </div>    
+</div>       
+</div>
+</script>
+<script type="text/html" id='eventdetails'>
+<div class="span6">
+          <div class="event_info">
+            <h3><%= event.summary %></h3>
+            <dl class="dl-horizontal">
+              <dt>Location:</dt>
+              <dd><% if(event.location){ print(event.location+"<br> "); }  %> 
+					<% if(event.city){ print(event.city+", "); } %> 
+					<%= event.state %>&nbsp;</dd>
+              <dt>Date:</dt>
+              <dd><%= event.startdate %></dd>
+              <dt>Time:</dt>
+              <dd><%= event.starttime_f %> - <%= event.endtime %>
+</dd>
+            </dl>
+            <p>
+<% if(event.description){ 
+	print(event.description+"<br><br>"); 
+}else{ print("&nbsp;"); }
+/*event.description=event.description.replace(/'/g, "&#x27;");
+event.summary=event.summary.replace(/'/g, "&#x27;");*/ 
+var eventstr = JSON.stringify(event);
+eventstr = eventstr.replace(/'/g, "&#x27;");
+
+%>
+<% if(event.iduser==iduser){ %>
+<a href="javascript:void(0);" onclick='opencreateevent(<%=eventstr%>,1)' class="pull-right"> Edit<img src="/images/gtk-edit.png" ></a><br>
+<% } %>
+</p>        
+          </div>
+          <div class="blue_bar"></div>
+                <form accept-charset="UTF-8" id="formpostmessage"  action="javascript:void(0);" method="POST">
+                    <textarea class="span6" id="new_message" name="message"
+                    placeholder="Type in your message" rows="5"></textarea>                    
+                    <button class="btn btn-blue" type="button" onclick="postactivitymessage(<%=event.idactivity%>)">Post New Message</button>
+                    <div style="margin-top: 12px;" class="breakline_msg"></div>                     
+                </form>            
+
+          <div class="message_area" name="<%=event.idactivity%>">
+			<% _.each(messages, function(one) { %>
+                <div class="message_entry" style="min-height: 72px;">
+				<% if(one.screenname){ 		%>
+                    <img class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.screenname %>/picture" alt="thumbnail"> 
+      			<%  }else if(one.oauth_uid) { %> 
+                    <img class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail"> 
+      			<%  }else { %> 
+                    <img class="img-polaroid thumbnail_profile" src="/images/gnome_stock_person.png" alt="thumbnail"> 
+				<%  } %>
+                    <div class="text_entry">
+                    <h4><%= one.firstname %> <%= one.lastname %></h4>
+                    <p><%= one.message %> </p>
+                    </div> 
+                </div>
+                    <div class="breakline_msg"></div>  
+			<% }); %>
+          </div>  
+</div>
+          <div class="span1">
+            <div class="namespanel">
+            <h5 class="attendstatus">Attending</h5>              
+            <div class="attend"> 
+			<% _.each(members, function(one) { %>
+				<div>
+				<% if(one.screenname){ 		%>
+                    <img id="<%=one.iduser%>" rel="tooltip" data-placement="left" data-original-title="<%=one.firstname%> <%=one.lastname%>" class="attendnames img-polaroid thumbnail_profile"  src="http://graph.facebook.com/<%= one.screenname %>/picture" alt="thumbnail"> 
+      			<%  }else if(one.oauth_uid) { %>
+                    <img id="<%=one.iduser%>" rel="tooltip" data-placement="left" data-original-title="<%=one.firstname%> <%=one.lastname%>" class="attendnames img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail"> 
+      			<%  }else { %> 
+                    <img id="<%=one.iduser%>" rel="tooltip" data-placement="left" data-original-title="<%=one.firstname%> <%=one.lastname%>" class="attendnames img-polaroid thumbnail_profile" src="/images/gnome_stock_person.png" alt="thumbnail"> 
+				<%  } %>
+				</div>
+			<% }); %>
+            </div>   
+
+              <h5 class="attendstatus">Pending</h5>            
+            <div class="pending">
+			<% _.each(invited, function(one) { %>
+				<div>
+      			<%  if(one.oauth_uid) { %> 
+                    <img id="<%=one.idinvite%>invite" rel="tooltip" data-placement="left" data-original-title="<%=friendshash[one.oauth_uid]%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail">
+      			<%  }else { %> 
+                    <img id="<%=one.idinvite%>invite" rel="tooltip" data-placement="left" data-original-title="<%=one.name%>" class=" attendnames img-polaroid thumbnail_profile"  class="img-polaroid thumbnail_profile" src="/images/gnome_stock_person.png" alt="thumbnail"> 
+				<%  } %>
+				</div>
+			<% }); %>
+            </div>    
+</div>       
+</div>
+</script>
+<script type="text/html" id='newpostmessages'>
+			<% _.each(messages, function(one) { %>
+                <div class="message_entry" style="min-height: 72px;">
+				<% if(one.screenname){ 		%>
+                    <img class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.screenname %>/picture" alt="thumbnail"> 
+      			<%  }else if(one.oauth_uid) { %> 
+                    <img class="img-polaroid thumbnail_profile" src="http://graph.facebook.com/<%= one.oauth_uid %>/picture" alt="thumbnail"> 
+      			<%  }else { %> 
+                    <img class="img-polaroid thumbnail_profile" src="/images/gnome_stock_person.png" alt="thumbnail"> 
+				<%  } %>
+                    <div class="text_entry">
+                    <h4><%= one.firstname %> <%= one.lastname %></h4>
+                    <p><%= one.message %> </p>
+                    </div> 
+                </div>
+                    <div class="breakline_msg"></div>  
+			<% }); %>
+</script>
+<script type="text/html" id='bookmarks'>
+
+			<% _.each(bookmarks, function(one) { %>
+				<%   // Used for modal events creation. 
+				one.summary=one.destname;
+//				one.summary=one.destname.replace(/'/g, "&#x27;");
+//				one.destname=one.destname.replace(/'/g, "&#x27;");
+				one.city=one.county;
+				var onejson = JSON.stringify(one);
+				onejson=onejson.replace(/'/g, "&#x27;");
+				%>
+                          <div class="eventbox"  id="<%=one.id%>pop" >
+<button type="button" class="close" onclick='deletebookmarks("<%=one.bookmarktype%>","<%=one.id%>")'>&times;</button>
+<a href="javascript:void(0);" onclick='opencreateevent(<%=onejson%>,1)'> <img src="/images/gtk-datebook.png" class="pull-right" width="25">
+</a>
+<a href="javascript:void(0);" onclick='opencreateevent(<%=onejson%>,1)'><%=one.destname%></a><br>
+							<% if(one.startdate){ 		%>
+                            	<%=one.startdate%> <br>
+							<%  } %>
+							<%=one.county%>, <%=one.state%>
+                          </div>
+			<% }); %>
+</script>
+
+<script type="text/html" id="createeventtemplate">
+<!--Create Event Modal-->
+    <div id="CreateEvent" class="modal hide fade" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div id="modal-event">
+       <div class="modal-header">
+        <button type="button" id="done_button2" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h2 id="myModalLabel">Create/Update an Event</h2>
+        <div id="CreateEventErrors"></div>
+       </div> 
+        <div class="modal-body" style="overflow: inherit">
+            <div class="eventForm">
+              <input class="squareCorners" type="text" placeholder="Event Title" name="summary" id="summary" value="<%= activity.summary%>" style="width:516px;">
+              <input class="squareCorners" type="text" placeholder="Location (Optional)" name="location" id="location" value="<%=activity.location%>"  style="width:30%;">
+              <input class="squareCorners" type="text" placeholder="City (Optional)" name="city" value="<%=activity.city%>" id="city" style="width:30%;">
+              <input class="squareCorners" type="text" placeholder="State" name="state" value="<%=activity.state%>" id="state" style="text-align:center;width:10%;float:right;">
+              <input class="squareCorners" type="text" placeholder="Event Date" name="startdate" value="<%=activity.startdate%>" id="datepicker3" style="width:516px;">             
+              <input class="squareCorners" type="text" placeholder="Start Time (Optional)" name="starttime" value="<%=activity.starttime_f%>" id="timepicker3">
+              <input class="squareCorners" type="text" placeholder="End Time (Optional)" name="endtime" value="<%=activity.endtime%>" id="timepicker2">
+        <textarea  style=" width: 516px; border-radius: 0px;" rows="4"  id="description" type="text" placeholder="Details (Optional)"><%=activity.description%></textarea>
+ <div class="invitebox">  
+          <img class="note_tip"  rel="tooltip" data-placement="top"   data-original-title="Your friends will receive an invitation via Facebook Notification"  style="float:left;" src="/images/facebook_3d.png" alt="">  
+
+          <img class="note_tip"  rel="tooltip" data-placement="top"  data-original-title="Your friends will receive an invitation via Email"  style="float:left;margin-right:10px;" src="/images/email_3d.png" alt="">
+      		
+          <p style="float:left;padding-top:7px;">Invite your friends using Facebook or Email</p>
+          <a id="add_button" data-target="#add_emailModal" style="cursor:pointer;" data-toggle="modal">Add Email</a>
+		</div>
+
+      <select data-placeholder="+ Invite to this event" class="chzn-select" multiple name="friendadd" id="friendadd"  style="width:516px; margin-left:10px; font-family:ubuntu;">
+			 
+            	    <option value="A Drawing Board|530338615"> A Drawing Board</option> 		
+						 
+            	    <option value="Aaron Paterson|655427568"> Aaron Paterson</option> 		
+						 
+            	    <option value="Aaron Spence|544005672"> Aaron Spence</option> 		
+						 
+            	    <option value="Adrian Lo|697515111"> Adrian Lo</option> 		
+						 
+            	    <option value="Aidar Dulati|1252583186"> Aidar Dulati</option> 		
+						 
+            	    <option value="Akira Akaho|1663426283"> Akira Akaho</option> 		
+						 
+            	    <option value="Alan Lee|878965506"> Alan Lee</option> 		
+						 
+            	    <option value="Alastair Mckenzie|682871735"> Alastair Mckenzie</option> 		
+						 
+            	    <option value="Alex Liang|901995231"> Alex Liang</option> 		
+						 
+            	    <option value="Alexander Joseph Prasetya|607123237"> Alexander Joseph Prasetya</option> 		
+						 
+            	    <option value="Alexander Shi|509682079"> Alexander Shi</option> 		
+						 
+            	    <option value="Alexandra-Jayeun Lee|1634810070"> Alexandra-Jayeun Lee</option> 		
+						 
+            	    <option value="Alvin To|830085354"> Alvin To</option> 		
+						 
+            	    <option value="Amanda Dickson|600270563"> Amanda Dickson</option> 		
+						 
+            	    <option value="Amanda Lee|606651018"> Amanda Lee</option> 		
+						 
+            	    <option value="Amy Feng|512975718"> Amy Feng</option> 		
+						 
+            	    <option value="Andrew Shaw|100000785596562"> Andrew Shaw</option> 		
+						 
+            	    <option value="Andrew Tang|573170330"> Andrew Tang</option> 		
+						 
+            	    <option value="Andy Ong|509197602"> Andy Ong</option> 		
+						 
+            	    <option value="Andy Tseng|1579279159"> Andy Tseng</option> 		
+						 
+            	    <option value="Andy Wu|719040262"> Andy Wu</option> 		
+						 
+            	    <option value="Angie Pranish|538330244"> Angie Pranish</option> 		
+						 
+            	    <option value="Angus Yeh|529660999"> Angus Yeh</option> 		
+						 
+            	    <option value="Anh Doe|620233125"> Anh Doe</option> 		
+						 
+            	    <option value="Anisha Bhattacharya|100002097961523"> Anisha Bhattacharya</option> 		
+						 
+            	    <option value="Anita Dobson|638207752"> Anita Dobson</option> 		
+						 
+            	    <option value="Anna Tokareva|677332226"> Anna Tokareva</option> 		
+						 
+            	    <option value="Annabel Smart|651326859"> Annabel Smart</option> 		
+						 
+            	    <option value="Anne Kei|663027118"> Anne Kei</option> 		
+						 
+            	    <option value="Anthea Du|768233041"> Anthea Du</option> 		
+						 
+            	    <option value="Archie T. Ecture|833680611"> Archie T. Ecture</option> 		
+						 
+            	    <option value="Archiplan Auckland|639068752"> Archiplan Auckland</option> 		
+						 
+            	    <option value="Ashleigh Ngan|621764737"> Ashleigh Ngan</option> 		
+						 
+            	    <option value="Ashley Jihyun Lim|596556234"> Ashley Jihyun Lim</option> 		
+						 
+            	    <option value="Auckland Architecture|100001158105360"> Auckland Architecture</option> 		
+						 
+            	    <option value="Aus Al-majmuei|100002298037071"> Aus Al-majmuei</option> 		
+						 
+            	    <option value="Babette Vavaboom|1213789606"> Babette Vavaboom</option> 		
+						 
+            	    <option value="Barbara Lau|729463873"> Barbara Lau</option> 		
+						 
+            	    <option value="Becky Palmer|100004003827010"> Becky Palmer</option> 		
+						 
+            	    <option value="Bella Anderson|516393206"> Bella Anderson</option> 		
+						 
+            	    <option value="Bess Ashby|828620315"> Bess Ashby</option> 		
+						 
+            	    <option value="Bevan Tse|900855018"> Bevan Tse</option> 		
+						 
+            	    <option value="Bill Blue|624967337"> Bill Blue</option> 		
+						 
+            	    <option value="Billy Cheung|606300065"> Billy Cheung</option> 		
+						 
+            	    <option value="Bobby Shen|701634433"> Bobby Shen</option> 		
+						 
+            	    <option value="Borijan Milic|502729129"> Borijan Milic</option> 		
+						 
+            	    <option value="Bowen Pan|217700148"> Bowen Pan</option> 		
+						 
+            	    <option value="Brad Bonnington|217700597"> Brad Bonnington</option> 		
+						 
+            	    <option value="Brad Featherstone|531012886"> Brad Featherstone</option> 		
+						 
+            	    <option value="Brandon Yang|1157062896"> Brandon Yang</option> 		
+						 
+            	    <option value="Brian &#039;Baz&#039; Cheng|598364154"> Brian 'Baz' Cheng</option> 		
+						 
+            	    <option value="Callum Christopher|21105912"> Callum Christopher</option> 		
+						 
+            	    <option value="Cameron Harrison|668850267"> Cameron Harrison</option> 		
+						 
+            	    <option value="Candice Rose Mason|834059936"> Candice Rose Mason</option> 		
+						 
+            	    <option value="Carina Crescent|518428270"> Carina Crescent</option> 		
+						 
+            	    <option value="Carmen Fu|695521059"> Carmen Fu</option> 		
+						 
+            	    <option value="Caroline Fergusson|609267924"> Caroline Fergusson</option> 		
+						 
+            	    <option value="Cecilia Yeung|748208451"> Cecilia Yeung</option> 		
+						 
+            	    <option value="Chad Reed|563111655"> Chad Reed</option> 		
+						 
+            	    <option value="Chang Liu|696715359"> Chang Liu</option> 		
+						 
+            	    <option value="Chaz Chai|100002877996822"> Chaz Chai</option> 		
+						 
+            	    <option value="Che Ly|100002434009575"> Che Ly</option> 		
+						 
+            	    <option value="Chel Salinas|100000154146876"> Chel Salinas</option> 		
+						 
+            	    <option value="Chelsea Zgierski-Boreyko|601191497"> Chelsea Zgierski-Boreyko</option> 		
+						 
+            	    <option value="Chien-Lin Wu|591598318"> Chien-Lin Wu</option> 		
+						 
+            	    <option value="Clai Wong|631816082"> Clai Wong</option> 		
+						 
+            	    <option value="Claire Hamilton|686440167"> Claire Hamilton</option> 		
+						 
+            	    <option value="Clio Chiu|588620416"> Clio Chiu</option> 		
+						 
+            	    <option value="Crystal Ly|502545864"> Crystal Ly</option> 		
+						 
+            	    <option value="Cynthia Suththananthathas|100001896298455"> Cynthia Suththananthathas</option> 		
+						 
+            	    <option value="Dagan Lin|100000489313233"> Dagan Lin</option> 		
+						 
+            	    <option value="Damien Zarb|551015634"> Damien Zarb</option> 		
+						 
+            	    <option value="Dan Liu|899920227"> Dan Liu</option> 		
+						 
+            	    <option value="Dan Lowery|1527579329"> Dan Lowery</option> 		
+						 
+            	    <option value="Dan TheProducer Shirazi|600155695"> Dan TheProducer Shirazi</option> 		
+						 
+            	    <option value="Daniel Chan|1265418203"> Daniel Chan</option> 		
+						 
+            	    <option value="Daniel Spitzer|1409558559"> Daniel Spitzer</option> 		
+						 
+            	    <option value="Daniel Zhu|708255588"> Daniel Zhu</option> 		
+						 
+            	    <option value="Daphne Lee|621815286"> Daphne Lee</option> 		
+						 
+            	    <option value="David Main|601640092"> David Main</option> 		
+						 
+            	    <option value="David Tat|587853173"> David Tat</option> 		
+						 
+            	    <option value="Deborah Ruth|588500409"> Deborah Ruth</option> 		
+						 
+            	    <option value="Devashish Sharma|893110153"> Devashish Sharma</option> 		
+						 
+            	    <option value="Dhaval Dharamsi|617076605"> Dhaval Dharamsi</option> 		
+						 
+            	    <option value="Dipra Ray|217700745"> Dipra Ray</option> 		
+						 
+            	    <option value="Dorothy Ng|513161323"> Dorothy Ng</option> 		
+						 
+            	    <option value="Duen Bhumiwat|549558379"> Duen Bhumiwat</option> 		
+						 
+            	    <option value="Eddy Lau|683450085"> Eddy Lau</option> 		
+						 
+            	    <option value="Edwìn Yu|678555305"> Edwìn Yu</option> 		
+						 
+            	    <option value="EeLaine Yeoh|1505015152"> EeLaine Yeoh</option> 		
+						 
+            	    <option value="Elisapeta Heta|663128315"> Elisapeta Heta</option> 		
+						 
+            	    <option value="Elizabeth Tjahjana|1024686887"> Elizabeth Tjahjana</option> 		
+						 
+            	    <option value="Ellen Ashenden|506271512"> Ellen Ashenden</option> 		
+						 
+            	    <option value="Emily Cheang|680431958"> Emily Cheang</option> 		
+						 
+            	    <option value="Emily Lay|750638311"> Emily Lay</option> 		
+						 
+            	    <option value="Erik Chamonte|667250081"> Erik Chamonte</option> 		
+						 
+            	    <option value="Esha Shah|626001184"> Esha Shah</option> 		
+						 
+            	    <option value="Eshan Gupta|751017930"> Eshan Gupta</option> 		
+						 
+            	    <option value="Eugene ISack|574172805"> Eugene ISack</option> 		
+						 
+            	    <option value="Eva Cheung|507346852"> Eva Cheung</option> 		
+						 
+            	    <option value="Febian Tan|1620255393"> Febian Tan</option> 		
+						 
+            	    <option value="Felice Burrows|660665703"> Felice Burrows</option> 		
+						 
+            	    <option value="Feri Tan|673249951"> Feri Tan</option> 		
+						 
+            	    <option value="Fiona Rodrigues|507325842"> Fiona Rodrigues</option> 		
+						 
+            	    <option value="Francisca Siew|595092348"> Francisca Siew</option> 		
+						 
+            	    <option value="Fraser Moore|659325032"> Fraser Moore</option> 		
+						 
+            	    <option value="Gabrielle Chin|217700183"> Gabrielle Chin</option> 		
+						 
+            	    <option value="Gerard Gruiters|1590832154"> Gerard Gruiters</option> 		
+						 
+            	    <option value="Gian Harton|631030032"> Gian Harton</option> 		
+						 
+            	    <option value="Gina Gahee Kim|684687916"> Gina Gahee Kim</option> 		
+						 
+            	    <option value="Gina Wang|721876339"> Gina Wang</option> 		
+						 
+            	    <option value="Gopika Gnanakumar|749721354"> Gopika Gnanakumar</option> 		
+						 
+            	    <option value="Grace Astalia|1513782141"> Grace Astalia</option> 		
+						 
+            	    <option value="Gregory Gibbons|100004428491141"> Gregory Gibbons</option> 		
+						 
+            	    <option value="Harry Zhao|1349510573"> Harry Zhao</option> 		
+						 
+            	    <option value="Hasie Leung|875780366"> Hasie Leung</option> 		
+						 
+            	    <option value="Hayden McCallum|1496467228"> Hayden McCallum</option> 		
+						 
+            	    <option value="Hayley Bongiovanni|707506773"> Hayley Bongiovanni</option> 		
+						 
+            	    <option value="Hayley Fisher|669775350"> Hayley Fisher</option> 		
+						 
+            	    <option value="Heidi Leung|512907194"> Heidi Leung</option> 		
+						 
+            	    <option value="Helen Liu|648078462"> Helen Liu</option> 		
+						 
+            	    <option value="Helen Pan|588398262"> Helen Pan</option> 		
+						 
+            	    <option value="Hock Choo|1320381848"> Hock Choo</option> 		
+						 
+            	    <option value="Ian Scott|671346164"> Ian Scott</option> 		
+						 
+            	    <option value="Ibrahim Ikram|600987142"> Ibrahim Ikram</option> 		
+						 
+            	    <option value="Isabella Seakins|628581038"> Isabella Seakins</option> 		
+						 
+            	    <option value="Jack Payne|100000426486611"> Jack Payne</option> 		
+						 
+            	    <option value="Jack Qian|901015363"> Jack Qian</option> 		
+						 
+            	    <option value="Jae Hong|1150338442"> Jae Hong</option> 		
+						 
+            	    <option value="Jae Jang|775435216"> Jae Jang</option> 		
+						 
+            	    <option value="Jai Park|901785186"> Jai Park</option> 		
+						 
+            	    <option value="James Egen|600175612"> James Egen</option> 		
+						 
+            	    <option value="James Wilson|1269909158"> James Wilson</option> 		
+						 
+            	    <option value="James Wong Kein Peng|581890415"> James Wong Kein Peng</option> 		
+						 
+            	    <option value="Jane Lucky|725895108"> Jane Lucky</option> 		
+						 
+            	    <option value="Janet Yuen|585613244"> Janet Yuen</option> 		
+						 
+            	    <option value="Janey Lu|573055508"> Janey Lu</option> 		
+						 
+            	    <option value="Janice Au|601307232"> Janice Au</option> 		
+						 
+            	    <option value="Jasmin Kaur|589536280"> Jasmin Kaur</option> 		
+						 
+            	    <option value="Jasmine Pang|675813466"> Jasmine Pang</option> 		
+						 
+            	    <option value="Jason Yap|744161768"> Jason Yap</option> 		
+						 
+            	    <option value="Jayesh Patel|578351010"> Jayesh Patel</option> 		
+						 
+            	    <option value="Jenni Liang|729733586"> Jenni Liang</option> 		
+						 
+            	    <option value="Jenny Cho|655159545"> Jenny Cho</option> 		
+						 
+            	    <option value="Jeremy Chapman|1031437575"> Jeremy Chapman</option> 		
+						 
+            	    <option value="Jess Lu|796077836"> Jess Lu</option> 		
+						 
+            	    <option value="Jesse Byrt|598407772"> Jesse Byrt</option> 		
+						 
+            	    <option value="Jessica Gopalan|900555636"> Jessica Gopalan</option> 		
+						 
+            	    <option value="Jessica Li|731157153"> Jessica Li</option> 		
+						 
+            	    <option value="Jessica Park|631680925"> Jessica Park</option> 		
+						 
+            	    <option value="Jiae Erin Lee|100000171554963"> Jiae Erin Lee</option> 		
+						 
+            	    <option value="Jimmy Tan|879780117"> Jimmy Tan</option> 		
+						 
+            	    <option value="Jin Akagi|663640886"> Jin Akagi</option> 		
+						 
+            	    <option value="Jiyae Park|684723717"> Jiyae Park</option> 		
+						 
+            	    <option value="Joann Shum|770919107"> Joann Shum</option> 		
+						 
+            	    <option value="Joanna Wong|595440952"> Joanna Wong</option> 		
+						 
+            	    <option value="Johanna Bilkey|681925690"> Johanna Bilkey</option> 		
+						 
+            	    <option value="John F Baker|834412177"> John F Baker</option> 		
+						 
+            	    <option value="Johnny Liu|722092643"> Johnny Liu</option> 		
+						 
+            	    <option value="Jon Nutting|1051708105"> Jon Nutting</option> 		
+						 
+            	    <option value="Jonathan Hooper|23701654"> Jonathan Hooper</option> 		
+						 
+            	    <option value="Jong Keun Tony Ryu|581610086"> Jong Keun Tony Ryu</option> 		
+						 
+            	    <option value="Jordan Wang|522295791"> Jordan Wang</option> 		
+						 
+            	    <option value="Joyce Yue|751854388"> Joyce Yue</option> 		
+						 
+            	    <option value="Judy Tan|902330130"> Judy Tan</option> 		
+						 
+            	    <option value="Julia Chan|772154456"> Julia Chan</option> 		
+						 
+            	    <option value="Julie Tse|697465437"> Julie Tse</option> 		
+						 
+            	    <option value="Jun-ho Park|879735234"> Jun-ho Park</option> 		
+						 
+            	    <option value="Justin Xie|786632914"> Justin Xie</option> 		
+						 
+            	    <option value="Kanese Lui|100001339912277"> Kanese Lui</option> 		
+						 
+            	    <option value="Karen Yung|682030832"> Karen Yung</option> 		
+						 
+            	    <option value="Kartik Wali|602605603"> Kartik Wali</option> 		
+						 
+            	    <option value="Kate Andrew|681131455"> Kate Andrew</option> 		
+						 
+            	    <option value="Kate Beilby|588887516"> Kate Beilby</option> 		
+						 
+            	    <option value="Katelyn Ma|699031899"> Katelyn Ma</option> 		
+						 
+            	    <option value="Katie Skudder|566561685"> Katie Skudder</option> 		
+						 
+            	    <option value="Kaushik Rao|625812516"> Kaushik Rao</option> 		
+						 
+            	    <option value="Kavita Pattery|601080477"> Kavita Pattery</option> 		
+						 
+            	    <option value="Kay Feng|546545131"> Kay Feng</option> 		
+						 
+            	    <option value="Kaye Chen|667460537"> Kaye Chen</option> 		
+						 
+            	    <option value="Keikei Lam|566693442"> Keikei Lam</option> 		
+						 
+            	    <option value="Kelly O Sullivan|545622482"> Kelly O Sullivan</option> 		
+						 
+            	    <option value="Kenneth Su|560278016"> Kenneth Su</option> 		
+						 
+            	    <option value="Kent van Velden|100000647335870"> Kent van Velden</option> 		
+						 
+            	    <option value="Kevin Ha|644543454"> Kevin Ha</option> 		
+						 
+            	    <option value="Kevin Mach|619755514"> Kevin Mach</option> 		
+						 
+            	    <option value="Kevin Son|901850108"> Kevin Son</option> 		
+						 
+            	    <option value="Kevin Tang|900480391"> Kevin Tang</option> 		
+						 
+            	    <option value="Kim Huynh|751468766"> Kim Huynh</option> 		
+						 
+            	    <option value="Kirwin Tan|735598688"> Kirwin Tan</option> 		
+						 
+            	    <option value="Kitty Lin|779470316"> Kitty Lin</option> 		
+						 
+            	    <option value="Koni Lui|699995844"> Koni Lui</option> 		
+						 
+            	    <option value="Lanny Lin|902280643"> Lanny Lin</option> 		
+						 
+            	    <option value="Laury Van Der Linden|636150890"> Laury Van Der Linden</option> 		
+						 
+            	    <option value="Lee  Mi-Ji|100002225393906"> Lee  Mi-Ji</option> 		
+						 
+            	    <option value="Leighton Noakes|584926274"> Leighton Noakes</option> 		
+						 
+            	    <option value="Leong Kim Choo|1327931957"> Leong Kim Choo</option> 		
+						 
+            	    <option value="Li Ling|100002577902764"> Li Ling</option> 		
+						 
+            	    <option value="Lili Sakalia|717760736"> Lili Sakalia</option> 		
+						 
+            	    <option value="Lily Wong|747894847"> Lily Wong</option> 		
+						 
+            	    <option value="Lin Ma|100000373383983"> Lin Ma</option> 		
+						 
+            	    <option value="Linda Wen|662555996"> Linda Wen</option> 		
+						 
+            	    <option value="Linh Su|812425007"> Linh Su</option> 		
+						 
+            	    <option value="Louise Goodwin|100000530176677"> Louise Goodwin</option> 		
+						 
+            	    <option value="Lucia Park|1302797839"> Lucia Park</option> 		
+						 
+            	    <option value="Luke Timmins|694459892"> Luke Timmins</option> 		
+						 
+            	    <option value="Lydia Qu|765919370"> Lydia Qu</option> 		
+						 
+            	    <option value="Lynn Lai|217700762"> Lynn Lai</option> 		
+						 
+            	    <option value="Lynn Lai|100001033794900"> Lynn Lai</option> 		
+						 
+            	    <option value="Maha Albadrawi|586430189"> Maha Albadrawi</option> 		
+						 
+            	    <option value="Mana Kealoha|585285766"> Mana Kealoha</option> 		
+						 
+            	    <option value="Mandy Huang|1098879339"> Mandy Huang</option> 		
+						 
+            	    <option value="Marc Lithgow|100000669912571"> Marc Lithgow</option> 		
+						 
+            	    <option value="Marcus Sin|1455737865"> Marcus Sin</option> 		
+						 
+            	    <option value="Maria Chen|569230762"> Maria Chen</option> 		
+						 
+            	    <option value="Marie-Claire Henderson|217700828"> Marie-Claire Henderson</option> 		
+						 
+            	    <option value="Marion Rose|685316052"> Marion Rose</option> 		
+						 
+            	    <option value="Mark Davis|1106942898"> Mark Davis</option> 		
+						 
+            	    <option value="Mark Durden|1509985739"> Mark Durden</option> 		
+						 
+            	    <option value="Mark Schmidt|217700125"> Mark Schmidt</option> 		
+						 
+            	    <option value="Martin Leung-Wai|765952078"> Martin Leung-Wai</option> 		
+						 
+            	    <option value="Masakazu Morozumi|500627571"> Masakazu Morozumi</option> 		
+						 
+            	    <option value="Matthew Gross|1532767370"> Matthew Gross</option> 		
+						 
+            	    <option value="Matthew Le Grice|521684209"> Matthew Le Grice</option> 		
+						 
+            	    <option value="Mavis Shih|722357135"> Mavis Shih</option> 		
+						 
+            	    <option value="Melissa Bennett|574534225"> Melissa Bennett</option> 		
+						 
+            	    <option value="Melody Shiue|512992184"> Melody Shiue</option> 		
+						 
+            	    <option value="Mianoke Youngblood|665189705"> Mianoke Youngblood</option> 		
+						 
+            	    <option value="Michael Chan|673716628"> Michael Chan</option> 		
+						 
+            	    <option value="Michael John Conway Ware|651337390"> Michael John Conway Ware</option> 		
+						 
+            	    <option value="Michael Kao|659506304"> Michael Kao</option> 		
+						 
+            	    <option value="Michael Shi|543026655"> Michael Shi</option> 		
+						 
+            	    <option value="Michal Karminski|100001439152462"> Michal Karminski</option> 		
+						 
+            	    <option value="Michelle ت Tan|624607933"> Michelle ت Tan</option> 		
+						 
+            	    <option value="Miguel Machado|541072353"> Miguel Machado</option> 		
+						 
+            	    <option value="Mikhil Varma|784091382"> Mikhil Varma</option> 		
+						 
+            	    <option value="Mina Kim|694819275"> Mina Kim</option> 		
+						 
+            	    <option value="Minesh Patel|1501067167"> Minesh Patel</option> 		
+						 
+            	    <option value="Minka Ip|523970507"> Minka Ip</option> 		
+						 
+            	    <option value="Misung Kim|544598963"> Misung Kim</option> 		
+						 
+            	    <option value="Mitchell Round|646584936"> Mitchell Round</option> 		
+						 
+            	    <option value="Modos Auckland|1350668782"> Modos Auckland</option> 		
+						 
+            	    <option value="Mush Mush|681926158"> Mush Mush</option> 		
+						 
+            	    <option value="Nacho Choza de Juan|1446811170"> Nacho Choza de Juan</option> 		
+						 
+            	    <option value="Nam Do|1023973004"> Nam Do</option> 		
+						 
+            	    <option value="Natasha Krishnadas|799100356"> Natasha Krishnadas</option> 		
+						 
+            	    <option value="Natasha Tasker-Keirle|780834960"> Natasha Tasker-Keirle</option> 		
+						 
+            	    <option value="Neeharika Walthati|615046336"> Neeharika Walthati</option> 		
+						 
+            	    <option value="Neha Chaudhari|517333602"> Neha Chaudhari</option> 		
+						 
+            	    <option value="Nhien Thi Thuy Nguyen|583877735"> Nhien Thi Thuy Nguyen</option> 		
+						 
+            	    <option value="Nick Sayes|595106963"> Nick Sayes</option> 		
+						 
+            	    <option value="Nick White|1365278802"> Nick White</option> 		
+						 
+            	    <option value="Nirbhay Jawale|555029820"> Nirbhay Jawale</option> 		
+						 
+            	    <option value="Nirupa George|684077243"> Nirupa George</option> 		
+						 
+            	    <option value="Norman Tam|794770620"> Norman Tam</option> 		
+						 
+            	    <option value="Olivia Caughey|217700780"> Olivia Caughey</option> 		
+						 
+            	    <option value="Owen Huang|715052100"> Owen Huang</option> 		
+						 
+            	    <option value="Panin Thum-Umnauysuk|700453312"> Panin Thum-Umnauysuk</option> 		
+						 
+            	    <option value="Patrick Loo|634415356"> Patrick Loo</option> 		
+						 
+            	    <option value="Pene Lister|769805362"> Pene Lister</option> 		
+						 
+            	    <option value="Peter Lee|626510004"> Peter Lee</option> 		
+						 
+            	    <option value="Peter Quach|900460004"> Peter Quach</option> 		
+						 
+            	    <option value="Philip Guan|663463083"> Philip Guan</option> 		
+						 
+            	    <option value="Piwi Shackell|611785351"> Piwi Shackell</option> 		
+						 
+            	    <option value="Pritisha Unka|217700583"> Pritisha Unka</option> 		
+						 
+            	    <option value="Rach Yang Yang|572180134"> Rach Yang Yang</option> 		
+						 
+            	    <option value="Rachel Siow|732530768"> Rachel Siow</option> 		
+						 
+            	    <option value="Rachel Soakell|731145213"> Rachel Soakell</option> 		
+						 
+            	    <option value="Rahman Hussain|741545382"> Rahman Hussain</option> 		
+						 
+            	    <option value="Rainy Zhu|1469276413"> Rainy Zhu</option> 		
+						 
+            	    <option value="Raj Kutty|694608723"> Raj Kutty</option> 		
+						 
+            	    <option value="Rani Chegudi|650810086"> Rani Chegudi</option> 		
+						 
+            	    <option value="Raymond Lowe|737282016"> Raymond Lowe</option> 		
+						 
+            	    <option value="Rebecca Hood|1470015322"> Rebecca Hood</option> 		
+						 
+            	    <option value="Robert Dziekan|776954932"> Robert Dziekan</option> 		
+						 
+            	    <option value="Rohit Patel|601125366"> Rohit Patel</option> 		
+						 
+            	    <option value="Rois Tang|100000179982535"> Rois Tang</option> 		
+						 
+            	    <option value="Rucha Sarma|217700742"> Rucha Sarma</option> 		
+						 
+            	    <option value="Runcong Cen|548920533"> Runcong Cen</option> 		
+						 
+            	    <option value="Ruth Lai|554422675"> Ruth Lai</option> 		
+						 
+            	    <option value="Ryan Peeters|512729476"> Ryan Peeters</option> 		
+						 
+            	    <option value="Sachin Thakur|650310855"> Sachin Thakur</option> 		
+						 
+            	    <option value="Samantha Zhen|586860920"> Samantha Zhen</option> 		
+						 
+            	    <option value="Sandeep Waghulde|669670787"> Sandeep Waghulde</option> 		
+						 
+            	    <option value="Sandy Son|100001358960684"> Sandy Son</option> 		
+						 
+            	    <option value="Sanjeev Krishna|601045113"> Sanjeev Krishna</option> 		
+						 
+            	    <option value="Sankalp Dave|563153505"> Sankalp Dave</option> 		
+						 
+            	    <option value="Santhiya Veejian|599964216"> Santhiya Veejian</option> 		
+						 
+            	    <option value="Sarah Benikowsky|575548961"> Sarah Benikowsky</option> 		
+						 
+            	    <option value="Sarah Liu|602610259"> Sarah Liu</option> 		
+						 
+            	    <option value="Sarah Mcilwaine|100000335063571"> Sarah Mcilwaine</option> 		
+						 
+            	    <option value="Sarah Yunhee Lee|1346982717"> Sarah Yunhee Lee</option> 		
+						 
+            	    <option value="Sarosh Mulla|731586908"> Sarosh Mulla</option> 		
+						 
+            	    <option value="Saryu Sharma|646801691"> Saryu Sharma</option> 		
+						 
+            	    <option value="Sasha Willins|601619553"> Sasha Willins</option> 		
+						 
+            	    <option value="Sean Bian|697406292"> Sean Bian</option> 		
+						 
+            	    <option value="Sean Tan|609699298"> Sean Tan</option> 		
+						 
+            	    <option value="Sean Taylor|684581643"> Sean Taylor</option> 		
+						 
+            	    <option value="Shantanu Lal|572931586"> Shantanu Lal</option> 		
+						 
+            	    <option value="Sharan Ghadiyar|1474242176"> Sharan Ghadiyar</option> 		
+						 
+            	    <option value="Shinji Kim|122606145"> Shinji Kim</option> 		
+						 
+            	    <option value="Shiva Gopalan|900645693"> Shiva Gopalan</option> 		
+						 
+            	    <option value="Shivani Balraj|724296897"> Shivani Balraj</option> 		
+						 
+            	    <option value="Shwetha Nair|505580572"> Shwetha Nair</option> 		
+						 
+            	    <option value="Sione Havili Mau|1430193198"> Sione Havili Mau</option> 		
+						 
+            	    <option value="Snowy Wright|679268941"> Snowy Wright</option> 		
+						 
+            	    <option value="Sommer Tsai|217700265"> Sommer Tsai</option> 		
+						 
+            	    <option value="Sonam Arora|900725416"> Sonam Arora</option> 		
+						 
+            	    <option value="Stephanie Joondeph|1081980640"> Stephanie Joondeph</option> 		
+						 
+            	    <option value="Stephanie Kunau|507625834"> Stephanie Kunau</option> 		
+						 
+            	    <option value="Stephanie Winquist|512940918"> Stephanie Winquist</option> 		
+						 
+            	    <option value="Stephen Joel Riki Williams|670540407"> Stephen Joel Riki Williams</option> 		
+						 
+            	    <option value="Stephen Mach|785053452"> Stephen Mach</option> 		
+						 
+            	    <option value="Steven Wulf|1197950476"> Steven Wulf</option> 		
+						 
+            	    <option value="Steven Yuen|768369627"> Steven Yuen</option> 		
+						 
+            	    <option value="Sunny Wong|609842863"> Sunny Wong</option> 		
+						 
+            	    <option value="Suraj Samtani|506154033"> Suraj Samtani</option> 		
+						 
+            	    <option value="TC Liu|900485439"> TC Liu</option> 		
+						 
+            	    <option value="Tan Shu Ping|639200446"> Tan Shu Ping</option> 		
+						 
+            	    <option value="Tatiana Zimina|1171625661"> Tatiana Zimina</option> 		
+						 
+            	    <option value="Taufeeq Humayun Makani|501354543"> Taufeeq Humayun Makani</option> 		
+						 
+            	    <option value="Tejas Salway|685260076"> Tejas Salway</option> 		
+						 
+            	    <option value="Therese Fo&#039;ou|533360859"> Therese Fo'ou</option> 		
+						 
+            	    <option value="Tim Jiang|814650499"> Tim Jiang</option> 		
+						 
+            	    <option value="Tim Solomon|534339104"> Tim Solomon</option> 		
+						 
+            	    <option value="Tom Ho|580201202"> Tom Ho</option> 		
+						 
+            	    <option value="Tom Owen|503749554"> Tom Owen</option> 		
+						 
+            	    <option value="Tony Chien|717775243"> Tony Chien</option> 		
+						 
+            	    <option value="Tracy Ruan|1360520409"> Tracy Ruan</option> 		
+						 
+            	    <option value="Trevor Ke|670761581"> Trevor Ke</option> 		
+						 
+            	    <option value="Uddhav Naik|670250701"> Uddhav Naik</option> 		
+						 
+            	    <option value="Varun Bhai|588853200"> Varun Bhai</option> 		
+						 
+            	    <option value="Vedrana Krivokuca|901635273"> Vedrana Krivokuca</option> 		
+						 
+            	    <option value="Victor Eng|597911340"> Victor Eng</option> 		
+						 
+            	    <option value="Viddhi Gadhvi|644773288"> Viddhi Gadhvi</option> 		
+						 
+            	    <option value="Vishi Veerappan|571516567"> Vishi Veerappan</option> 		
+						 
+            	    <option value="Wayne Lin|668156834"> Wayne Lin</option> 		
+						 
+            	    <option value="WebSoul Graphic WebDesign|100002191542469"> WebSoul Graphic WebDesign</option> 		
+						 
+            	    <option value="Webber Logan|680328956"> Webber Logan</option> 		
+						 
+            	    <option value="Wei Lun Ha|549542097"> Wei Lun Ha</option> 		
+						 
+            	    <option value="Wendy Yeung|768083155"> Wendy Yeung</option> 		
+						 
+            	    <option value="Wenyuan Kuang|1014611928"> Wenyuan Kuang</option> 		
+						 
+            	    <option value="William Samuels|220000525"> William Samuels</option> 		
+						 
+            	    <option value="Winnie Wang|669961786"> Winnie Wang</option> 		
+						 
+            	    <option value="Xander Honkala|2260434"> Xander Honkala</option> 		
+						 
+            	    <option value="Xiaolei Rei Chen|662145498"> Xiaolei Rei Chen</option> 		
+						 
+            	    <option value="Yangting Yang|899120005"> Yangting Yang</option> 		
+						 
+            	    <option value="Yeojin Jung|100000366462162"> Yeojin Jung</option> 		
+						 
+            	    <option value="Yi Huang Loh|711160303"> Yi Huang Loh</option> 		
+						 
+            	    <option value="Yi Lin Yoong|514200695"> Yi Lin Yoong</option> 		
+						 
+            	    <option value="Yihong Shi|217700190"> Yihong Shi</option> 		
+						 
+            	    <option value="YingFei Yew|667405708"> YingFei Yew</option> 		
+						 
+            	    <option value="Yingy Xie|575576197"> Yingy Xie</option> 		
+						 
+            	    <option value="Yolunda Hickman|606793972"> Yolunda Hickman</option> 		
+						 
+            	    <option value="Yui Okamura|100000411611831"> Yui Okamura</option> 		
+						 
+            	    <option value="Yvonne Mak|680930823"> Yvonne Mak</option> 		
+						 
+            	    <option value="Zainab Kajiji|620455455"> Zainab Kajiji</option> 		
+						 
+            	    <option value="Zeyn Shah|669835231"> Zeyn Shah</option> 		
+						            	    <option value="kenneth|ken@ke.com"> kenneth</option> 		
+      					 
+            	    <option value="溫天琪|685371431"> 溫天琪</option> 		
+								</select><br>
+		<input type="hidden" class="idbusiness" name="idbusiness" value="<%=activity.idbusiness%>">
+		<input type="hidden" class="idplace" name="idplace" value="<%=activity.idplace%>">
+		<input type="hidden" class="idactivity" name="idactivity" value="<%=activity.idactivity%>">
+            </div>
+       </div>
+       <div id="createevent-footer"  class="modal-footer" > 
+    <button value="Create/Update Event!" onclick="createevent()" class="btn btn-blue btn-large" style="width:529px;bottom: 21px;" >Create/Update Event!</button>
+      </div>
+</div>
+<!--Side Bar Info-->    
+
+    <div id="emailModal" >
+    <button type="button" id="done_button" class="close">x</button>
+      <div class="modal-header">
+        <h4 style="text-align:center;">Add Friend Via Email</h4>
+          <div class="breakline"></div>
+      </div>
+<div id="emailerrormsg"></div>
+      <div class="modal-body">
+          <input class="squareCorners" type="text" id="emailfullname" value="" placeholder="Add Name"><span id='erremailname'></span>
+          <input class="squareCorners" type="text" id="emailaddress" value="" placeholder="Add Email"><span id='erremailaddress'></span>
+          <button style="width: 100%;" class="btn btn-blue" onclick="addemail()">Add Friend</button>  
+        <div class="friends_module">
+			          <div class=" alert Friends">
+            <button type="button" class="close" data-dismiss="alert" onclick='removeemail("ken@ke.com")'>&times;</button>
+            <p>kenneth<br>ken@ke.com</p>
+          </div>
+      		 
+        </div>
+      </div>
+       <div class="modal-footer" > 
+      </div>
+    </div> 
+
+    </div>   
+</script>
+
+
+    <!-- Your Events + Buttons -->      
+    <div class="container">
+      <div class="row">
+        <div class="datebook span4">
+        <button style="width:70%;float:left;" href="javascript:void(0);" onclick='opencreateevent({},1)' data-toggle="modal" role="button" class="btn btn-large btn-blue" type="submit" class="btn">Create Event!
+        </button>
+        <button id="calendarButton" class="btn btn-large btn-blue" style="height: 100%;">&nbsp;
+        </button>
+
+          <ul class="nav nav-pills" id="nav-pill_box">
+            <li class="tab-pane pill_width active">
+              <a id="Your_event" href="#home"  data-toggle="tab"><h4 style="font-size: 1.17em;">Your Events</h4></a>
+            </li>
+             <li class="tab-pane pill_bookmarks dropdown">
+            <a id="Your_bookmark" class="dropdown-toggle" data-toggle="dropdown" href="#" >
+           <h4 style="font-size: 1.17em;margin-left: 13px;text-align: center;">Bookmarks 
+<b class="caret"></b></h4>
+            </a>
+<ul class="nav nav-tab dropdown-menu" style="  border-radius: 0px !important; text-align: center; min-width: 115px;margin-top: 0px; margin-right: 0px;right: 2px;">
+<!-- links -->
+<li><a data-toggle="tab" href="#bookmarkbusiness"  onclick="loadbusinessbookmark('business')">Dining</a></li>
+<li><a data-toggle="tab"  href="#bookmarkplace" onclick="loadplacebookmark('places')">Places</a></li>
+<li><a data-toggle="tab"  href="#bookmarkevents"  onclick="loadeventsbookmark('events')">Events</a></li>
+</ul>
+</li>
+        </ul>
+
+		<div class="tab-content">
+            <div class="tab-pane active" id="home">
+			<div class="customscroll">
+            <div class="EventListing">
+							<div class="eventbox">
+                    <div class="event_datebox">
+                      <div class="datewrap">
+                      <span style="font-size:1.1em;line-height:1.35em;">Apr</span><br> 
+                      <span style="font-size:1.5em;">10</span><br> 
+                      <span style="font-family:ubuntu;">WED</span>
+                      </div>                      
+                    </div> 
+                    <div class="event_summary">
+                    			<a href="javascript:void(0);"
+										onclick="loadeventdetail(152)">
+									SUSHI OF GARI</a> 
+									<span id="id152"></span>									<br>
+									402        EAST   78 STREET                                  	<br>
+									02:00 PM -
+									12:00 AM									</div>
+									</div>
+							</div>
+            </div>
+            </div>
+        <div class="tab-pane" id="bookmarkplace">
+        <div class="BookmarkTitles">Bookmarked Places</div>
+			<div class="customscroll">
+            <div class="yourBookmarks">
+            Processing....
+            </div>   
+            </div>   
+          </div>
+        <div class="tab-pane" id="bookmarkbusiness">
+        <div class="BookmarkTitles">Bookmarked Dining</div>
+			<div class="customscroll">
+            <div class="yourBookmarks">
+            Processing....
+            </div>   
+            </div>   
+          </div>
+        <div class="tab-pane" id="bookmarkevents">
+        <div  class="BookmarkTitles">Bookmarked Events</div>
+			<div class="customscroll">
+            <div class="yourBookmarks">
+            Processing....
+            </div>   
+          </div>
+          </div>
+        </div>        
+
+        </div>
+      <div class="span8" id="grandcentral" >
+<div id='calendar'></div>
+<span id="event_main">
+Processing...</span>  
+</div>
+<span id="modalholder"></span>
+
+</div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		opencreateevent(Array, 0);
+	    $(function () {
+	        $('#nav-pill_box a[href="#home"]').tab('show');
+	      });
+	      loadeventdetail(152);	      	      $("#calendarButton").click(function(){
+	    	    $("#event_main").fadeOut(function(){ $(this).hide(); });
+	    	    $("#calendar").slideDown();
+	    	  });
+	});
+
+</script>
+<!-- Footer -->
+  <div class="footer">
+    <p>Copyright Gathering Up Ltd 2013. All rights reserved.</p>
+    <p>Design + Built by <a href="http://techkinesis.com">Techkinesis</a>. Proudly Made in NYC</p>
+    <p>
+      <a href="http://Facebook.com/gatheringup">Follow Us on Facebook</a>  | 
+      <a href="/about">About Us</a>  |  
+      <a href="/about/termsofuse">Terms of Use</a>  |  
+      <a href="/about/privacy">Privacy Policy</a> | 
+      <a href="/about/contactusform">Contact Us</a>
+    </p>  
+  </div>  
+
+<!--Register Modal-->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header registerModal">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h2 id="myModalLabel">Register with GatheringUP!</h2>
+        
+<div style="width: 400px;" class="breakline"></div> 
+      </div>
+		<div style="padding-top: 2px;" class="modal-body">
+            <form  id="registerform" action="#">
+      <div id="RegistrationErrors"  class="form-large"  style="width:402px;" ></div>
+              <div>
+                  <input type="text" name="firstname" id="firstname" class="form-large"  style="width:402px;" placeholder="First Name" tabindex="41">
+                  <b id="errfirstname"  style="position: absolute;"></b>
+              </div>
+              <div>
+                  <input type="text" name="lastname" id="lastname" class="form-large"  style="width:402px;" placeholder="Last Name" tabindex="42">
+                <b id="errlastname" style="position: absolute;"></b>
+              </div>        
+                  <div>
+                  <input type="text" name="email" id="regemail" class="form-large"  style="width:402px;" placeholder="Email" tabindex="43">
+                  <b id="erremail" style="position: absolute;"></b>
+              </div>
+              <div>
+                  <input type="password" name="password" id="regpassword" class="form-large"  title="Must contain one number & eight characters"  placeholder="Create Password" style="width:190px;float:left;" tabindex="44">
+<b id="errpassword" style="position: absolute;"></b>
+                  <input type="password" name="passwordconf" id="regpasswordconf" class="form-large" placeholder="Re-type Password"  style="margin-left:20px; width:190px;float:left;"  tabindex="45">
+<b id="errpasswordconf" style="position: absolute;"></b>
+              </div>     
+               <div style="clear:both;" class="breakline"></div>  
+                  <div  style="float:left;margin-top: 3px;width:192px;" id="captcha"><img src="/captcha"></div>
+                  <div>
+                  <input type="text" name="norobotcode" id="robotdistorter" class="form-large" style="margin-left:20px; width:190px;float:left;"  placeholder="Enter Captcha"  tabindex="46">
+                  <b id="errrobotdistorter" style="position: absolute;"></b>
+              </div>
+               <div style="clear:both;" class="breakline"></div>  
+                  <button type="button" value="Sign me up" class="btn btn-blue btn-large"  style="width:405px;"  onclick="register()"  tabindex="47">Register</button>
+            <img src="/images/divider.png" style="margin-bottom:10px;margin-top: 14px;" alt=""> 
+        <div  style="width:388px;height: 65px;">
+        	<div class="facebookbg2" >
+              <a href=""  id="fb_register" class="facebookurl"  >Sign In with Facebook        </a>
+              </div>
+        </div>
+            </form>
+            
+    </div>   
+    </div>   
+
+    <!--Sign Up Modal-->
+    <div id="Signin_Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header registerModal">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h2 id="myModalLabel">Sign In!</h2>
+      </div>
+        <div style="width:89%;"  class="breakline"></div>       
+        <div style="padding-top: 0px;"  class="modal-body">
+          <p >Don't have an account? &nbsp;<a href="javascript:void(0);" onclick="registerpopup('')">Register Here!</a></p>
+            <form  id="loginform" action="javascript:void(0);" class="form-horizontal">
+            
+            		<input type="hidden" id="redirect" name="redirect" value="">
+					<input type="hidden" class="bbookmark" name="bbookmark" value="">
+					<input type="hidden" class="pbookmark" name="pbookmark" value="">
+					<input type="hidden" class="ebookmark" name="ebookmark" value="">
+
+            	<div id="LoginErrors"></div>
+                <div class="SignInField_m">
+                    <input id="poploginemail" name="email" style="width:256px;" type="text" class="squareCorners" placeholder="Email">
+                </div>
+                <div class="SignInField_m">
+                    <input id="poploginpasswd" name="password" style="width:256px;" type="password" class="squareCorners" placeholder="Password">
+                </div>
+                <div class="SignInField_m">
+                    <a style="cursor:pointer;" data-toggle="modal" onclick="logintoforget()">Forgot Your Password?</a>
+<!--                     <label class="checkbox">
+                    <input type="checkbox">Remember me
+                    </label>   -->
+                        <button  onclick="login()" class="btn btn-blue btn-large" type="submit" style="font-weight:bold;width:100%;margin-top:10px;">Sign In!</button>
+                      </div>
+
+                <div style="margin-bottom:14px;" class="breakline"></div> 
+
+              <div class="facebookbg">
+              <a href="" class="facebookurl" >
+                    <img style="height:30px;width:auto;padding-right:35px;" src="/images/facebook.png" alt="facebook">Sign In with Facebook
+                 </a>
+              </div>
+                  </form> 
+               </div>
+            </div> 
+
+<!--Forgot Password Modal-->
+    <div id="forgotModal" class="modal hide fade"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>        
+        <h2 id="myModalLabel">Forgot Password</h2>
+      </div>
+      <div class="breakline"></div>
+      <form  id="forgotpasswordform" action="javascript:void(0);" class="form-horizontal">
+      <div style="padding: 0px 35px 32px;" class="modal-body">
+        <h4>Enter your email address below to reset your password</h4>
+        <input class="form-large" type="text" id="forgotemail" placeholder="Email Address" value="">
+        <button style="padding:15px 33px 15px 33px; width: 100%;" type="submit" class="btn btn-blue btn-large" onclick="forgotpassword()">Reset Your Password!</button>
+      </div>
+      </form>
+    </div>    
+    
+<!-- Announcements Modal-->
+    <div id="announcementModal" class="modal hide fade"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>        
+        <h2 id="announcementLabel">Notification</h2>
+      </div>
+      <div class="breakline"></div>
+      <div style="padding: 0px 35px 32px;" class="modal-body">
+        <h4>Enter your email address below to reset your password</h4>
+      </div>
+    </div>    
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap-tooltip.js"></script>
+<!--Carousel Javascript-->    
+    <script type="text/javascript"> 
+
+    
+      $('.carousel').carousel({
+        interval: 5000
+      });
+      $(function(){
+    	  $("#regpassword").tooltip();
+      });
+    </script>
+  </body>
+</html>
