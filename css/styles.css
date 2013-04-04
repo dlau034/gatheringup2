@@ -198,13 +198,38 @@
 .fc-event-skin {
   background-color: #FBB03B!important;
   border: none!important;
+  cursor: pointer;
 }
 .fc-header-title h2 {
   color: #666;
   text-shadow: 0px 1px 0px white;
   font-family: arvo;
 }
+.fc-content .popover {
+  min-width: 200px!important;
+  border-radius: 0px;
+  color: #666;
+}
+.fc-content .popover .popover-title {
+  /*background: none!important;*/
+  background-color: #FBB03B;
+  border-radius:0!important;
+  border-size: 0!important;
+  color:white;
+}
 
+
+/* ------------ FullCalendar.css Override ------------ */
+
+.chzn-container-multi .chzn-choices {
+  padding:0px!important;
+}
+.chzn-choices .search-field input {
+  box-shadow: none!important;
+  font-size: 100%!important;
+  margin:0px!important;
+}
+#friendadd_chzn chzn-choices
 /* ------------ Event Screen ------------ */
 
 .blue_bar ,.breakline_msg{

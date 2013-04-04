@@ -1,0 +1,146 @@
+/*Pushes the container down - will need custom ID*/
+
+.wrapper .container > .row {
+  margin-top: 55px;
+}
+
+/* Need change .btn-blue to green - will need html change
+
+- Get rid of inline: 100%
+
+*/
+
+.btn-blue {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #A3C86C;
+  background-image: -moz-linear-gradient(top, #A3c86c, #8BB946);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#A3c86c), to(#8BB946));
+  background-image: -webkit-linear-gradient(top, #A3c86c, #8BB946);
+  background-image: -o-linear-gradient(top, #A3c86c, #8BB946);
+  background-image: linear-gradient(to bottom, #A3c86c, #8BB946);
+  background-repeat: repeat-x;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  border-radius: 0px !important;
+  font-family: ubuntu
+}
+
+.btn-blue:hover,
+.btn-blue:focus,
+.btn-blue:active,
+.btn-blue.active,
+.btn-blue.disabled,
+.btn-blue[disabled] {
+  color: #ffffff;
+  background-color: #8BB946;
+  *background-color: #499249;
+}
+
+.btn-blue:active,`
+.btn-blue.active {
+  background-color: #408140 \9;
+}
+
+.datebook button:first-child{
+  width: 83%!important;
+} 
+
+/* ------------------ SideBar Menu -------------------- */
+
+.sideBar #appendedInputButton {
+	height: 2.4em!important;
+	font-size: 1.1rem;
+	font-family: ubuntu!important;
+  width: 12.2em;
+  text-indent:5px;
+}
+.sideBar h2, .eventBody h2 {
+	color: #555;
+  text-shadow:0px 1px 0px white;
+}
+
+.EventSearchFilter table {
+  background-color: white;
+  border-radius: 0;
+  border: 1px solid #aaa;
+  width: 19.3em;
+} 
+.EventSearchFilter td {
+  border-right: none;
+  border-left: none; 
+  border-color: #aaa;
+}
+.EventSearchFilter table a {
+  color:#8BB946;
+  font-weight: 500;
+}
+.EventSearchFilter table a:hover {
+  color:#F7931E;
+}
+#datepicker > .ui-corner-all {
+  border-radius: 0!important;
+  border: 1px solid #aaa!important;
+}
+
+/* ------------------ Event Body -------------------- */
+.eventBody p {
+  font-size: 0.9em;
+}
+.eventmain .eventbody {
+  display: none;
+}
+.eventmain {
+  width: 100%;
+  border-radius: 0px;
+  box-shadow: none;
+  background-color: #f5f5f5;
+  font-size: 1.2em;
+  line-height: 1.4em;
+  padding: 15px 15px 3px 15px;
+  cursor: default;
+  border-bottom: 8px solid #A3C86C;
+  outline: 1px solid #ccc;
+  margin-left: 2px;
+  margin-bottom: 15px;  
+  color: #666;
+}
+.eventmain:hover  {
+  background-color: white;
+}
+.eventtitle b {
+  color: #8BB946;
+  font-weight: 500;  
+  cursor: pointer;
+  text-shadow: 0px -1px 0px white;
+}
+.eventtitle b:hover {
+  color: #F7931E;
+}
+.boxdate {
+  background-color: #4D4D4D;
+  border: none;
+  min-height: 80px;
+  min-width: 80px;
+  color: white;
+  font-family: arvo;
+  line-height: 2em;
+  margin-right: 16px;
+  cursor: default;
+  float: left;
+  padding: 1px;
+  text-align: center;  
+}
+.boxday {
+  color: white;
+  font-family: arvo;
+  font-size: 2.5em;
+  cursor: default;
+  text-align: center;  
+}
+.eventtitle {
+  margin-bottom: 1.5em;
+
+
+}
